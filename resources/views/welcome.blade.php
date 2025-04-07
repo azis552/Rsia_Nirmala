@@ -1,20 +1,23 @@
 <!doctype html>
-<html>
-  <head>
+<html lang="id">
+
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    @vite('resources/css/app.css')
+    <title>RSIA Nirmala</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
-  </head>
-  <body>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+</head>
+
+<body>
     <!-- Bagian atas -->
-    <div class="bg-green-700 text-white text-sm py-2 px-4 flex justify-between items-center">
+    <div class="bg-green-700 text-white text-sm py-2 px-4 flex flex-wrap justify-between items-center">
         <div class="flex items-center gap-2">
-            <span>Hubungi Kami</span>
-            <span>|</span>
-            <span><i class="fas fa-envelope"></i> rsianirmalakdr</span>
-            <span>|</span>
+            <span class="hidden md:flex">Hubungi Kami</span>
+            <span class="hidden md:flex">|</span>
+            <span class="hidden md:flex"><i class="fas fa-envelope mt-1 mr-2"></i>rsianirmalakdr</span>
+            <span class="hidden md:flex">|</span>
             <span><i class="fa-solid fa-phone-volume"></i> 085-317-080-08</span>
         </div>
         <div class="bg-gray-200 text-green-700 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
@@ -22,28 +25,456 @@
         </div>
     </div>
 
-    <!-- Navbar utama -->
-    <nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center relative">
         <!-- Logo -->
         <div class="flex items-center gap-4">
-            <img src="https://via.placeholder.com/50" alt="Logo RSIA" class="h-12">
-            <img src="https://via.placeholder.com/50" alt="Akreditasi" class="h-12">
+            <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/Untitled-1000-%C3%97-500-px-1.png"
+                alt="Logo RSIA" class="h-12 max-w-full">
         </div>
 
-        <!-- Menu Navigasi -->
-        <ul class="flex space-x-6 font-bold text-lg">
-            <li><a href="#" class="hover:text-green-700"><i class="fas fa-home"></i> Beranda</a></li>
-            <li><a href="#" class="hover:text-green-700"><i class="fas fa-user"></i> Profil</a></li>
-            <li><a href="#" class="hover:text-green-700"><i class="fas fa-concierge-bell"></i> Pelayanan</a></li>
-            <li><a href="#" class="hover:text-green-700"><i class="fas fa-info-circle"></i> Informasi Publik</a></li>
-            <li><a href="#" class="hover:text-green-700"><i class="fas fa-tags"></i> Promo Spesial</a></li>
+        <!-- Menu Navigasi (Desktop) -->
+        <ul class="hidden md:flex space-x-6 font-bold text-lg">
+            <li><a href="#" class="hover:text-green-700">Beranda</a></li>
+            <li><a href="#" class="hover:text-green-700">Profil</a></li>
+            <li><a href="#" class="hover:text-green-700">Pelayanan</a></li>
+            <li><a href="#" class="hover:text-green-700">Informasi Publik</a></li>
+            <li><a href="#" class="hover:text-green-700">Promo Spesial</a></li>
         </ul>
 
-        <!-- Tombol Booking -->
-        <button class="bg-green-700 text-white px-4 py-2 rounded-md font-semibold hover:bg-green-800 flex items-center gap-2">
+        <!-- Tombol Booking (Desktop) -->
+        <button
+            class="hidden md:flex bg-green-700 text-white px-4 py-2 rounded-md font-semibold hover:bg-green-800 items-center gap-2">
             <i class="fas fa-calendar-check"></i> Booking Online
         </button>
-    </nav>
 
-  </body>
+        <!-- Tombol Hamburger Menu (Mobile) -->
+        <button id="menuButton" class="md:hidden text-green-700 text-2xl">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+    <!-- Menu Mobile -->
+    <div id="navbar-dropdown" class=" fixed hidden top-30 left-0 w-full bg-white shadow-md z-50 md:hidden">
+        <ul class="flex flex-col p-2 text-lg font-bold leading-tight">
+            <li class="py-1">
+                <a href="#"
+                    class="block py-2 px-4 rounded-md hover:text-green-700 hover:bg-green-100 active:bg-green-200 focus:outline-none transition-all duration-300">
+                    Beranda
+                </a>
+            </li>
+            <li class="py-1">
+                <a href="#"
+                    class="block py-2 px-4 rounded-md hover:text-green-700 hover:bg-green-100 active:bg-green-200 focus:outline-none transition-all duration-300">
+                    Profil
+                </a>
+            </li>
+            <li class="py-1">
+                <a href="#"
+                    class="block py-2 px-4 rounded-md hover:text-green-700 hover:bg-green-100 active:bg-green-200 focus:outline-none transition-all duration-300">
+                    Pelayanan
+                </a>
+            </li>
+            <li class="py-1">
+                <a href="#"
+                    class="block py-2 px-4 rounded-md hover:text-green-700 hover:bg-green-100 active:bg-green-200 focus:outline-none transition-all duration-300">
+                    Informasi Publik
+                </a>
+            </li>
+            <li class="py-1">
+                <a href="#"
+                    class="block py-2 px-4 rounded-md hover:text-green-700 hover:bg-green-100 active:bg-green-200 focus:outline-none transition-all duration-300">
+                    Promo Spesial
+                </a>
+            </li>
+            <li class="py-1">
+                <button
+                    class="w-full bg-green-700 text-white px-4 py-2 rounded-md font-semibold shadow-md hover:bg-green-800 hover:shadow-lg active:bg-green-900 focus:outline-none transition-all duration-300">
+                    Booking Online
+                </button>
+            </li>
+        </ul>
+    </div>
+    {{-- jumbotron --}}
+    <div id="controls-carousel" class="relative w-full h-[400px] md:h-[600px]" data-carousel="static"
+        style="position: relative; z-index: 1;">
+        <!-- Carousel wrapper -->
+        <div class="relative h-[400px] md:h-[600px] overflow-hidden ">
+            <!-- Item 1 -->
+            <div class="hidden duration-1000 ease-in-out transition-all" data-carousel-item>
+                <img src="https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F"
+                    class="w-full h-full object-cover" alt="...">
+            </div>
+            <!-- Item 2 -->
+            <div class="hidden duration-1000 ease-in-out transition-all" data-carousel-item>
+                <img src="https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F"
+                    class="w-full h-full object-cover" alt="...">
+            </div>
+            <!-- Item 3 -->
+            <div class="hidden duration-1000 ease-in-out transition-all" data-carousel-item>
+                <img src="https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F"
+                    class="w-full h-full object-cover" alt="...">
+            </div>
+            <!-- Item 4 -->
+            <div class="hidden duration-1000 ease-in-out transition-all" data-carousel-item>
+                <img src="https://media-cdn.tripadvisor.com/media/photo-s/06/9b/a5/ef/massive-jumbotron.jpg"
+                    class="w-full h-full object-cover" alt="...">
+            </div>
+            <!-- Item 5 -->
+            <div class="hidden duration-1000 ease-in-out transition-all" data-carousel-item>
+                <img src="https://media-cdn.tripadvisor.com/media/photo-s/06/9b/a5/ef/massive-jumbotron.jpg"
+                    class="w-full h-full object-cover" alt="...">
+            </div>
+        </div>
+
+        <!-- Slider controls -->
+        <button type="button"
+            class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+            data-carousel-prev>
+            <span
+                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5 1 1 5l4 4" />
+                </svg>
+                <span class="sr-only">Previous</span>
+            </span>
+        </button>
+        <button type="button"
+            class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+            data-carousel-next>
+            <span
+                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 9 4-4-4-4" />
+                </svg>
+                <span class="sr-only">Next</span>
+            </span>
+        </button>
+    </div>
+    {{-- dokter filter --}}
+
+    <section
+        class="h-[1550px] md:h-[600px] bg-cover bg-center  bg-no-repeat mt-[-140px] md:mt-[-10px] bg-[url('https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F')] bg-green-900 bg-blend-multiply">
+        <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
+            <div class="container mx-auto p-5 md:mt-[-280px] relative z-10 ">
+                <div class="text-center rounded-lg bg-gray-200 pb-2">
+                    <h1 class="text-2xl font-bold text-green-600">Cari Dokter</h1>
+                    <p class="text-gray-600">Cari dan Temukan Jadwal Dokter dan Buat Janji dengan Dokter Ahli,
+                        Spesialis dan Umum</p>
+                </div>
+                <div class="bg-white rounded shadow-md p-6" style="margin-top: -8px">
+
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Nama Dokter</label>
+                            <input type="text" placeholder="Nama Dokter"
+                                class="mt-1 block w-full border-2 border-gray-300 rounded-md shadow-sm p-2 focus:ring-green-500 focus:border-green-500" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Spesialisasi</label>
+                            <select
+                                class="mt-1 block w-full border-2 border-gray-300 rounded-md shadow-sm p-2 focus:ring-green-500 focus:border-green-500">
+                                <option>Pilih Spesialis</option>
+                                <option>Spesialis 1</option>
+                                <option>Spesialis 2</option>
+                                <option>Spesialis 3</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Pilihan Hari</label>
+                            <input type="date"
+                                class="mt-1 block w-full border-2 border-gray-300 rounded-md shadow-sm p-2 focus:ring-green-500 focus:border-green-500" />
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-between">
+                        <button class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">Reset</button>
+                        <button class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">Cari
+                            Dokter</button>
+                    </div>
+                </div>
+            </div>
+            <div class=" flex  items-center w-full px-4">
+                <div class="flex flex-col md:flex-row items-center gap-6 h-90 w-full ">
+                    <!-- Card 1 -->
+                    <div
+                        class="relative  bg-gray-200 w-full md:w-90 h-72 md:h-80 p-6 text-center rounded-lg shadow-lg">
+                        <div class="flex justify-center mb-4">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1046/1046863.png" alt="Icon"
+                                class="w-12 h-12">
+                        </div>
+                        <p class="text-lg font-semibold">Layanan Lengkap</p>
+                        <div
+                            class="absolute -bottom-5 right-5 bg-green-600 text-white w-10 h-10 flex items-center justify-center text-lg font-bold rounded-full">
+                            1
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="relative bg-gray-200 w-full md:w-90 h-72 md:h-80 p-6 text-center rounded-lg shadow-lg">
+                        <div class="flex justify-center mb-4">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1046/1046863.png" alt="Icon"
+                                class="w-12 h-12">
+                        </div>
+                        <p class="text-lg font-semibold">
+                            <a href="#" class="text-blue-600 hover:underline">Peralatan Modern</a>
+                        </p>
+                        <div
+                            class="absolute -bottom-5 right-5 bg-green-600 text-white w-10 h-10 flex items-center justify-center text-lg font-bold rounded-full">
+                            2
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="relative bg-gray-200 w-full md:w-90 h-72 md:h-80 p-6 text-center rounded-lg shadow-lg">
+                        <div class="flex justify-center mb-4">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1046/1046863.png" alt="Icon"
+                                class="w-12 h-12">
+                        </div>
+                        <p class="text-lg font-semibold">Registrasi Online</p>
+                        <div
+                            class="absolute -bottom-5 right-5 bg-green-600 text-white w-10 h-10 flex items-center justify-center text-lg font-bold rounded-full">
+                            3
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- berita dan artikel --}}
+    <section class="relative bg-center bg-no-repeat pt-10 pb-5 bg-green-300 bg-blend-multiply overflow-hidden">
+
+        <!-- Hiasan Lingkaran Seperempat di Pojok Kiri Atas -->
+        <div class="absolute top-0 left-0 w-40 h-40 bg-green-700 rounded-br-full z-0"></div>
+        <!-- Hiasan Lingkaran Seperempat di Pojok Kiri Atas -->
+        <div class="absolute bottom-0 right-0 w-40 h-40 bg-green-700 opacity-50 rounded-tl-full z-0"></div>
+        <!-- Header -->
+        <div class="text-center mb-6 relative z-10">
+            <div class="bg-green-700 px-6 py-3 inline-block rounded-lg shadow">
+                <h2 class="text-2xl md:text-2xl font-bold text-white">Berita & Artikel</h2>
+                <hr>
+                <p class="text-green-100 mt-1 text-sm">Berita dan Artikel Kesehatan Terbaru</p>
+            </div>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex justify-start ml-20 gap-3 mb-4 relative z-10">
+            <button
+                class="bg-green-200 text-green-900 px-4 py-2 rounded-full font-semibold hover:bg-green-300 transition">All</button>
+            <button
+                class="bg-white border border-green-400 text-green-900 px-4 py-2 rounded-full font-semibold hover:bg-green-100 transition">Artikel</button>
+            <button
+                class="bg-white border border-green-400 text-green-900 px-4 py-2 rounded-full font-semibold hover:bg-green-100 transition">Pengumuman</button>
+        </div>
+
+        <!-- Grid Berita -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto relative z-10">
+            <!-- Card -->
+            <div class="bg-white rounded-xl shadow p-4 m-2">
+                <img src="https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F"
+                    alt="berita" class="rounded-xl w-full h-48 object-cover mb-3" />
+                <p class="text-sm text-gray-500">13 January 2025</p>
+                <h3 class="font-semibold text-md mt-1">Rapat Koordinasi Manajemen Risiko dan Identifikasi Prioritas
+                    Layanan Rumah Sakit Tahun 2025</h3>
+                <p class="text-sm mt-2 text-gray-600">Pada tanggal 13 Januari 2025, UPT RSKD Dadi Provinsi Sulawesi
+                    Selatan menggelar Rapat Koordinasi... <span class="font-semibold text-green-700">Baca
+                        Selengkapnya</span></p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow p-4 m-2">
+                <img src="https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F"
+                    alt="berita" class="rounded-xl w-full h-48 object-cover mb-3" />
+                <p class="text-sm text-gray-500">13 January 2025</p>
+                <h3 class="font-semibold text-md mt-1">Rapat Koordinasi Manajemen Risiko dan Identifikasi Prioritas
+                    Layanan Rumah Sakit Tahun 2025</h3>
+                <p class="text-sm mt-2 text-gray-600">Pada tanggal 13 Januari 2025, UPT RSKD Dadi Provinsi Sulawesi
+                    Selatan menggelar Rapat Koordinasi... <span class="font-semibold text-green-700">Baca
+                        Selengkapnya</span></p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow p-4 m-2">
+                <img src="https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F"
+                    alt="berita" class="rounded-xl w-full h-48 object-cover mb-3" />
+                <p class="text-sm text-gray-500">13 January 2025</p>
+                <h3 class="font-semibold text-md mt-1">Rapat Koordinasi Manajemen Risiko dan Identifikasi Prioritas
+                    Layanan Rumah Sakit Tahun 2025</h3>
+                <p class="text-sm mt-2 text-gray-600">Pada tanggal 13 Januari 2025, UPT RSKD Dadi Provinsi Sulawesi
+                    Selatan menggelar Rapat Koordinasi... <span class="font-semibold text-green-700">Baca
+                        Selengkapnya</span></p>
+            </div>
+            <div class="bg-white rounded-xl shadow p-4 m-2">
+                <img src="https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F"
+                    alt="berita" class="rounded-xl w-full h-48 object-cover mb-3" />
+                <p class="text-sm text-gray-500">13 January 2025</p>
+                <h3 class="font-semibold text-md mt-1">Rapat Koordinasi Manajemen Risiko dan Identifikasi Prioritas
+                    Layanan Rumah Sakit Tahun 2025</h3>
+                <p class="text-sm mt-2 text-gray-600">Pada tanggal 13 Januari 2025, UPT RSKD Dadi Provinsi Sulawesi
+                    Selatan menggelar Rapat Koordinasi... <span class="font-semibold text-green-700">Baca
+                        Selengkapnya</span></p>
+            </div>
+
+            <!-- Ulangi card di atas untuk item ke-2 dan ke-3 -->
+            <!-- Bisa disalin 2x atau dibuat loop kalau pakai framework JS -->
+        </div>
+
+        <!-- Tombol Lihat Semua -->
+        <div class="flex justify-end mt-4 mr-20 relative z-10">
+            <a href="#"
+                class="bg-green-700 text-white font-semibold px-6 py-2 rounded-full hover:bg-green-800 transition">Lihat
+                Semua</a>
+        </div>
+    </section>
+
+    {{-- profil --}}
+    <section
+        class="relative bg-cover bg-center bg-no-repeat bg-[url('https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F')] bg-green-900 bg-blend-multiply py-12 overflow-hidden">
+
+        <!-- Lingkaran pojok kanan bawah -->
+        <div class="absolute bottom-0 right-0 w-32 h-32 bg-green-700 opacity-50 rounded-tl-full z-0"></div>
+
+        <div class="relative z-10 container mx-auto px-4 md:flex md:items-start md:gap-10">
+            <!-- Kolom Kiri -->
+            <div class="md:w-1/2 text-white mb-8 md:mb-0">
+                <div class="border-l-8 border-white pl-4 mb-4">
+                    <h2 class="text-3xl md:text-4xl font-bold leading-tight">
+                        Rumah Sakit Ibu & Anak<br>Nirmala Kediri
+                    </h2>
+                </div>
+
+                <!-- Video -->
+                <div class="aspect-video w-full rounded-md overflow-hidden">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/your_video_id" frameborder="0"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Kolom Kanan -->
+            <div class="md:w-1/2 bg-gray-100 text-black p-6 rounded-lg shadow-md text-justify">
+                <p class="text-lg">
+                    Rumah Sakit Ibu dan Anak Nirmala merupakan institusi pelayanan kesehatan swasta yang secara khusus
+                    berfokus pada kesehatan ibu dan anak. Terletak strategis di wilayah barat Sungai Brantas, Kota
+                    Kediri,
+                    RSIA Nirmala hadir sebagai solusi layanan kesehatan yang aman, nyaman, dan terpercaya bagi
+                    masyarakat.
+
+                    Dengan berlandaskan pada visi dan misi untuk menjadi rumah sakit unggulan yang memberikan pelayanan
+                    prima, RSIA Nirmala senantiasa berkomitmen untuk menyediakan layanan kesehatan yang optimal,
+                    profesional, dan berorientasi pada kepuasan pasien.
+
+                    Dalam setiap tindakan medis dan pelayanan yang diberikan, RSIA Nirmala menjunjung tinggi prinsip
+                    kesetaraan, tanpa memandang latar belakang suku, ras, agama, maupun golongan. Rumah sakit ini terus
+                    berinovasi dan meningkatkan mutu serta kualitas pelayanannya melalui pengembangan sumber daya
+                    manusia
+                    yang kompeten, penggunaan teknologi medis terkini, serta penerapan standar pelayanan yang tinggi.
+
+                    Upaya tersebut dilakukan secara konsisten agar seluruh lapisan masyarakat merasa aman, dihargai, dan
+                    puas dengan setiap layanan yang diterima. RSIA Nirmala bertekad untuk menjadi mitra terpercaya dalam
+                    menjaga dan meningkatkan kesehatan ibu dan anak, sekaligus menjadi pilihan utama masyarakat dalam
+                    memperoleh layanan kesehatan yang holistik dan berkualitas.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="bg-green-300 relative z-10 py-10 px-6 md:px-16">
+        <div class="text-center mb-6 relative z-10">
+            <div class="bg-green-700 px-6 py-3 inline-block rounded-lg shadow">
+                <h2 class="text-2xl md:text-2xl font-bold text-white">Pelayanan Kami</h2>
+                <hr>
+                <p class="text-green-100 mt-1 text-sm">Berita dan Artikel Kesehatan Terbaru</p>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row md:items-start md:justify-end">
+            <!-- Kiri -->
+            <div class="mb-10 md:mb-0 pl-2 md:pl-[200px] pt-10  md:w-1/4 flex flex-col justify-between gap-6">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-black leading-snug">
+                        Apa saja <br>
+                        <span class="text-green-700 font-bold text-3xl md:text-4xl">Pelayanan</span><br>
+                        di RSIA NIRMALA ?
+                    </h2>
+                    <div class="w-24 h-1 bg-green-700 mt-2"></div>
+                </div>
+                <a href="#"
+                    class="inline-block bg-green-700 text-white px-4 py-2 text-sm mt-4 rounded-md w-fit">
+                    Lihat Semua
+                </a>
+            </div>
+
+            <!-- Kanan - Kartu Pelayanan -->
+            <div class="md:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-gray-100 rounded-lg p-4 h-72  shadow-md relative ">
+                    <div class="flex flex-col items-center space-y-3">
+                        <div class="h-20 w-20 bg-green-800 rounded-sm"></div>
+                        <h3 class="text-green-700 font-bold text-lg text-center">24 Jam Unit Gawat Darurat</h3>
+                        <div class="w-16 h-1 bg-green-700"></div>
+                        <p class="text-sm text-gray-800 text-center">24 Jam Unit Gawat Darurat di RSIA Nirmala Kediri</p>
+                        <a href="#" class="text-white bg-green-700 px-4 py-2 text-sm rounded-md">Selengkapnya</a>
+                    </div>
+                    <!-- Nomor Lingkaran -->
+                    <div
+                        class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
+                        1
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-gray-100 rounded-lg p-4 h-72 shadow-md relative">
+                    <div class="flex flex-col items-center space-y-3">
+                    <div class="h-20 w-20 bg-green-800 mx-auto rounded-sm mb-4"></div>
+                    <h3 class="text-green-700 font-bold text-lg">Rawat Inap</h3>
+                    <div class="w-16 h-1 bg-green-700 my-2"></div>
+                    <p class="text-sm text-gray-800">24 Jam Unit Gawat Darurat di RSIA Nirmala Kediri</p>
+                    <a href="#"
+                        class="inline-block mt-4 text-white bg-green-700 px-4 py-2 text-sm rounded-md">Selengkapnya</a>
+                    </div>
+                    <div
+                        class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
+                        2
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-gray-100 rounded-lg p-4 h-72 shadow-md relative">
+                    <div class="flex flex-col items-center space-y-3">
+                    <div class="h-20 w-20 bg-green-800 mx-auto rounded-sm mb-4"></div>
+                    <h3 class="text-green-700 font-bold text-lg">Rawat Jalan</h3>
+                    <div class="w-16 h-1 bg-green-700 my-2"></div>
+                    <p class="text-sm text-gray-800">24 Jam Unit Gawat Darurat di RSIA Nirmala Kediri</p>
+                    <a href="#"
+                        class="inline-block mt-4 text-white bg-green-700 px-4 py-2 text-sm rounded-md">Selengkapnya</a>
+                    </div>
+                    <div
+                    
+                        class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
+                        3
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const menuButton = document.getElementById("menuButton");
+        const navbarDropdown = document.getElementById("navbar-dropdown");
+
+        menuButton.addEventListener("click", function() {
+            navbarDropdown.classList.toggle("hidden");
+        });
+    });
+</script>
+
 </html>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
