@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -352,7 +353,7 @@
 
             <!-- Kolom Kanan -->
             <div class="md:w-1/2 bg-gray-100 text-black p-6 rounded-lg shadow-md text-justify">
-                <p class="text-lg">
+                <p class="text-md md:text-lg ">
                     Rumah Sakit Ibu dan Anak Nirmala merupakan institusi pelayanan kesehatan swasta yang secara khusus
                     berfokus pada kesehatan ibu dan anak. Terletak strategis di wilayah barat Sungai Brantas, Kota
                     Kediri,
@@ -391,7 +392,7 @@
 
         <div class="flex flex-col md:flex-row md:items-start md:justify-end">
             <!-- Kiri -->
-            <div class="mb-10 md:mb-0 pl-2 md:pl-[200px] pt-10  md:w-1/4 flex flex-col justify-between gap-6">
+            <div class="w-full mb-10 md:mb-0 pl-2  pt-10  md:w-1/4 flex flex-col justify-between gap-6">
                 <div>
                     <h2 class="text-2xl md:text-3xl font-bold text-black leading-snug">
                         Apa saja <br>
@@ -407,63 +408,816 @@
             </div>
 
             <!-- Kanan - Kartu Pelayanan -->
-            <div class="md:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div class="bg-gray-100 rounded-lg p-4 h-72  shadow-md relative ">
-                    <div class="flex flex-col items-center space-y-3">
-                        <div class="h-20 w-20 bg-green-800 rounded-sm"></div>
-                        <h3 class="text-green-700 font-bold text-lg text-center">24 Jam Unit Gawat Darurat</h3>
-                        <div class="w-16 h-1 bg-green-700"></div>
-                        <p class="text-sm text-gray-800 text-center">24 Jam Unit Gawat Darurat di RSIA Nirmala Kediri</p>
-                        <a href="#" class="text-white bg-green-700 px-4 py-2 text-sm rounded-md">Selengkapnya</a>
+            <!-- Carousel Kartu Pelayanan -->
+            <div class="md:w-3/4 mx-auto w-full">
+                <div class="swiper mySwiper h-[320px] w-full">
+                    <div class="swiper-wrapper">
+
+                        <!-- Card 1 -->
+                        <div class="swiper-slide w-full ">
+                            <div
+                                class="bg-gray-100 rounded-lg p-4 h-72 shadow-md relative flex flex-col items-center space-y-3">
+                                <div class="h-20 w-20 bg-green-800 rounded-sm"></div>
+                                <h3 class="text-green-700 font-bold text-lg text-center">24 Jam Unit Gawat Darurat</h3>
+                                <div class="w-16 h-1 bg-green-700"></div>
+                                <p class="text-sm text-gray-800 text-center">24 Jam Unit Gawat Darurat di RSIA Nirmala
+                                    Kediri</p>
+                                <a href="#"
+                                    class="text-white bg-green-700 px-4 py-2 text-sm rounded-md">Selengkapnya</a>
+                                <div
+                                    class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
+                                    1
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="swiper-slide w-full">
+                            <div
+                                class="bg-gray-100 rounded-lg p-4 h-72 shadow-md relative flex flex-col items-center space-y-3">
+                                <div class="h-20 w-20 bg-green-800 rounded-sm"></div>
+                                <h3 class="text-green-700 font-bold text-lg text-center">Rawat Inap</h3>
+                                <div class="w-16 h-1 bg-green-700"></div>
+                                <p class="text-sm text-gray-800 text-center">24 Jam Unit Gawat Darurat di RSIA Nirmala
+                                    Kediri</p>
+                                <a href="#"
+                                    class="text-white bg-green-700 px-4 py-2 text-sm rounded-md">Selengkapnya</a>
+                                <div
+                                    class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
+                                    2
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="swiper-slide w-full">
+                            <div
+                                class="bg-gray-100 rounded-lg p-4 h-72 shadow-md relative flex flex-col items-center space-y-3">
+                                <div class="h-20 w-20 bg-green-800 rounded-sm"></div>
+                                <h3 class="text-green-700 font-bold text-lg text-center">Rawat Jalan</h3>
+                                <div class="w-16 h-1 bg-green-700"></div>
+                                <p class="text-sm text-gray-800 text-center">24 Jam Unit Gawat Darurat di RSIA Nirmala
+                                    Kediri</p>
+                                <a href="#"
+                                    class="text-white bg-green-700 px-4 py-2 text-sm rounded-md">Selengkapnya</a>
+                                <div
+                                    class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
+                                    3
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="swiper-slide w-full">
+                            <div
+                                class="bg-gray-100 rounded-lg p-4 h-72 shadow-md relative flex flex-col items-center space-y-3">
+                                <div class="h-20 w-20 bg-green-800 rounded-sm"></div>
+                                <h3 class="text-green-700 font-bold text-lg text-center">Rawat Jalan</h3>
+                                <div class="w-16 h-1 bg-green-700"></div>
+                                <p class="text-sm text-gray-800 text-center">24 Jam Unit Gawat Darurat di RSIA Nirmala
+                                    Kediri</p>
+                                <a href="#"
+                                    class="text-white bg-green-700 px-4 py-2 text-sm rounded-md">Selengkapnya</a>
+                                <div
+                                    class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
+                                    3
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <!-- Nomor Lingkaran -->
-                    <div
-                        class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
-                        1
+
+                    <!-- Optional: Navigasi & Pagination -->
+                    <div class="swiper-pagination mt-6"></div>
+                    <div class="swiper-button-prev text-green-700"></div>
+                    <div class="swiper-button-next text-green-700"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section
+        class="relative bg-cover bg-center bg-no-repeat bg-[url('https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F')] bg-green-900 bg-blend-multiply py-12 overflow-hidden">
+        <div class="text-center mb-6 relative z-10">
+            <div class="bg-green-700 px-6 py-3 pb-8 inline-block rounded-lg shadow">
+                <h2 class="text-2xl md:text-2xl font-bold text-white">Dokter Spesialist</h2>
+                <hr>
+            </div>
+        </div>
+
+        <!-- Carousel Kartu Pelayanan -->
+        <div class="md:w-3/4 mx-auto w-full">
+            <div class="swiper mySwiperDokter h-full w-full">
+                <div class="swiper-wrapper ml-10 md:ml-0">
+
+                    <!-- Card 1 -->
+                    <div class="swiper-slide w-full ">
+                        <div class="max-w-xs h-full rounded-xl overflow-hidden shadow-lg bg-white relative">
+                            <!-- Background hijau hanya di bagian atas -->
+                            <div class="absolute top-0 left-0 w-full h-[70%] z-0 overflow-hidden">
+                                <div class="w-full h-full bg-green-700 rounded-br-[160px] rounded-tl-[160px]"></div>
+                            </div>
+
+                            <!-- Foto dokter (gunakan img jika ada gambar, di sini pakai placeholder) -->
+                            <div class="relative z-10 p-4 flex flex-col items-center">
+                                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/foto1.jpg"
+                                    alt="Foto Dokter"
+                                    class="w-55 h-55 object-cover  border-2 border-white shadow-md mb-4">
+                                <div class="text-center mt-2">
+                                    <p class="text-sm font-semibold text-white bg-green-700 px-3 py-1 rounded-t-md">
+                                        KANDUNGAN DAN KEBIDANAN</p>
+                                    <p
+                                        class="text-green-700 bg-green-200 text-base font-medium px-3 py-2 rounded-b-md">
+                                        dr.
+                                        GS Heru Tribawono Sp.OG</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="swiper-slide w-full">
+                        <div class="max-w-xs h-full rounded-xl overflow-hidden shadow-lg bg-white relative">
+                            <!-- Background hijau hanya di bagian atas -->
+                            <div class="absolute top-0 left-0 w-full h-[70%] z-0 overflow-hidden">
+                                <div class="w-full h-full bg-green-700 rounded-br-[160px] rounded-tl-[160px]"></div>
+                            </div>
+
+                            <!-- Foto dokter (gunakan img jika ada gambar, di sini pakai placeholder) -->
+                            <div class="relative z-10 p-4 flex flex-col items-center">
+                                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/foto1.jpg"
+                                    alt="Foto Dokter"
+                                    class="w-55 h-55 object-cover  border-2 border-white shadow-md mb-4">
+                                <div class="text-center mt-2">
+                                    <p class="text-sm font-semibold text-white bg-green-700 px-3 py-1 rounded-t-md">
+                                        KANDUNGAN DAN KEBIDANAN</p>
+                                    <p
+                                        class="text-green-700 bg-green-200 text-base font-medium px-3 py-2 rounded-b-md">
+                                        dr.
+                                        GS Heru Tribawono Sp.OG</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="swiper-slide w-full">
+                        <div class="max-w-xs h-full rounded-xl overflow-hidden shadow-lg bg-white relative">
+                            <!-- Background hijau hanya di bagian atas -->
+                            <div class="absolute top-0 left-0 w-full h-[70%] z-0 overflow-hidden">
+                                <div class="w-full h-full bg-green-700 rounded-br-[160px] rounded-tl-[160px]"></div>
+                            </div>
+
+                            <!-- Foto dokter (gunakan img jika ada gambar, di sini pakai placeholder) -->
+                            <div class="relative z-10 p-4 flex flex-col items-center">
+                                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/foto1.jpg"
+                                    alt="Foto Dokter"
+                                    class="w-55 h-55 object-cover  border-2 border-white shadow-md mb-4">
+                                <div class="text-center mt-2">
+                                    <p class="text-sm font-semibold text-white bg-green-700 px-3 py-1 rounded-t-md">
+                                        KANDUNGAN DAN KEBIDANAN</p>
+                                    <p
+                                        class="text-green-700 bg-green-200 text-base font-medium px-3 py-2 rounded-b-md">
+                                        dr.
+                                        GS Heru Tribawono Sp.OG</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="swiper-slide w-full">
+                        <div class="max-w-xs h-full rounded-xl overflow-hidden shadow-lg bg-white relative">
+                            <!-- Background hijau hanya di bagian atas -->
+                            <div class="absolute top-0 left-0 w-full h-[70%] z-0 overflow-hidden">
+                                <div class="w-full h-full bg-green-700 rounded-br-[160px] rounded-tl-[160px]"></div>
+                            </div>
+
+                            <!-- Foto dokter (gunakan img jika ada gambar, di sini pakai placeholder) -->
+                            <div class="relative z-10 p-4 flex flex-col items-center">
+                                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/foto1.jpg"
+                                    alt="Foto Dokter"
+                                    class="w-55 h-55 object-cover  border-2 border-white shadow-md mb-4">
+                                <div class="text-center mt-2">
+                                    <p class="text-sm font-semibold text-white bg-green-700 px-3 py-1 rounded-t-md">
+                                        KANDUNGAN DAN KEBIDANAN</p>
+                                    <p
+                                        class="text-green-700 bg-green-200 text-base font-medium px-3 py-2 rounded-b-md">
+                                        dr.
+                                        GS Heru Tribawono Sp.OG</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="swiper-slide w-full">
+                        <div class="max-w-xs h-full rounded-xl overflow-hidden shadow-lg bg-white relative">
+                            <!-- Background hijau hanya di bagian atas -->
+                            <div class="absolute top-0 left-0 w-full h-[70%] z-0 overflow-hidden">
+                                <div class="w-full h-full bg-green-700 rounded-br-[160px] rounded-tl-[160px]"></div>
+                            </div>
+
+                            <!-- Foto dokter (gunakan img jika ada gambar, di sini pakai placeholder) -->
+                            <div class="relative z-10 p-4 flex flex-col items-center">
+                                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/foto1.jpg"
+                                    alt="Foto Dokter"
+                                    class="w-55 h-55 object-cover  border-2 border-white shadow-md mb-4">
+                                <div class="text-center mt-2">
+                                    <p class="text-sm font-semibold text-white bg-green-700 px-3 py-1 rounded-t-md">
+                                        KANDUNGAN DAN KEBIDANAN</p>
+                                    <p
+                                        class="text-green-700 bg-green-200 text-base font-medium px-3 py-2 rounded-b-md">
+                                        dr.
+                                        GS Heru Tribawono Sp.OG</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Optional: Navigasi & Pagination -->
+                <div class="swiper-pagination mt-6"></div>
+                <div class="swiper-button-prev text-green-700"></div>
+                <div class="swiper-button-next text-green-700"></div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-green-300 relative z-10 py-10 px-6 md:px-16">
+        <div class="text-center mb-6 relative z-10">
+            <div class="bg-green-700 px-6 py-3 inline-block rounded-lg shadow">
+                <h2 class="text-2xl md:text-2xl font-bold text-white">Promo Spesial</h2>
+                <hr>
+                <p class="text-green-100 mt-1 text-sm">Promo Kesehatan Terbaru</p>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row md:items-start md:justify-end">
+            <!-- Kiri -->
+            <div class="w-full mb-10 md:mb-0 pl-2  pt-10  md:w-1/4 flex flex-col justify-between gap-6">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-black leading-snug">
+                        Apa saja <br>
+                        <span class="text-green-700 font-bold text-3xl md:text-4xl">Promo Spesial</span><br>
+                        di RSIA NIRMALA ?
+                    </h2>
+                    <div class="w-24 h-1 bg-green-700 mt-2"></div>
+                </div>
+                <a href="#"
+                    class="inline-block bg-green-700 text-white px-4 py-2 text-sm mt-4 rounded-md w-fit">
+                    Lihat Semua
+                </a>
+            </div>
+
+            <!-- Kanan - Kartu Pelayanan -->
+            <!-- Carousel Kartu Pelayanan -->
+            <div class="md:w-3/4 mx-auto w-full">
+                <div class="swiper mySwiper h-[420px] w-full">
+                    <div class="swiper-wrapper">
+
+                        <!-- Card 1 -->
+                        <div class="swiper-slide w-full flex justify-center">
+                            <div
+                                class="group h-[400px] bg-cover bg-[url('https://www.rsi.co.id/media/k2/items/cache/4723ef876aca4c7cd452b3e97715d01b_XL.webp')]  bg-gray-100 hover:bg-green-700 transition-all duration-300 rounded-lg p-4 h-72 shadow-md relative flex flex-col items-center justify-center space-y-3 w-full max-w-xs overflow-visible">
+
+                                <!-- Judul -->
+                                <h3
+                                    class="text-green-700 group-hover:text-green-800 font-bold text-lg text-center opacity-0 group-hover:opacity-100 transform group-hover:-translate-y-2 transition duration-500 delay-100">
+                                    24 Jam Unit Gawat Darurat
+                                </h3>
+
+                                <!-- Garis bawah -->
+                                <div
+                                    class="w-16 h-1 bg-green-700 opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 translate-y-2 transition duration-500 delay-200">
+                                </div>
+
+                                <!-- Tombol -->
+                                <a href="#"
+                                    class="text-white bg-green-700 px-4 py-2 text-sm rounded-md opacity-0 group-hover:opacity-100 transform group-hover:-translate-y-1 scale-95 group-hover:scale-100 transition duration-500 delay-300">
+                                    Selengkapnya
+                                </a>
+
+                                <!-- Angka pojok kanan bawah -->
+                                <div
+                                    class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
+                                    1
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <!-- Card 1 -->
+                        <div class="swiper-slide w-full flex justify-center">
+                            <div
+                                class="group h-[400px] bg-cover bg-[url('https://www.rsi.co.id/media/k2/items/cache/4723ef876aca4c7cd452b3e97715d01b_XL.webp')]  bg-gray-100 hover:bg-green-700 transition-all duration-300 rounded-lg p-4 h-72 shadow-md relative flex flex-col items-center justify-center space-y-3 w-full max-w-xs overflow-visible">
+
+                                <!-- Judul -->
+                                <h3
+                                    class="text-green-700 group-hover:text-green-800 font-bold text-lg text-center opacity-0 group-hover:opacity-100 transform group-hover:-translate-y-2 transition duration-500 delay-100">
+                                    24 Jam Unit Gawat Darurat
+                                </h3>
+
+                                <!-- Garis bawah -->
+                                <div
+                                    class="w-16 h-1 bg-green-700 opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 translate-y-2 transition duration-500 delay-200">
+                                </div>
+
+                                <!-- Tombol -->
+                                <a href="#"
+                                    class="text-white bg-green-700 px-4 py-2 text-sm rounded-md opacity-0 group-hover:opacity-100 transform group-hover:-translate-y-1 scale-95 group-hover:scale-100 transition duration-500 delay-300">
+                                    Selengkapnya
+                                </a>
+
+                                <!-- Angka pojok kanan bawah -->
+                                <div
+                                    class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
+                                    1
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Card 1 -->
+                        <div class="swiper-slide w-full flex justify-center">
+                            <div
+                                class="group h-[400px] bg-cover bg-[url('https://www.rsi.co.id/media/k2/items/cache/4723ef876aca4c7cd452b3e97715d01b_XL.webp')]  bg-gray-100 hover:bg-green-700 transition-all duration-300 rounded-lg p-4 h-72 shadow-md relative flex flex-col items-center justify-center space-y-3 w-full max-w-xs overflow-visible">
+
+                                <!-- Judul -->
+                                <h3
+                                    class="text-green-700 group-hover:text-green-800 font-bold text-lg text-center opacity-0 group-hover:opacity-100 transform group-hover:-translate-y-2 transition duration-500 delay-100">
+                                    24 Jam Unit Gawat Darurat
+                                </h3>
+
+                                <!-- Garis bawah -->
+                                <div
+                                    class="w-16 h-1 bg-green-700 opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 translate-y-2 transition duration-500 delay-200">
+                                </div>
+
+                                <!-- Tombol -->
+                                <a href="#"
+                                    class="text-white bg-green-700 px-4 py-2 text-sm rounded-md opacity-0 group-hover:opacity-100 transform group-hover:-translate-y-1 scale-95 group-hover:scale-100 transition duration-500 delay-300">
+                                    Selengkapnya
+                                </a>
+
+                                <!-- Angka pojok kanan bawah -->
+                                <div
+                                    class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
+                                    1
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Card 1 -->
+                        <div class="swiper-slide w-full flex justify-center">
+                            <div
+                                class="group h-[400px] bg-cover bg-[url('https://www.rsi.co.id/media/k2/items/cache/4723ef876aca4c7cd452b3e97715d01b_XL.webp')]  bg-gray-100 hover:bg-green-700 transition-all duration-300 rounded-lg p-4 h-72 shadow-md relative flex flex-col items-center justify-center space-y-3 w-full max-w-xs overflow-visible">
+
+                                <!-- Judul -->
+                                <h3
+                                    class="text-green-700 group-hover:text-green-800 font-bold text-lg text-center opacity-0 group-hover:opacity-100 transform group-hover:-translate-y-2 transition duration-500 delay-100">
+                                    24 Jam Unit Gawat Darurat
+                                </h3>
+
+                                <!-- Garis bawah -->
+                                <div
+                                    class="w-16 h-1 bg-green-700 opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 translate-y-2 transition duration-500 delay-200">
+                                </div>
+
+                                <!-- Tombol -->
+                                <a href="#"
+                                    class="text-white bg-green-700 px-4 py-2 text-sm rounded-md opacity-0 group-hover:opacity-100 transform group-hover:-translate-y-1 scale-95 group-hover:scale-100 transition duration-500 delay-300">
+                                    Selengkapnya
+                                </a>
+
+                                <!-- Angka pojok kanan bawah -->
+                                <div
+                                    class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
+                                    1
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Optional: Navigasi & Pagination -->
+                    <div class="swiper-pagination mt-6"></div>
+                    <div class="swiper-button-prev text-green-700"></div>
+                    <div class="swiper-button-next text-green-700"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section
+        class="relative bg-cover bg-center bg-no-repeat bg-[url('https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F')] bg-green-900 bg-blend-multiply py-12 overflow-hidden">
+        <!-- Swiper Utama -->
+        <div class="swiper myMainSwiper w-full">
+            <div class="swiper-wrapper">
+
+                <!-- Slide 1 - Paviliun Muzdalifah -->
+                <div
+                    class="swiper-slide flex flex-col md:flex-row items-center bg-green-700 bg-opacity-20 text-white rounded-lg overflow-hidden p-6">
+
+                    <!-- Kolom Kiri: Deskripsi -->
+                    <div class="md:w-1/2 space-y-4">
+                        <div class="border-l-8 border-white pl-4 mb-4">
+                            <h2 class="text-3xl md:text-4xl font-bold leading-tight">
+                                Rumah Sakit Ibu & Anak<br>Nirmala Kediri
+                            </h2>
+                        </div>
+                        <h2 class="text-xl font-bold">FASILITAS UNGGULAN</h2>
+                        <h4 class="text-xl mt-4 font-semibold text-white">Paviliun Muzdalifah 1 & 2</h4>
+                        <p class="text-sm">
+                            Fasilitas Tempat Tidur Elektrik, TV 43 Inch, Paket Beverage, Sofa Bed & Sofa Tamu, Kulkas
+                            Portable, Lemari Pakaian, Meja Nakas,...
+                        </p>
+                        <a href="#" class="text-white underline">Selengkapnya</a>
+                    </div>
+
+                    <!-- Kolom Kanan: Swiper Gambar -->
+                    <div class="md:w-1/2 mt-6 md:mt-0 md:pl-6">
+                        <div class="swiper imageSwiper rounded-lg overflow-hidden">
+                            <div class="swiper-wrapper">
+                                <!-- Gambar kamar 1 -->
+                                <div class="swiper-slide">
+                                    <img src="https://www.rsi.co.id/media/k2/items/cache/4723ef876aca4c7cd452b3e97715d01b_XL.webp"
+                                        alt="Kamar 1" class="rounded-lg w-full h-auto object-cover">
+                                </div>
+                                <!-- Gambar kamar 2 -->
+                                <div class="swiper-slide">
+                                    <img src="https://via.placeholder.com/600x400?text=Kamar+2" alt="Kamar 2"
+                                        class="rounded-lg w-full h-auto object-cover">
+                                </div>
+                            </div>
+                            <!-- Navigasi -->
+                            <div class="swiper-button-next text-white"></div>
+                            <div class="swiper-button-prev text-white"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 1 - Paviliun Muzdalifah -->
+                <div
+                    class="swiper-slide flex flex-col md:flex-row items-center bg-green-700 bg-opacity-20 text-white rounded-lg overflow-hidden p-6">
+
+                    <!-- Kolom Kiri: Deskripsi -->
+                    <div class="md:w-1/2 space-y-4">
+                        <h2 class="text-xl font-bold">FASILITAS UNGGULAN</h2>
+                        <h3 class="text-2xl font-bold">RSIA Nirmala Kediri</h3>
+                        <h4 class="text-xl mt-4 font-semibold text-white">Paviliun Muzdalifah 1 & 2</h4>
+                        <p class="text-sm">
+                            Fasilitas Tempat Tidur Elektrik, TV 43 Inch, Paket Beverage, Sofa Bed & Sofa Tamu, Kulkas
+                            Portable, Lemari Pakaian, Meja Nakas,...
+                        </p>
+                        <a href="#" class="text-white underline">Selengkapnya</a>
+                    </div>
+
+                    <!-- Kolom Kanan: Swiper Gambar -->
+                    <div class="md:w-1/2 mt-6 md:mt-0 md:pl-6">
+                        <div class="swiper imageSwiper rounded-lg overflow-hidden">
+                            <div class="swiper-wrapper">
+                                <!-- Gambar kamar 1 -->
+                                <div class="swiper-slide">
+                                    <img src="https://www.rsi.co.id/media/k2/items/cache/4723ef876aca4c7cd452b3e97715d01b_XL.webp"
+                                        alt="Kamar 1" class="rounded-lg w-full h-auto object-cover">
+                                </div>
+                                <!-- Gambar kamar 2 -->
+                                <div class="swiper-slide">
+                                    <img src="https://www.rsi.co.id/media/k2/items/cache/48b2caa4acdcf286e67d646faa59fcbf_L.webp"
+                                        alt="Kamar 2" class="rounded-lg w-full h-auto object-cover">
+                                </div>
+                            </div>
+                            <!-- Navigasi -->
+                            <div class="swiper-button-next text-white"></div>
+                            <div class="swiper-button-prev text-white"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tambahkan slide lain jika perlu -->
+
+            </div>
+            <!-- Navigasi Swiper Utama -->
+            <div class="swiper-pagination mt-4"></div>
+        </div>
+    </section>
+
+    <section class="bg-green-300 relative z-10 py-10 px-6 md:px-16">
+        <div class="text-center mb-6 relative z-10">
+            <div class="bg-green-700 px-6 py-3 inline-block rounded-lg shadow">
+                <h2 class="text-2xl md:text-2xl font-bold text-white">Poliklinik</h2>
+                <hr>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row md:items-start md:justify-end">
+            <!-- Kiri -->
+            <div class="w-full mb-10 md:mb-0 pl-2  pt-10  md:w-1/4 flex flex-col justify-between gap-6">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-black leading-snug">
+                        Apa saja <br>
+                        <span class="text-green-700 font-bold text-3xl md:text-4xl">Poliklinik</span><br>
+                        di RSIA NIRMALA ?
+                    </h2>
+                    <div class="w-24 h-1 bg-green-700 mt-2"></div>
+                </div>
+                <a href="#"
+                    class="inline-block bg-green-700 text-white px-4 py-2 text-sm mt-4 rounded-md w-fit">
+                    Lihat Semua
+                </a>
+            </div>
+
+            <!-- Kanan - Kartu Pelayanan -->
+            <!-- Carousel Kartu Pelayanan -->
+            <div class="md:w-3/4 mx-auto w-full">
+                <div class="swiper mySwiper h-[320px] w-full">
+                    <div class="swiper-wrapper">
+
+                        <!-- Card 1 -->
+                        <div class="swiper-slide w-full ">
+                            <div
+                                class="bg-gray-100 rounded-lg p-4 h-72 shadow-md relative flex flex-col items-center space-y-3">
+                                <div class="h-20 w-20 bg-green-800 rounded-sm"></div>
+                                <h3 class="text-green-700 font-bold text-lg text-center">24 Jam Unit Gawat Darurat</h3>
+                                <div class="w-16 h-1 bg-green-700"></div>
+                                <p class="text-sm text-gray-800 text-center">24 Jam Unit Gawat Darurat di RSIA Nirmala
+                                    Kediri</p>
+                                <a href="#"
+                                    class="text-white bg-green-700 px-4 py-2 text-sm rounded-md">Selengkapnya</a>
+                                <div
+                                    class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
+                                    1
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="swiper-slide w-full">
+                            <div
+                                class="bg-gray-100 rounded-lg p-4 h-72 shadow-md relative flex flex-col items-center space-y-3">
+                                <div class="h-20 w-20 bg-green-800 rounded-sm"></div>
+                                <h3 class="text-green-700 font-bold text-lg text-center">Rawat Inap</h3>
+                                <div class="w-16 h-1 bg-green-700"></div>
+                                <p class="text-sm text-gray-800 text-center">24 Jam Unit Gawat Darurat di RSIA Nirmala
+                                    Kediri</p>
+                                <a href="#"
+                                    class="text-white bg-green-700 px-4 py-2 text-sm rounded-md">Selengkapnya</a>
+                                <div
+                                    class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
+                                    2
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="swiper-slide w-full">
+                            <div
+                                class="bg-gray-100 rounded-lg p-4 h-72 shadow-md relative flex flex-col items-center space-y-3">
+                                <div class="h-20 w-20 bg-green-800 rounded-sm"></div>
+                                <h3 class="text-green-700 font-bold text-lg text-center">Rawat Jalan</h3>
+                                <div class="w-16 h-1 bg-green-700"></div>
+                                <p class="text-sm text-gray-800 text-center">24 Jam Unit Gawat Darurat di RSIA Nirmala
+                                    Kediri</p>
+                                <a href="#"
+                                    class="text-white bg-green-700 px-4 py-2 text-sm rounded-md">Selengkapnya</a>
+                                <div
+                                    class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
+                                    3
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="swiper-slide w-full">
+                            <div
+                                class="bg-gray-100 rounded-lg p-4 h-72 shadow-md relative flex flex-col items-center space-y-3">
+                                <div class="h-20 w-20 bg-green-800 rounded-sm"></div>
+                                <h3 class="text-green-700 font-bold text-lg text-center">Rawat Jalan</h3>
+                                <div class="w-16 h-1 bg-green-700"></div>
+                                <p class="text-sm text-gray-800 text-center">24 Jam Unit Gawat Darurat di RSIA Nirmala
+                                    Kediri</p>
+                                <a href="#"
+                                    class="text-white bg-green-700 px-4 py-2 text-sm rounded-md">Selengkapnya</a>
+                                <div
+                                    class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
+                                    3
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Optional: Navigasi & Pagination -->
+                    <div class="swiper-pagination mt-6"></div>
+                    <div class="swiper-button-prev text-green-700"></div>
+                    <div class="swiper-button-next text-green-700"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section
+        class="relative bg-cover bg-center bg-no-repeat bg-[url('https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F')] bg-green-900 bg-blend-multiply py-12 overflow-hidden">
+        <div class=" backdrop-brightness-75 w-full py-16 px-4 md:px-20 text-white">
+
+            <div class="flex flex-col md:flex-row gap-10">
+
+                <!-- Kolom Kiri -->
+                <div class="md:w-1/3 flex flex-col justify-center">
+                    <div class="border-l-4 border-white pl-4 mb-4">
+                        <h2 class="text-2xl font-bold leading-tight">INSTALASI<br>RAWAT INAP</h2>
+                    </div>
+                    <p class="mb-4 text-sm text-white/90">Perawatan komprehensif dengan lingkungan yang nyaman dan
+                        aman.</p>
+                    <a href="#"
+                        class="inline-block bg-green-700 text-white px-4 py-2 text-sm mt-4 rounded-md w-fit">
+                        Lihat Semua
+                    </a>
+                </div>
+
+                <!-- Kolom Kanan: List Kamar -->
+                <div class="md:w-2/3">
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 bg-green-800/40 p-6 rounded-xl">
+
+                        <!-- Contoh Kartu Kamar -->
+                        <a href="#" class="bg-white/10 hover:bg-white/20 p-4 rounded-lg transition text-white">
+                            <h3 class="font-semibold">Paviliun Annisa</h3>
+                            <p class="text-sm opacity-80">VIP</p>
+                        </a>
+
+                        <a href="#" class="bg-white/10 hover:bg-white/20 p-4 rounded-lg transition text-white">
+                            <h3 class="font-semibold">Paviliun Annisa</h3>
+                            <p class="text-sm opacity-80">Kelas 3</p>
+                        </a>
+
+                        <a href="#" class="bg-white/10 hover:bg-white/20 p-4 rounded-lg transition text-white">
+                            <h3 class="font-semibold">Paviliun Annisa</h3>
+                            <p class="text-sm opacity-80">Kelas 2</p>
+                        </a>
+
+                        <!-- Duplikat sesuai jumlah kamar -->
+                        <!-- ... -->
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="bg-gray-100 rounded-lg p-4 h-72 shadow-md relative">
-                    <div class="flex flex-col items-center space-y-3">
-                    <div class="h-20 w-20 bg-green-800 mx-auto rounded-sm mb-4"></div>
-                    <h3 class="text-green-700 font-bold text-lg">Rawat Inap</h3>
-                    <div class="w-16 h-1 bg-green-700 my-2"></div>
-                    <p class="text-sm text-gray-800">24 Jam Unit Gawat Darurat di RSIA Nirmala Kediri</p>
-                    <a href="#"
-                        class="inline-block mt-4 text-white bg-green-700 px-4 py-2 text-sm rounded-md">Selengkapnya</a>
+            </div>
+        </div>
+    </section>
+    <section class="bg-green-300 relative z-10 py-10 px-6 md:px-16">        
+        <div class="text-center mb-6 relative z-10">
+            <div class="bg-green-700 px-6 py-3 pb-8 inline-block rounded-lg shadow">
+                <h2 class="text-2xl md:text-2xl font-bold text-white">Partner Kami</h2>
+                <hr>
+            </div>
+        </div>
+
+        <!-- Carousel Kartu Pelayanan -->
+        <div class="md:w-3/4 mx-auto w-full">
+            <div class="swiper mySwiperDokter h-full w-full">
+                <div class="swiper-wrapper ml-10 md:ml-0">
+
+                    <!-- Card 1 -->
+                    <div class="swiper-slide w-full ">
+                        <div class="max-w-xs h-full rounded-xl overflow-hidden shadow-lg bg-white relative">
+                            <!-- Background hijau hanya di bagian atas -->
+                            <div class="absolute top-0 left-0 w-full h-[70%] z-0 overflow-hidden">
+                                <div class="w-full h-full bg-green-700 rounded-br-[160px] rounded-tl-[160px]"></div>
+                            </div>
+
+                            <!-- Foto dokter (gunakan img jika ada gambar, di sini pakai placeholder) -->
+                            <div class="relative z-10 p-4 flex flex-col items-center">
+                                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/foto1.jpg"
+                                    alt="Foto Dokter"
+                                    class="w-55 h-55 object-cover  border-2 border-white shadow-md mb-4">
+                                <div class="text-center mt-2">
+                                    <p class="text-sm font-semibold text-white bg-green-700 px-3 py-1 rounded-t-md">
+                                        KANDUNGAN DAN KEBIDANAN</p>
+                                    <p
+                                        class="text-green-700 bg-green-200 text-base font-medium px-3 py-2 rounded-b-md">
+                                        dr.
+                                        GS Heru Tribawono Sp.OG</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div
-                        class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
-                        2
+
+                    <!-- Card 2 -->
+                    <div class="swiper-slide w-full">
+                        <div class="max-w-xs h-full rounded-xl overflow-hidden shadow-lg bg-white relative">
+                            <!-- Background hijau hanya di bagian atas -->
+                            <div class="absolute top-0 left-0 w-full h-[70%] z-0 overflow-hidden">
+                                <div class="w-full h-full bg-green-700 rounded-br-[160px] rounded-tl-[160px]"></div>
+                            </div>
+
+                            <!-- Foto dokter (gunakan img jika ada gambar, di sini pakai placeholder) -->
+                            <div class="relative z-10 p-4 flex flex-col items-center">
+                                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/foto1.jpg"
+                                    alt="Foto Dokter"
+                                    class="w-55 h-55 object-cover  border-2 border-white shadow-md mb-4">
+                                <div class="text-center mt-2">
+                                    <p class="text-sm font-semibold text-white bg-green-700 px-3 py-1 rounded-t-md">
+                                        KANDUNGAN DAN KEBIDANAN</p>
+                                    <p
+                                        class="text-green-700 bg-green-200 text-base font-medium px-3 py-2 rounded-b-md">
+                                        dr.
+                                        GS Heru Tribawono Sp.OG</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Card 3 -->
+                    <div class="swiper-slide w-full">
+                        <div class="max-w-xs h-full rounded-xl overflow-hidden shadow-lg bg-white relative">
+                            <!-- Background hijau hanya di bagian atas -->
+                            <div class="absolute top-0 left-0 w-full h-[70%] z-0 overflow-hidden">
+                                <div class="w-full h-full bg-green-700 rounded-br-[160px] rounded-tl-[160px]"></div>
+                            </div>
+
+                            <!-- Foto dokter (gunakan img jika ada gambar, di sini pakai placeholder) -->
+                            <div class="relative z-10 p-4 flex flex-col items-center">
+                                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/foto1.jpg"
+                                    alt="Foto Dokter"
+                                    class="w-55 h-55 object-cover  border-2 border-white shadow-md mb-4">
+                                <div class="text-center mt-2">
+                                    <p class="text-sm font-semibold text-white bg-green-700 px-3 py-1 rounded-t-md">
+                                        KANDUNGAN DAN KEBIDANAN</p>
+                                    <p
+                                        class="text-green-700 bg-green-200 text-base font-medium px-3 py-2 rounded-b-md">
+                                        dr.
+                                        GS Heru Tribawono Sp.OG</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="swiper-slide w-full">
+                        <div class="max-w-xs h-full rounded-xl overflow-hidden shadow-lg bg-white relative">
+                            <!-- Background hijau hanya di bagian atas -->
+                            <div class="absolute top-0 left-0 w-full h-[70%] z-0 overflow-hidden">
+                                <div class="w-full h-full bg-green-700 rounded-br-[160px] rounded-tl-[160px]"></div>
+                            </div>
+
+                            <!-- Foto dokter (gunakan img jika ada gambar, di sini pakai placeholder) -->
+                            <div class="relative z-10 p-4 flex flex-col items-center">
+                                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/foto1.jpg"
+                                    alt="Foto Dokter"
+                                    class="w-55 h-55 object-cover  border-2 border-white shadow-md mb-4">
+                                <div class="text-center mt-2">
+                                    <p class="text-sm font-semibold text-white bg-green-700 px-3 py-1 rounded-t-md">
+                                        KANDUNGAN DAN KEBIDANAN</p>
+                                    <p
+                                        class="text-green-700 bg-green-200 text-base font-medium px-3 py-2 rounded-b-md">
+                                        dr.
+                                        GS Heru Tribawono Sp.OG</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="swiper-slide w-full">
+                        <div class="max-w-xs h-full rounded-xl overflow-hidden shadow-lg bg-white relative">
+                            <!-- Background hijau hanya di bagian atas -->
+                            <div class="absolute top-0 left-0 w-full h-[70%] z-0 overflow-hidden">
+                                <div class="w-full h-full bg-green-700 rounded-br-[160px] rounded-tl-[160px]"></div>
+                            </div>
+
+                            <!-- Foto dokter (gunakan img jika ada gambar, di sini pakai placeholder) -->
+                            <div class="relative z-10 p-4 flex flex-col items-center">
+                                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/foto1.jpg"
+                                    alt="Foto Dokter"
+                                    class="w-55 h-55 object-cover  border-2 border-white shadow-md mb-4">
+                                <div class="text-center mt-2">
+                                    <p class="text-sm font-semibold text-white bg-green-700 px-3 py-1 rounded-t-md">
+                                        KANDUNGAN DAN KEBIDANAN</p>
+                                    <p
+                                        class="text-green-700 bg-green-200 text-base font-medium px-3 py-2 rounded-b-md">
+                                        dr.
+                                        GS Heru Tribawono Sp.OG</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <!-- Card 3 -->
-                <div class="bg-gray-100 rounded-lg p-4 h-72 shadow-md relative">
-                    <div class="flex flex-col items-center space-y-3">
-                    <div class="h-20 w-20 bg-green-800 mx-auto rounded-sm mb-4"></div>
-                    <h3 class="text-green-700 font-bold text-lg">Rawat Jalan</h3>
-                    <div class="w-16 h-1 bg-green-700 my-2"></div>
-                    <p class="text-sm text-gray-800">24 Jam Unit Gawat Darurat di RSIA Nirmala Kediri</p>
-                    <a href="#"
-                        class="inline-block mt-4 text-white bg-green-700 px-4 py-2 text-sm rounded-md">Selengkapnya</a>
-                    </div>
-                    <div
-                    
-                        class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
-                        3
-                    </div>
-                </div>
+                <!-- Optional: Navigasi & Pagination -->
+                <div class="swiper-pagination mt-6"></div>
+                <div class="swiper-button-prev text-green-700"></div>
+                <div class="swiper-button-next text-green-700"></div>
             </div>
         </div>
     </section>
 
 
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </body>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -475,6 +1229,68 @@
         });
     });
 </script>
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+        },
+    });
+
+    var swiper = new Swiper(".mySwiperDokter", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 3,
+            },
+            1024: {
+                slidesPerView: 4,
+            },
+        },
+    });
+    const imageSwipers = document.querySelectorAll('.imageSwiper');
+    imageSwipers.forEach((swiperEl, i) => {
+        new Swiper(swiperEl, {
+            loop: true,
+            navigation: {
+                nextEl: swiperEl.querySelector('.swiper-button-next'),
+                prevEl: swiperEl.querySelector('.swiper-button-prev'),
+            },
+        });
+    });
+
+    const mainSwiper = new Swiper('.myMainSwiper', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+</script>
 
 </html>
-<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
