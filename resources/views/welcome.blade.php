@@ -43,11 +43,17 @@
             <li><a href="#" class="hover:text-green-700">Promo Spesial</a></li>
         </ul>
 
-        <!-- Tombol Booking (Desktop) -->
-        <button
-            class="hidden md:flex bg-green-700 text-white px-4 py-2 rounded-md font-semibold hover:bg-green-800 items-center gap-2">
-            <i class="fas fa-calendar-check"></i> Booking Online
-        </button>
+        <!-- Tombol Aksi (Desktop) -->
+        <div class="hidden md:flex items-center gap-3">
+            <a href="#"
+                class="bg-green-700 text-white px-4 py-2 rounded-md font-semibold hover:bg-green-800 flex items-center gap-2">
+                <i class="fas fa-calendar-check"></i> Booking Online
+            </a>
+            <a href="#"
+                class="border border-green-700 text-green-700 px-4 py-2 rounded-md font-semibold hover:bg-green-100 flex items-center gap-2">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+        </div>
 
         <!-- Tombol Hamburger Menu (Mobile) -->
         <button id="menuButton" class="md:hidden text-green-700 text-2xl">
@@ -92,6 +98,12 @@
                     class="w-full bg-green-700 text-white px-4 py-2 rounded-md font-semibold shadow-md hover:bg-green-800 hover:shadow-lg active:bg-green-900 focus:outline-none transition-all duration-300">
                     Booking Online
                 </button>
+            </li>
+            <li class="py-1">
+                <a href="#"
+                class="border border-green-700 text-green-700 px-4 py-2 rounded-md font-semibold hover:bg-green-100 flex items-center gap-2">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </a>
             </li>
         </ul>
     </div>
@@ -815,16 +827,16 @@
 
     <section
         class="relative bg-cover bg-center bg-no-repeat bg-[url('https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F')] bg-green-900 bg-blend-multiply py-12 overflow-hidden">
-        <!-- Swiper Utama -->
+
         <div class="swiper myMainSwiper w-full">
             <div class="swiper-wrapper">
 
-                <!-- Slide 1 - Paviliun Muzdalifah -->
+                <!-- Slide 1 -->
                 <div
                     class="swiper-slide flex flex-col md:flex-row items-center bg-green-700 bg-opacity-20 text-white rounded-lg overflow-hidden p-6">
 
-                    <!-- Kolom Kiri: Deskripsi -->
-                    <div class="md:w-1/2 space-y-4">
+                    <!-- Teks -->
+                    <div class="w-full md:w-1/2 space-y-4">
                         <div class="border-l-8 border-white pl-4 mb-4">
                             <h2 class="text-3xl md:text-4xl font-bold leading-tight">
                                 Rumah Sakit Ibu & Anak<br>Nirmala Kediri
@@ -839,33 +851,31 @@
                         <a href="#" class="text-white underline">Selengkapnya</a>
                     </div>
 
-                    <!-- Kolom Kanan: Swiper Gambar -->
-                    <div class="md:w-1/2 mt-6 md:mt-0 md:pl-6">
+                    <!-- Gambar -->
+                    <div class="w-full md:w-1/2 mt-6 md:mt-0 md:pl-6">
                         <div class="swiper imageSwiper rounded-lg overflow-hidden">
                             <div class="swiper-wrapper">
-                                <!-- Gambar kamar 1 -->
                                 <div class="swiper-slide">
                                     <img src="https://www.rsi.co.id/media/k2/items/cache/4723ef876aca4c7cd452b3e97715d01b_XL.webp"
                                         alt="Kamar 1" class="rounded-lg w-full h-auto object-cover">
                                 </div>
-                                <!-- Gambar kamar 2 -->
                                 <div class="swiper-slide">
                                     <img src="https://via.placeholder.com/600x400?text=Kamar+2" alt="Kamar 2"
                                         class="rounded-lg w-full h-auto object-cover">
                                 </div>
                             </div>
-                            <!-- Navigasi -->
                             <div class="swiper-button-next text-white"></div>
                             <div class="swiper-button-prev text-white"></div>
                         </div>
                     </div>
                 </div>
-                <!-- Slide 1 - Paviliun Muzdalifah -->
+
+                <!-- Slide 2 -->
                 <div
                     class="swiper-slide flex flex-col md:flex-row items-center bg-green-700 bg-opacity-20 text-white rounded-lg overflow-hidden p-6">
 
-                    <!-- Kolom Kiri: Deskripsi -->
-                    <div class="md:w-1/2 space-y-4">
+                    <!-- Teks -->
+                    <div class="w-full md:w-1/2 space-y-4">
                         <h2 class="text-xl font-bold">FASILITAS UNGGULAN</h2>
                         <h3 class="text-2xl font-bold">RSIA Nirmala Kediri</h3>
                         <h4 class="text-xl mt-4 font-semibold text-white">Paviliun Muzdalifah 1 & 2</h4>
@@ -876,34 +886,31 @@
                         <a href="#" class="text-white underline">Selengkapnya</a>
                     </div>
 
-                    <!-- Kolom Kanan: Swiper Gambar -->
-                    <div class="md:w-1/2 mt-6 md:mt-0 md:pl-6">
+                    <!-- Gambar -->
+                    <div class="w-full md:w-1/2 mt-6 md:mt-0 md:pl-6">
                         <div class="swiper imageSwiper rounded-lg overflow-hidden">
                             <div class="swiper-wrapper">
-                                <!-- Gambar kamar 1 -->
                                 <div class="swiper-slide">
                                     <img src="https://www.rsi.co.id/media/k2/items/cache/4723ef876aca4c7cd452b3e97715d01b_XL.webp"
                                         alt="Kamar 1" class="rounded-lg w-full h-auto object-cover">
                                 </div>
-                                <!-- Gambar kamar 2 -->
                                 <div class="swiper-slide">
                                     <img src="https://www.rsi.co.id/media/k2/items/cache/48b2caa4acdcf286e67d646faa59fcbf_L.webp"
                                         alt="Kamar 2" class="rounded-lg w-full h-auto object-cover">
                                 </div>
                             </div>
-                            <!-- Navigasi -->
                             <div class="swiper-button-next text-white"></div>
                             <div class="swiper-button-prev text-white"></div>
                         </div>
                     </div>
                 </div>
-                <!-- Tambahkan slide lain jika perlu -->
 
             </div>
-            <!-- Navigasi Swiper Utama -->
             <div class="swiper-pagination mt-4"></div>
         </div>
     </section>
+
+
 
     <section class="bg-green-300 relative z-10 py-10 px-6 md:px-16">
         <div class="text-center mb-6 relative z-10">
@@ -1066,7 +1073,7 @@
             </div>
         </div>
     </section>
-    <section class="bg-green-300 relative z-10 py-10 px-6 md:px-16">        
+    <section class="bg-green-300 relative z-10 py-10 px-6 md:px-16">
         <div class="text-center mb-6 relative z-10">
             <div class="bg-green-700 px-6 py-3 pb-8 inline-block rounded-lg shadow">
                 <h2 class="text-2xl md:text-2xl font-bold text-white">Partner Kami</h2>
@@ -1212,6 +1219,63 @@
             </div>
         </div>
     </section>
+    <footer class="bg-white border-t-4 border-green-800 text-sm">
+        <div class="max-w-screen-xl mx-auto px-4 py-6 grid grid-cols-1 md:grid-cols-4 gap-6 items-start">
+
+            <!-- Logo dan Alamat -->
+            <div class="space-y-2 text-center md:text-left">
+                <div class="flex justify-center md:justify-start items-center gap-4">
+                    <img src="https://www.rsi.co.id/images/rsia/logo-rsia-nirmala-kediri.png" alt="Logo RSIA"
+                        class="h-16">
+                    <img src="https://www.kars.or.id/public/uploads/accreditation/logo_paripurna.png" alt="Logo KARS"
+                        class="h-16">
+                </div>
+                <p class="text-gray-700">
+                    Jl. Jaksa Agung Suprapto, Mojoroto, Kec. Mojoroto, Kota Kediri, Jawa Timur 64112, Indonesia
+                </p>
+            </div>
+
+            <!-- Kontak -->
+            <div class="space-y-2">
+                <h3 class="text-green-700 font-semibold border-l-4 border-green-700 pl-2">Hubungi Kami</h3>
+                <p><i class="fa fa-envelope mr-1"></i> rsia.nirmaladekediri@gmail.com</p>
+                <p><i class="fa fa-phone mr-1"></i> 0354-399-194 (WhatsApp)</p>
+                <p><i class="fa fa-ambulance mr-1"></i> Emergency: 0813-5993-6275</p>
+                <p><i class="fa fa-stethoscope mr-1"></i> Pendaftaran: 0896-7798-2098 (WhatsApp)</p>
+                <div class="flex gap-2 mt-2">
+                    <a href="#"><i class="fab fa-facebook-square text-xl text-green-700"></i></a>
+                    <a href="#"><i class="fab fa-instagram text-xl text-green-700"></i></a>
+                    <a href="#"><i class="fab fa-youtube text-xl text-green-700"></i></a>
+                    <a href="#"><i class="fab fa-tiktok text-xl text-green-700"></i></a>
+                </div>
+            </div>
+
+            <!-- Informasi -->
+            <div class="space-y-2">
+                <h3 class="text-green-700 font-semibold border-l-4 border-green-700 pl-2">Informasi</h3>
+                <ul class="space-y-1 text-green-800">
+                    <li class="flex items-center gap-2"><span class="h-2 w-2 bg-green-600 rounded-full"></span> Jadwal
+                        Dokter</li>
+                    <li class="flex items-center gap-2"><span class="h-2 w-2 bg-green-600 rounded-full"></span>
+                        Ketersediaan Kamar Tidur</li>
+                    <li class="flex items-center gap-2"><span class="h-2 w-2 bg-green-600 rounded-full"></span> Berita
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Maps -->
+            <div class="w-full">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.735626256398!2d112.002619!3d-7.818737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78574d646e5d75%3A0x8e3b05e36477dbf0!2sRSIA%20Nirmala!5e0!3m2!1sid!2sid!4v1618982720372!5m2!1sid!2sid"
+                    width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+
+        </div>
+
+        <div class="bg-green-800 text-white text-center py-2 text-xs">
+            &copy; 2025 RSIA Nirmala Kediri
+        </div>
+    </footer>
 
 
 
