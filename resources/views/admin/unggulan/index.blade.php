@@ -5,7 +5,7 @@
         <div class="app-content pt-3 p-md-3 p-lg-4">
             <div class="container-xl">
 
-                <h1 class="app-page-title">unggulan</h1>
+                <h1 class="app-page-title">Unggulan</h1>
                 @if (session()->has('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
