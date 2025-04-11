@@ -49,7 +49,7 @@
                 class="bg-green-700 text-white px-4 py-2 rounded-md font-semibold hover:bg-green-800 flex items-center gap-2">
                 <i class="fas fa-calendar-check"></i> Booking Online
             </a>
-            <a href="#"
+            <a href="{{ route('login') }}"
                 class="border border-green-700 text-green-700 px-4 py-2 rounded-md font-semibold hover:bg-green-100 flex items-center gap-2">
                 <i class="fas fa-sign-in-alt"></i> Login
             </a>
@@ -100,7 +100,7 @@
                 </button>
             </li>
             <li class="py-1">
-                <a href="#"
+                <a href="{{ route('login') }}"
                 class="border border-green-700 text-green-700 px-4 py-2 rounded-md font-semibold hover:bg-green-100 flex items-center gap-2">
                 <i class="fas fa-sign-in-alt"></i> Login
             </a>
@@ -112,31 +112,14 @@
         style="position: relative; z-index: 1;">
         <!-- Carousel wrapper -->
         <div class="relative h-[400px] md:h-[600px] overflow-hidden ">
-            <!-- Item 1 -->
+            @foreach ($sliders as $slider)
+                <!-- Item 1 -->
             <div class="hidden duration-1000 ease-in-out transition-all" data-carousel-item>
-                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg"
+                <img src="{{ asset('images/slider/' . $slider->gambar) }}"
                     class="w-full h-full object-cover" alt="...">
             </div>
-            <!-- Item 2 -->
-            <div class="hidden duration-1000 ease-in-out transition-all" data-carousel-item>
-                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg"
-                    class="w-full h-full object-cover" alt="...">
-            </div>
-            <!-- Item 3 -->
-            <div class="hidden duration-1000 ease-in-out transition-all" data-carousel-item>
-                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg"
-                    class="w-full h-full object-cover" alt="...">
-            </div>
-            <!-- Item 4 -->
-            <div class="hidden duration-1000 ease-in-out transition-all" data-carousel-item>
-                <img src="https://media-cdn.tripadvisor.com/media/photo-s/06/9b/a5/ef/massive-jumbotron.jpg"
-                    class="w-full h-full object-cover" alt="...">
-            </div>
-            <!-- Item 5 -->
-            <div class="hidden duration-1000 ease-in-out transition-all" data-carousel-item>
-                <img src="https://media-cdn.tripadvisor.com/media/photo-s/06/9b/a5/ef/massive-jumbotron.jpg"
-                    class="w-full h-full object-cover" alt="...">
-            </div>
+            @endforeach
+            
         </div>
 
         <!-- Slider controls -->
