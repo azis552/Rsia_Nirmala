@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\UnggulanController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
@@ -26,4 +27,7 @@ route::middleware('auth')->group(function () {
 
     // Slider Routes
     Route::resource('slider', SliderController::class)->except(['show', 'edit']);
+
+    // Unggulan Routes
+    Route::resource('unggulan', UnggulanController::class)->except(['show', 'edit']);
 });

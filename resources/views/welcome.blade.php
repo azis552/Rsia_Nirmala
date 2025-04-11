@@ -101,9 +101,9 @@
             </li>
             <li class="py-1">
                 <a href="{{ route('login') }}"
-                class="border border-green-700 text-green-700 px-4 py-2 rounded-md font-semibold hover:bg-green-100 flex items-center gap-2">
-                <i class="fas fa-sign-in-alt"></i> Login
-            </a>
+                    class="border border-green-700 text-green-700 px-4 py-2 rounded-md font-semibold hover:bg-green-100 flex items-center gap-2">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
             </li>
         </ul>
     </div>
@@ -114,12 +114,12 @@
         <div class="relative h-[400px] md:h-[600px] overflow-hidden ">
             @foreach ($sliders as $slider)
                 <!-- Item 1 -->
-            <div class="hidden duration-1000 ease-in-out transition-all" data-carousel-item>
-                <img src="{{ asset('images/slider/' . $slider->gambar) }}"
-                    class="w-full h-full object-cover" alt="...">
-            </div>
+                <div class="hidden duration-1000 ease-in-out transition-all" data-carousel-item>
+                    <img src="{{ asset('images/slider/' . $slider->gambar) }}" class="w-full h-full object-cover"
+                        alt="...">
+                </div>
             @endforeach
-            
+
         </div>
 
         <!-- Slider controls -->
@@ -192,51 +192,24 @@
                     </div>
                 </div>
             </div>
-            <div class=" flex  items-center w-full px-4">
-                <div class="flex flex-col md:flex-row items-center gap-6 h-90 w-full ">
-                    <!-- Card 1 -->
+            <div class="flex flex-wrap justify-center gap-6">
+                @foreach ($unggulans as $key => $unggulan)
                     <div
-                        class="relative  bg-gray-200 w-full md:w-90 h-72 md:h-80 p-6 text-center rounded-lg shadow-lg">
+                        class="relative bg-gray-200 w-full md:w-72 lg:w-80 h-auto p-6 text-center rounded-lg shadow-lg">
                         <div class="flex justify-center mb-4">
-                            <img src="https://cdn-icons-png.flaticon.com/512/1046/1046863.png" alt="Icon"
-                                class="w-12 h-12">
+                            <img src="{{ asset('images/unggulan/' . $unggulan->image) }}" alt="Icon"
+                                class="w-40 h-40 object-cover rounded-sm shadow-md">
                         </div>
-                        <p class="text-lg font-semibold">Layanan Lengkap</p>
+                        <p class="text-xl font-semibold text-gray-800">{{ $unggulan->title }}</p>
+                        <p class="text-sm text-gray-600 mt-2">{{ $unggulan->description }}</p>
                         <div
                             class="absolute -bottom-5 right-5 bg-green-600 text-white w-10 h-10 flex items-center justify-center text-lg font-bold rounded-full">
-                            1
+                            {{ $key + 1 }}
                         </div>
                     </div>
-
-                    <!-- Card 2 -->
-                    <div class="relative bg-gray-200 w-full md:w-90 h-72 md:h-80 p-6 text-center rounded-lg shadow-lg">
-                        <div class="flex justify-center mb-4">
-                            <img src="https://cdn-icons-png.flaticon.com/512/1046/1046863.png" alt="Icon"
-                                class="w-12 h-12">
-                        </div>
-                        <p class="text-lg font-semibold">
-                            <a href="#" class="text-blue-600 hover:underline">Peralatan Modern</a>
-                        </p>
-                        <div
-                            class="absolute -bottom-5 right-5 bg-green-600 text-white w-10 h-10 flex items-center justify-center text-lg font-bold rounded-full">
-                            2
-                        </div>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="relative bg-gray-200 w-full md:w-90 h-72 md:h-80 p-6 text-center rounded-lg shadow-lg">
-                        <div class="flex justify-center mb-4">
-                            <img src="https://cdn-icons-png.flaticon.com/512/1046/1046863.png" alt="Icon"
-                                class="w-12 h-12">
-                        </div>
-                        <p class="text-lg font-semibold">Registrasi Online</p>
-                        <div
-                            class="absolute -bottom-5 right-5 bg-green-600 text-white w-10 h-10 flex items-center justify-center text-lg font-bold rounded-full">
-                            3
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
+
         </div>
     </section>
     {{-- berita dan artikel --}}
