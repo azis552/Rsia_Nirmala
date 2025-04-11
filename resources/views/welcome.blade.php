@@ -114,17 +114,17 @@
         <div class="relative h-[400px] md:h-[600px] overflow-hidden ">
             <!-- Item 1 -->
             <div class="hidden duration-1000 ease-in-out transition-all" data-carousel-item>
-                <img src="https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F"
+                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg"
                     class="w-full h-full object-cover" alt="...">
             </div>
             <!-- Item 2 -->
             <div class="hidden duration-1000 ease-in-out transition-all" data-carousel-item>
-                <img src="https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F"
+                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg"
                     class="w-full h-full object-cover" alt="...">
             </div>
             <!-- Item 3 -->
             <div class="hidden duration-1000 ease-in-out transition-all" data-carousel-item>
-                <img src="https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F"
+                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg"
                     class="w-full h-full object-cover" alt="...">
             </div>
             <!-- Item 4 -->
@@ -170,7 +170,7 @@
     {{-- dokter filter --}}
 
     <section
-        class="h-[1550px] md:h-[600px] bg-cover bg-center  bg-no-repeat mt-[-140px] md:mt-[-10px] bg-[url('https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F')] bg-green-900 bg-blend-multiply">
+        class="h-[1550px] md:h-[600px] bg-cover bg-center  bg-no-repeat mt-[-140px] md:mt-[-10px] bg-[url('https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg')] bg-green-900 bg-blend-multiply">
         <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
             <div class="container mx-auto p-5 md:mt-[-280px] relative z-10 ">
                 <div class="text-center rounded-lg bg-gray-200 pb-2">
@@ -286,7 +286,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto relative z-10">
             <!-- Card -->
             <div class="bg-white rounded-xl shadow p-4 m-2">
-                <img src="https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F"
+                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg"
                     alt="berita" class="rounded-xl w-full h-48 object-cover mb-3" />
                 <p class="text-sm text-gray-500">13 January 2025</p>
                 <h3 class="font-semibold text-md mt-1">Rapat Koordinasi Manajemen Risiko dan Identifikasi Prioritas
@@ -297,7 +297,7 @@
             </div>
 
             <div class="bg-white rounded-xl shadow p-4 m-2">
-                <img src="https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F"
+                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg"
                     alt="berita" class="rounded-xl w-full h-48 object-cover mb-3" />
                 <p class="text-sm text-gray-500">13 January 2025</p>
                 <h3 class="font-semibold text-md mt-1">Rapat Koordinasi Manajemen Risiko dan Identifikasi Prioritas
@@ -308,7 +308,7 @@
             </div>
 
             <div class="bg-white rounded-xl shadow p-4 m-2">
-                <img src="https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F"
+                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg"
                     alt="berita" class="rounded-xl w-full h-48 object-cover mb-3" />
                 <p class="text-sm text-gray-500">13 January 2025</p>
                 <h3 class="font-semibold text-md mt-1">Rapat Koordinasi Manajemen Risiko dan Identifikasi Prioritas
@@ -318,7 +318,7 @@
                         Selengkapnya</span></p>
             </div>
             <div class="bg-white rounded-xl shadow p-4 m-2">
-                <img src="https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F"
+                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg"
                     alt="berita" class="rounded-xl w-full h-48 object-cover mb-3" />
                 <p class="text-sm text-gray-500">13 January 2025</p>
                 <h3 class="font-semibold text-md mt-1">Rapat Koordinasi Manajemen Risiko dan Identifikasi Prioritas
@@ -342,7 +342,7 @@
 
     {{-- profil --}}
     <section
-        class="relative bg-cover bg-center bg-no-repeat bg-[url('https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F')] bg-green-900 bg-blend-multiply py-12 overflow-hidden">
+        class="relative bg-cover bg-center bg-no-repeat bg-[url('https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg')] bg-green-900 bg-blend-multiply py-12 overflow-hidden">
 
         <!-- Lingkaran pojok kanan bawah -->
         <div class="absolute bottom-0 right-0 w-32 h-32 bg-green-700 opacity-50 rounded-tl-full z-0"></div>
@@ -510,7 +510,7 @@
     </section>
 
     <section
-        class="relative bg-cover bg-center bg-no-repeat bg-[url('https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F')] bg-green-900 bg-blend-multiply py-12 overflow-hidden">
+        class="relative bg-cover bg-center bg-no-repeat bg-[url('https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg')] bg-green-900 bg-blend-multiply py-12 overflow-hidden">
         <div class="text-center mb-6 relative z-10">
             <div class="bg-green-700 px-6 py-3 pb-8 inline-block rounded-lg shadow">
                 <h2 class="text-2xl md:text-2xl font-bold text-white">Dokter Spesialist</h2>
@@ -826,7 +826,7 @@
 
 
     <section
-        class="relative bg-cover bg-center bg-no-repeat bg-[url('https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F')] bg-green-900 bg-blend-multiply py-12 overflow-hidden">
+        class="relative bg-cover bg-center bg-no-repeat bg-[url('https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg')] bg-green-900 bg-blend-multiply py-12 overflow-hidden">
 
         <div class="swiper myMainSwiper w-full">
             <div class="swiper-wrapper">
@@ -1027,7 +1027,7 @@
         </div>
     </section>
     <section
-        class="relative bg-cover bg-center bg-no-repeat bg-[url('https://scontent.fsoc13-1.fna.fbcdn.net/v/t39.30808-6/475174954_588528453940614_7877906919153369893_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFzMGRk9gt6F2hoR_F1WAAXSlH3kq6Js19KUfeSromzX3P8HRBXRmDGxNKI96Gz4O-L46U0dM2lvhF_HrakE2AX&_nc_ohc=Gj6EwjiGpPUQ7kNvgHNR_uH&_nc_zt=23&_nc_ht=scontent.fsoc13-1.fna&_nc_gid=KVAzG6Qx_NSOfiufP1XWJQ&oh=00_AYEAayypHwD_u0JU8qOgBqv3Rk-hS5ifBg0BlBArhPC3Rw&oe=67F19C6F')] bg-green-900 bg-blend-multiply py-12 overflow-hidden">
+        class="relative bg-cover bg-center bg-no-repeat bg-[url('https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg')] bg-green-900 bg-blend-multiply py-12 overflow-hidden">
         <div class=" backdrop-brightness-75 w-full py-16 px-4 md:px-20 text-white">
 
             <div class="flex flex-col md:flex-row gap-10">
