@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RSIA Nirmala</title>
+    <title>{{ $profil->perusahaan != null ? $profil->perusahaan : 'Perusahaan' }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
@@ -41,12 +41,15 @@
         <div class="flex items-center gap-2">
             <span class="hidden md:flex">Hubungi Kami</span>
             <span class="hidden md:flex">|</span>
-            <span class="hidden md:flex"><i class="fas fa-envelope mt-1 mr-2"></i>rsianirmalakdr</span>
+            <span class="hidden md:flex"><i class="fas fa-envelope mt-1 mr-2"></i>
+                {{ $profil->email != null ? $profil->email : 'Email belum tersedia.' }}</span>
             <span class="hidden md:flex">|</span>
-            <span><i class="fa-solid fa-phone-volume"></i> 085-317-080-08</span>
+            <span><i class="fa-solid fa-phone-volume"></i>
+                {{ $profil->teleponwa != null ? $profil->teleponwa : 'Telepon belum tersedia.' }}</span>
         </div>
         <div class="bg-gray-200 text-green-700 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-            <i class="fa-solid fa-phone-volume"></i> Emergency Call <span class="text-black">085-317-080-08</span>
+            <i class="fa-solid fa-phone-volume"></i> Emergency Call <span class="text-black">
+                {{ $profil->telepondarurat != null ? $profil->telepondarurat : 'Telepon belum tersedia.' }} </span>
         </div>
     </div>
 
@@ -54,28 +57,42 @@
     <nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center relative">
         <!-- Logo -->
         <div class="flex items-center gap-4">
-            <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/Untitled-1000-%C3%97-500-px-1.png"
-                alt="Logo RSIA" class="h-12 max-w-full">
+            <img src="{{ $profil->logo != null ? asset('images/' . $profil->logo) : asset('images/preview.png') }}"
+                alt="Logo RSIA" class="h-20 w-auto max-w-full object-contain" />
+
         </div>
 
         <!-- Menu Navigasi (Desktop) -->
-        <ul class="hidden md:flex space-x-6 font-bold text-lg">
+        <ul class="hidden md:flex space-x-3 font-bold text-lg">
             <li>
                 <a href="{{ route('landingpage') }}"
                     class="px-3 py-2 {{ request()->routeIs('landingpage') ? 'text-green-700 underline' : 'hover:text-green-700' }}">
                     Beranda
                 </a>
             </li>
+
             <li>
-                <a href="{{ route('landingpage') }}"
-                    class="px-3 py-2 {{ request()->routeIs('landingpage') ? 'text-green-700 underline' : 'hover:text-green-700' }}">
+                <a href="{{ route('dokterlengkap') }}"
+                    class="px-3 py-2 {{ request()->routeIs('dokterlengkap') ? 'text-green-700 underline' : 'hover:text-green-700' }}">
+                    Dokter
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('profil.lengkap') }}"
+                    class="px-3 py-2 {{ request()->routeIs('profil.lengkap') ? 'text-green-700 underline' : 'hover:text-green-700' }}">
                     Profil
                 </a>
             </li>
             <li>
-                <a href="{{ route('landingpage') }}"
-                    class="px-3 py-2 {{ request()->routeIs('landingpage') ? 'text-green-700 underline' : 'hover:text-green-700' }}">
-                    Beranda
+                <a href="{{ route('poliklinik.lengkap') }}"
+                    class="px-3 py-2 {{ request()->routeIs('poliklinik.lengkap') ? 'text-green-700 underline' : 'hover:text-green-700' }}">
+                    Poliklinik
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('pelayanan.lengkap') }}"
+                    class="px-3 py-2 {{ request()->routeIs('pelayanan.lengkap') ? 'text-green-700 underline' : 'hover:text-green-700' }}">
+                    Pelayanan
                 </a>
             </li>
             <li>

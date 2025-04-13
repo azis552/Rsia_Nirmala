@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Berita;
+use App\Models\Dokter;
+use App\Models\Pelayanan;
+use App\Models\Poliklinik;
 use App\Models\Slider;
 use App\Models\Unggulan;
 use Illuminate\Http\Request;
@@ -18,7 +21,14 @@ class LandingPageController extends Controller
         // Ambil data berita dari database
         $beritas = Berita::orderBy('created_at', 'desc')->take(4)->get();
         // Kirim data slider ke view
+        $pelayanans =Pelayanan::orderBy('created_at','desc')->take(8)->get();
 
-        return view("welcome", compact('sliders', 'unggulans', 'beritas'));
+        $polikliniks = Poliklinik::orderBy('created_at','desc')->take(8)->get();
+
+        $dokters = Dokter::orderBy('created_at','desc')->get();
+
+        return view("welcome", 
+        compact('sliders', 
+        'unggulans', 'beritas','pelayanans','polikliniks','dokters'));
     }
 }
