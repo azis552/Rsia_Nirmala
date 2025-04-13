@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\SliderController;
@@ -30,4 +31,8 @@ route::middleware('auth')->group(function () {
 
     // Unggulan Routes
     Route::resource('unggulan', UnggulanController::class)->except(['show', 'edit']);
+
+    // Berita Routes
+    Route::get('berita/selengkapnya', [BeritaController::class, 'selengkapnya'])->name('berita.selengkapnya');
+    Route::resource('berita', BeritaController::class)->except([ 'edit']);
 });

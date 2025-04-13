@@ -1,112 +1,7 @@
-<!doctype html>
-<html lang="id">
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RSIA Nirmala</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-</head>
 
-<body>
-    <!-- Bagian atas -->
-    <div class="bg-green-700 text-white text-sm py-2 px-4 flex flex-wrap justify-between items-center">
-        <div class="flex items-center gap-2">
-            <span class="hidden md:flex">Hubungi Kami</span>
-            <span class="hidden md:flex">|</span>
-            <span class="hidden md:flex"><i class="fas fa-envelope mt-1 mr-2"></i>rsianirmalakdr</span>
-            <span class="hidden md:flex">|</span>
-            <span><i class="fa-solid fa-phone-volume"></i> 085-317-080-08</span>
-        </div>
-        <div class="bg-gray-200 text-green-700 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-            <i class="fa-solid fa-phone-volume"></i> Emergency Call <span class="text-black">085-317-080-08</span>
-        </div>
-    </div>
-
-    <!-- Navbar -->
-    <nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center relative">
-        <!-- Logo -->
-        <div class="flex items-center gap-4">
-            <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/Untitled-1000-%C3%97-500-px-1.png"
-                alt="Logo RSIA" class="h-12 max-w-full">
-        </div>
-
-        <!-- Menu Navigasi (Desktop) -->
-        <ul class="hidden md:flex space-x-6 font-bold text-lg">
-            <li><a href="#" class="hover:text-green-700">Beranda</a></li>
-            <li><a href="#" class="hover:text-green-700">Profil</a></li>
-            <li><a href="#" class="hover:text-green-700">Pelayanan</a></li>
-            <li><a href="#" class="hover:text-green-700">Informasi Publik</a></li>
-            <li><a href="#" class="hover:text-green-700">Promo Spesial</a></li>
-        </ul>
-
-        <!-- Tombol Aksi (Desktop) -->
-        <div class="hidden md:flex items-center gap-3">
-            <a href="#"
-                class="bg-green-700 text-white px-4 py-2 rounded-md font-semibold hover:bg-green-800 flex items-center gap-2">
-                <i class="fas fa-calendar-check"></i> Booking Online
-            </a>
-            <a href="{{ route('login') }}"
-                class="border border-green-700 text-green-700 px-4 py-2 rounded-md font-semibold hover:bg-green-100 flex items-center gap-2">
-                <i class="fas fa-sign-in-alt"></i> Login
-            </a>
-        </div>
-
-        <!-- Tombol Hamburger Menu (Mobile) -->
-        <button id="menuButton" class="md:hidden text-green-700 text-2xl">
-            <i class="fas fa-bars"></i>
-        </button>
-    </nav>
-    <!-- Menu Mobile -->
-    <div id="navbar-dropdown" class=" fixed hidden top-30 left-0 w-full bg-white shadow-md z-50 md:hidden">
-        <ul class="flex flex-col p-2 text-lg font-bold leading-tight">
-            <li class="py-1">
-                <a href="#"
-                    class="block py-2 px-4 rounded-md hover:text-green-700 hover:bg-green-100 active:bg-green-200 focus:outline-none transition-all duration-300">
-                    Beranda
-                </a>
-            </li>
-            <li class="py-1">
-                <a href="#"
-                    class="block py-2 px-4 rounded-md hover:text-green-700 hover:bg-green-100 active:bg-green-200 focus:outline-none transition-all duration-300">
-                    Profil
-                </a>
-            </li>
-            <li class="py-1">
-                <a href="#"
-                    class="block py-2 px-4 rounded-md hover:text-green-700 hover:bg-green-100 active:bg-green-200 focus:outline-none transition-all duration-300">
-                    Pelayanan
-                </a>
-            </li>
-            <li class="py-1">
-                <a href="#"
-                    class="block py-2 px-4 rounded-md hover:text-green-700 hover:bg-green-100 active:bg-green-200 focus:outline-none transition-all duration-300">
-                    Informasi Publik
-                </a>
-            </li>
-            <li class="py-1">
-                <a href="#"
-                    class="block py-2 px-4 rounded-md hover:text-green-700 hover:bg-green-100 active:bg-green-200 focus:outline-none transition-all duration-300">
-                    Promo Spesial
-                </a>
-            </li>
-            <li class="py-1">
-                <button
-                    class="w-full bg-green-700 text-white px-4 py-2 rounded-md font-semibold shadow-md hover:bg-green-800 hover:shadow-lg active:bg-green-900 focus:outline-none transition-all duration-300">
-                    Booking Online
-                </button>
-            </li>
-            <li class="py-1">
-                <a href="{{ route('login') }}"
-                    class="border border-green-700 text-green-700 px-4 py-2 rounded-md font-semibold hover:bg-green-100 flex items-center gap-2">
-                    <i class="fas fa-sign-in-alt"></i> Login
-                </a>
-            </li>
-        </ul>
-    </div>
+@extends('template.master')
+@section('content')
     {{-- jumbotron --}}
     <div id="controls-carousel" class="relative w-full h-[400px] md:h-[600px]" data-carousel="static"
         style="position: relative; z-index: 1;">
@@ -237,60 +132,27 @@
             <button
                 class="bg-white border border-green-400 text-green-900 px-4 py-2 rounded-full font-semibold hover:bg-green-100 transition">Pengumuman</button>
         </div>
-
         <!-- Grid Berita -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto relative z-10">
-            <!-- Card -->
-            <div class="bg-white rounded-xl shadow p-4 m-2">
-                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg"
-                    alt="berita" class="rounded-xl w-full h-48 object-cover mb-3" />
-                <p class="text-sm text-gray-500">13 January 2025</p>
-                <h3 class="font-semibold text-md mt-1">Rapat Koordinasi Manajemen Risiko dan Identifikasi Prioritas
-                    Layanan Rumah Sakit Tahun 2025</h3>
-                <p class="text-sm mt-2 text-gray-600">Pada tanggal 13 Januari 2025, UPT RSKD Dadi Provinsi Sulawesi
-                    Selatan menggelar Rapat Koordinasi... <span class="font-semibold text-green-700">Baca
-                        Selengkapnya</span></p>
-            </div>
-
-            <div class="bg-white rounded-xl shadow p-4 m-2">
-                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg"
-                    alt="berita" class="rounded-xl w-full h-48 object-cover mb-3" />
-                <p class="text-sm text-gray-500">13 January 2025</p>
-                <h3 class="font-semibold text-md mt-1">Rapat Koordinasi Manajemen Risiko dan Identifikasi Prioritas
-                    Layanan Rumah Sakit Tahun 2025</h3>
-                <p class="text-sm mt-2 text-gray-600">Pada tanggal 13 Januari 2025, UPT RSKD Dadi Provinsi Sulawesi
-                    Selatan menggelar Rapat Koordinasi... <span class="font-semibold text-green-700">Baca
-                        Selengkapnya</span></p>
-            </div>
-
-            <div class="bg-white rounded-xl shadow p-4 m-2">
-                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg"
-                    alt="berita" class="rounded-xl w-full h-48 object-cover mb-3" />
-                <p class="text-sm text-gray-500">13 January 2025</p>
-                <h3 class="font-semibold text-md mt-1">Rapat Koordinasi Manajemen Risiko dan Identifikasi Prioritas
-                    Layanan Rumah Sakit Tahun 2025</h3>
-                <p class="text-sm mt-2 text-gray-600">Pada tanggal 13 Januari 2025, UPT RSKD Dadi Provinsi Sulawesi
-                    Selatan menggelar Rapat Koordinasi... <span class="font-semibold text-green-700">Baca
-                        Selengkapnya</span></p>
-            </div>
-            <div class="bg-white rounded-xl shadow p-4 m-2">
-                <img src="https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg"
-                    alt="berita" class="rounded-xl w-full h-48 object-cover mb-3" />
-                <p class="text-sm text-gray-500">13 January 2025</p>
-                <h3 class="font-semibold text-md mt-1">Rapat Koordinasi Manajemen Risiko dan Identifikasi Prioritas
-                    Layanan Rumah Sakit Tahun 2025</h3>
-                <p class="text-sm mt-2 text-gray-600">Pada tanggal 13 Januari 2025, UPT RSKD Dadi Provinsi Sulawesi
-                    Selatan menggelar Rapat Koordinasi... <span class="font-semibold text-green-700">Baca
-                        Selengkapnya</span></p>
-            </div>
-
-            <!-- Ulangi card di atas untuk item ke-2 dan ke-3 -->
-            <!-- Bisa disalin 2x atau dibuat loop kalau pakai framework JS -->
+            @foreach ($beritas as $berita)
+                <!-- Card -->
+                <div class="bg-white rounded-xl shadow p-4 m-2">
+                    <img src="{{ asset('images/berita/' . $berita->gambar) }}" alt="berita"
+                        class="rounded-xl w-full h-48 object-cover mb-3" />
+                    <p class="text-sm text-gray-500">{{ date('d F Y', strtotime($berita->created_at)) }}</p>
+                    <h3 class="font-semibold text-md mt-1">{{ $berita->judul }}</h3>
+                    <p class="text-sm mt-2 text-gray-600">{{ Str::limit($berita->deskripsi, 80) }}
+                        <a href="{{ route('berita.show', $berita->slug) }}" class="font-semibold text-green-700">Baca
+                            Selengkapnya</a>
+                    </p>
+                </div>
+                <!-- Ulangi card di atas untuk item ke-2 dan ke-3 -->
+                <!-- Bisa disalin 2x atau dibuat loop kalau pakai framework JS -->
+            @endforeach
         </div>
-
         <!-- Tombol Lihat Semua -->
         <div class="flex justify-end mt-4 mr-20 relative z-10">
-            <a href="#"
+            <a href="{{ route('berita.selengkapnya') }}"
                 class="bg-green-700 text-white font-semibold px-6 py-2 rounded-full hover:bg-green-800 transition">Lihat
                 Semua</a>
         </div>
@@ -1175,142 +1037,4 @@
             </div>
         </div>
     </section>
-    <footer class="bg-white border-t-4 border-green-800 text-sm">
-        <div class="max-w-screen-xl mx-auto px-4 py-6 grid grid-cols-1 md:grid-cols-4 gap-6 items-start">
-
-            <!-- Logo dan Alamat -->
-            <div class="space-y-2 text-center md:text-left">
-                <div class="flex justify-center md:justify-start items-center gap-4">
-                    <img src="https://www.rsi.co.id/images/rsia/logo-rsia-nirmala-kediri.png" alt="Logo RSIA"
-                        class="h-16">
-                    <img src="https://www.kars.or.id/public/uploads/accreditation/logo_paripurna.png" alt="Logo KARS"
-                        class="h-16">
-                </div>
-                <p class="text-gray-700">
-                    Jl. Jaksa Agung Suprapto, Mojoroto, Kec. Mojoroto, Kota Kediri, Jawa Timur 64112, Indonesia
-                </p>
-            </div>
-
-            <!-- Kontak -->
-            <div class="space-y-2">
-                <h3 class="text-green-700 font-semibold border-l-4 border-green-700 pl-2">Hubungi Kami</h3>
-                <p><i class="fa fa-envelope mr-1"></i> rsia.nirmaladekediri@gmail.com</p>
-                <p><i class="fa fa-phone mr-1"></i> 0354-399-194 (WhatsApp)</p>
-                <p><i class="fa fa-ambulance mr-1"></i> Emergency: 0813-5993-6275</p>
-                <p><i class="fa fa-stethoscope mr-1"></i> Pendaftaran: 0896-7798-2098 (WhatsApp)</p>
-                <div class="flex gap-2 mt-2">
-                    <a href="#"><i class="fab fa-facebook-square text-xl text-green-700"></i></a>
-                    <a href="#"><i class="fab fa-instagram text-xl text-green-700"></i></a>
-                    <a href="#"><i class="fab fa-youtube text-xl text-green-700"></i></a>
-                    <a href="#"><i class="fab fa-tiktok text-xl text-green-700"></i></a>
-                </div>
-            </div>
-
-            <!-- Informasi -->
-            <div class="space-y-2">
-                <h3 class="text-green-700 font-semibold border-l-4 border-green-700 pl-2">Informasi</h3>
-                <ul class="space-y-1 text-green-800">
-                    <li class="flex items-center gap-2"><span class="h-2 w-2 bg-green-600 rounded-full"></span> Jadwal
-                        Dokter</li>
-                    <li class="flex items-center gap-2"><span class="h-2 w-2 bg-green-600 rounded-full"></span>
-                        Ketersediaan Kamar Tidur</li>
-                    <li class="flex items-center gap-2"><span class="h-2 w-2 bg-green-600 rounded-full"></span> Berita
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Maps -->
-            <div class="w-full">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.735626256398!2d112.002619!3d-7.818737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78574d646e5d75%3A0x8e3b05e36477dbf0!2sRSIA%20Nirmala!5e0!3m2!1sid!2sid!4v1618982720372!5m2!1sid!2sid"
-                    width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-
-        </div>
-
-        <div class="bg-green-800 text-white text-center py-2 text-xs">
-            &copy; 2025 RSIA Nirmala Kediri
-        </div>
-    </footer>
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-</body>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const menuButton = document.getElementById("menuButton");
-        const navbarDropdown = document.getElementById("navbar-dropdown");
-
-        menuButton.addEventListener("click", function() {
-            navbarDropdown.classList.toggle("hidden");
-        });
-    });
-</script>
-<script>
-    var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        loop: true,
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 2,
-            },
-            1024: {
-                slidesPerView: 3,
-            },
-        },
-    });
-
-    var swiper = new Swiper(".mySwiperDokter", {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        loop: true,
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 3,
-            },
-            1024: {
-                slidesPerView: 4,
-            },
-        },
-    });
-    const imageSwipers = document.querySelectorAll('.imageSwiper');
-    imageSwipers.forEach((swiperEl, i) => {
-        new Swiper(swiperEl, {
-            loop: true,
-            navigation: {
-                nextEl: swiperEl.querySelector('.swiper-button-next'),
-                prevEl: swiperEl.querySelector('.swiper-button-prev'),
-            },
-        });
-    });
-
-    const mainSwiper = new Swiper('.myMainSwiper', {
-        loop: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-    });
-</script>
-
-</html>
+    @endsection

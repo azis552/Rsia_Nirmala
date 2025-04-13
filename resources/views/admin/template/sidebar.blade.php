@@ -14,7 +14,7 @@
             <ul class="app-menu list-unstyled accordion" id="menu-accordion">
                 <li class="nav-item">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                    <a class="nav-link {{ Route::is('dashboard') ? 'active' : '' }}" href="index.html">
+                    <a class="nav-link {{ Route::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                         <span class="nav-icon">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -73,7 +73,7 @@
                 </li><!--//nav-item-->
                 <li class="nav-item">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                    <a class="nav-link {{ Route::is('berita.index') ? 'active' : '' }} " href="charts.html">
+                    <a class="nav-link {{ Route::is('berita.index') ? 'active' : '' }} " href="{{ route('berita.index') }}">
                         <span class="nav-icon ml-2">
                             <i class="fa-solid fa-newspaper fa-xl"></i>
                         </span>

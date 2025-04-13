@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
 use App\Models\Slider;
 use App\Models\Unggulan;
 use Illuminate\Http\Request;
@@ -14,7 +15,10 @@ class LandingPageController extends Controller
         $sliders = Slider::orderBy('urutan', 'asc')->get();
         // Ambil data unggulan dari database
         $unggulans = Unggulan::orderBy('urutan', 'asc')->get();
+        // Ambil data berita dari database
+        $beritas = Berita::orderBy('created_at', 'desc')->take(4)->get();
         // Kirim data slider ke view
-        return view("welcome", compact('sliders', 'unggulans'));
+
+        return view("welcome", compact('sliders', 'unggulans', 'beritas'));
     }
 }

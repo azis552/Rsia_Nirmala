@@ -183,19 +183,19 @@
             $('#myTable').DataTable({
                 responsive: true
             });
+        });
+        $(document).on('click', '.btn-edit', function() {
+            var id = $(this).data('id');
+            var name = $(this).data('name');
+            var email = $(this).data('email');
+            var role = $(this).data('role');
 
+            $('#idEdit').val(id);
+            $('#nameEdit').val(name);
+            $('#emailEdit').val(email);
+            $('#roleEdit').val(role);
 
-            $('.btn-edit').click(function() {
-                var id = $(this).data('id');
-                var name = $(this).data('name');
-                var email = $(this).data('email');
-                var role = $(this).data('role');
-                $('#idEdit').val(id);
-                $('#nameEdit').val(name);
-                $('#emailEdit').val(email);
-                $('#roleEdit').val(role);
-                $('#formEdit').attr('action', '{{ url('akun') }}/' + id);
-            })
+            $('#formEdit').attr('action', '/admin/akun/' + id);
         });
     </script>
 @endsection

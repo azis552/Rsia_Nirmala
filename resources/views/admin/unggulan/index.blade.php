@@ -188,22 +188,20 @@
             $('#myTable').DataTable({
                 responsive: true
             });
+        });
+        // Mengambil data dari tombol edit dan menampilkannya di modal edit
+        $(document).on('click', '.btn-edit', function() {
+            const id = $(this).data('id');
+            const judul = $(this).data('judul');
+            const description = $(this).data('description');
+            const gambar = $(this).data('gambar');
+            const urutan = $(this).data('urutan');
 
-
-            $('.btn-edit').click(function() {
-                var id = $(this).data('id');
-                var judul = $(this).data('judul');
-                var description = $(this).data('description');
-                var gambar = $(this).data('gambar');
-                var urutan = $(this).data('urutan');
-                console.log(description);
-                $('#idEdit').val(id);
-                $('#judulEdit').val(judul);
-                $('#descriptionEdit').val(description);
-                $('#urutanEdit').val(urutan);
-                $('#previewEdit').attr('src', "{{ asset('images/unggulan/') }}/" + gambar);
-                $('#formEdit').attr('action', '{{ url('unggulan') }}/' + id);
-            })
+            $('#idEdit').val(id);
+            $('#judulEdit').val(judul);
+            $('#descriptionEdit').val(description);
+            $('#urutanEdit').val(urutan);
+            $('#previewEdit').attr('src', '{{ asset('images/unggulan') }}/' + gambar); // Set src dari <img> dengan data file
         });
         $(document).ready(function() {
             // Preview untuk form tambah
