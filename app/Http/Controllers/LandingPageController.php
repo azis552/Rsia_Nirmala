@@ -6,6 +6,7 @@ use App\Models\Berita;
 use App\Models\Dokter;
 use App\Models\Pelayanan;
 use App\Models\Poliklinik;
+use App\Models\Promotion;
 use App\Models\Slider;
 use App\Models\Unggulan;
 use Illuminate\Http\Request;
@@ -27,8 +28,10 @@ class LandingPageController extends Controller
 
         $dokters = Dokter::orderBy('created_at','desc')->get();
 
+        $promotions = Promotion::orderBy('created_at','desc')->take(8)->get();
+        // Kirim data ke view
         return view("welcome", 
         compact('sliders', 
-        'unggulans', 'beritas','pelayanans','polikliniks','dokters'));
+        'unggulans', 'beritas','pelayanans','polikliniks','dokters','promotions'));
     }
 }

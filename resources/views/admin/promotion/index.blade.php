@@ -1,6 +1,3 @@
-
-
-
 @extends('admin.template.master')
 @section('content')
     <div class="app-wrapper">
@@ -8,7 +5,7 @@
         <div class="app-content pt-3 p-md-3 p-lg-4">
             <div class="container-xl">
 
-                <h1 class="app-page-title">Akun</h1>
+                <h1 class="app-page-title">promotion</h1>
                 @if (session()->has('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
@@ -40,43 +37,37 @@
                         <table id="myTable" class="display  nowrap" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Username</th>
-                                    <th>Email</th>
-                                    <th>Role</th>
-                                    <th>Faskes</th>
+                                    <th>Judul</th>
+                                    <th>Foto</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-
-                                @foreach ($users as $user)
+                                @foreach ($promotions as $promotion)
                                     <tr>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $promotion->title }}</td>
+                                        <td><img src="{{ asset("storage/promotion/".$promotion->image) }}" alt="Gambar promotion"
+                                                style="max-width: 100px; height: auto;"></td>
+                                        
                                         <td>
-                                            @if ($user->role == 'admin')
-                                                <div class="badge bg-success">Admin</div>
-                                            @else
-                                                <div class="badge bg-warning">Faskes 1</div>
-                                            @endif
-                                        </td>
-                                        <td>{{ $user->faskes }}</td>
-                                        <td> 
-                                            <form action="{{ Route('akun.destroy', $user->id) }}" method="post">
+                                            <form action="{{ Route('promotion.destroy', $promotion->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="button" class="btn btn-warning text-white btn-edit"
                                                     data-bs-toggle="modal" data-bs-target="#modalEdit"
-                                                    data-id="{{ $user->id }}" data-name="{{ $user->name }}"
-                                                    data-email="{{ $user->email }}" data-role="{{ $user->role }}">
+                                                    data-id="{{ $promotion->id }}" 
+                                                    data-title = "{{ $promotion->title }}"
+                                                    data-gambar = "{{ $promotion->image }}"
+                                                    >
                                                     <i class="fa-solid fa-pen-ruler"></i>
                                                 </button>
                                                 <button type="submit"
                                                     onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"
-                                                    class="btn btn-danger text-white"><i class="fa-solid fa-trash"></i></button>
+                                                    class="btn btn-danger text-white"><i
+                                                        class="fa-solid fa-trash"></i></button>
                                             </form>
 
-                                            
+
                                         </td>
                                     </tr>
                                 @endforeach
@@ -89,7 +80,7 @@
                 <!-- Modal Tambah -->
                 <div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="modalTambahLabel"
                     aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="modalTambahLabel">Tambah Data</h5>
@@ -97,31 +88,24 @@
                                     aria-label="Tutup"></button>
                             </div>
                             <div class="modal-body">
-                                <form id="formTambah" action="{{ Route('akun.store') }}" method="post">
+                                <form id="formTambah" action="{{ Route('promotion.store') }}" method="post"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <div class="mb-3">
-                                        <label for="nama" class="form-label">Username</label>
-                                        <input type="text" class="form-control" name="name" required>
+                                        <label for="nama" class="form-label">promotion</label>
+                                        <input type="text" class="form-control" id="title" name="title"
+                                            required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" name="email" required>
+                                        <label for="nama" class="form-label">Foto</label>
+                                        <input type="file" class="form-control" name="gambar" required>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="telepon" class="form-label">Password</label>
-                                        <input type="password" class="form-control" name="password" >
+                                    <div>
+                                        <img id="preview" src="" alt="Preview"
+                                            style="max-width: 100%; height: 10%;">
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="role" class="form-label">Role</label>
-                                        <select name="role" class="form-select" id="role" required>
-                                            <option value="faskes1">Faskes 1</option>
-                                            <option value="admin">Admin</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="faskes" class="form-label">Faskes</label>
-                                        <input type="text" class="form-control" name="faskes">
-                                    </div>
+
+                                    
 
                             </div>
                             <div class="modal-footer">
@@ -142,34 +126,22 @@
                                     aria-label="Tutup"></button>
                             </div>
                             <div class="modal-body">
-                                <form id="formEdit" method="post">
+                                <form id="formEdit" method="post" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
+                                    <div class="mb-3">
+                                        <label for="nama" class="form-label">Foto</label>
+                                        <input type="file" class="form-control" name="gambar" >
+                                    </div>
+                                    <div>
+                                        <img id="previewEdit" src="" alt="Preview"
+                                            style="max-width: 100%; height: auto;">
+                                    </div>
                                     <input type="hidden" name="idEdit" id="idEdit">
                                     <div class="mb-3">
-                                        <label for="nama" class="form-label">Username</label>
-                                        <input type="text" class="form-control" name="nameEdit" id="nameEdit"
+                                        <label for="nama" class="form-label">promotion</label>
+                                        <input type="text" class="form-control" id="titleEdit" name="titleEdit"
                                             required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" name="emailEdit" id="emailEdit"
-                                            required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="telepon" class="form-label">Password</label>
-                                        <input type="password" class="form-control" name="password" >
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="role" class="form-label">Role</label>
-                                        <select name="roleEdit" class="form-select" id="roleEdit" required>
-                                            <option value="faskes1">Faskes 1</option>
-                                            <option value="admin">Admin</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="faskes" class="form-label">Faskes</label>
-                                        <input type="text" class="form-control" name="faskesEdit" id="faskesEdit">
                                     </div>
 
                             </div>
@@ -195,18 +167,54 @@
                 responsive: true
             });
         });
+
+        // Mengisi data ke dalam modal edit
         $(document).on('click', '.btn-edit', function() {
             var id = $(this).data('id');
-            var name = $(this).data('name');
-            var email = $(this).data('email');
-            var role = $(this).data('role');
-
+            var title = $(this).data('title');
+            var gambar = $(this).data('gambar');
             $('#idEdit').val(id);
-            $('#nameEdit').val(name);
-            $('#emailEdit').val(email);
-            $('#roleEdit').val(role);
+            $('#titleEdit').val(title);
+            $('#previewEdit').attr('src', "{{ asset('storage/promotion/') }}/" + gambar);
+            $('#formEdit').attr('action', '{{ url('promotion') }}/' + id);
+        })
 
-            $('#formEdit').attr('action', 'akunUpdate/' + id);
+        $(document).ready(function() {
+            // Preview untuk form tambah
+            $('input[name="gambar"]').on('change', function(event) {
+                const file = event.target.files[0];
+                const preview = $('#preview');
+
+                if (file) {
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        preview.attr('src', e.target.result); // Set src dari <img> dengan data file
+                    };
+
+                    reader.readAsDataURL(file); // Membaca file sebagai URL data
+                } else {
+                    preview.attr('src', ''); // Kosongkan preview jika tidak ada file
+                }
+            });
+
+            // Preview untuk form edit
+            $('input[name="gambar"]').on('change', function(event) {
+                const file = event.target.files[0];
+                const previewEdit = $('#previewEdit');
+
+                if (file) {
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        previewEdit.attr('src', e.target.result); // Set src dari <img> dengan data file
+                    };
+
+                    reader.readAsDataURL(file); // Membaca file sebagai URL data
+                } else {
+                    previewEdit.attr('src', ''); // Kosongkan preview jika tidak ada file
+                }
+            });
         });
     </script>
 @endsection

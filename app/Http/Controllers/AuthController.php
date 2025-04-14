@@ -29,6 +29,7 @@ class AuthController extends Controller
             "email" => "required|email",
             "password" => "required|min:8",
             "role" => "required",
+            "faskes" => "required",
         ]);
 
         $user = User::create([
@@ -36,6 +37,7 @@ class AuthController extends Controller
             "email" => $request->email,
             "password" => Hash::make($request->password),
             "role" => $request->role,
+            "faskes" => $request->faskes,
         ]);
 
         if ($user) {
@@ -86,6 +88,7 @@ class AuthController extends Controller
             "email" => $request->emailEdit,
             "password" => Hash::make($request->password),
             "role" => $request->roleEdit,
+            "faskes" => $request->faskesEdit,
         ]);
         if ($user) {
             return redirect()->route("akun")->with("success", "Akun berhasil diupdate.");

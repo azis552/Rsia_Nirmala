@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ $profil->perusahaan != null ? $profil->perusahaan : 'Perusahaan' }}</title>
+    <title>{{ @$profil->perusahaan != null ? @$profil->perusahaan : 'Perusahaan' }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
@@ -42,14 +42,14 @@
             <span class="hidden md:flex">Hubungi Kami</span>
             <span class="hidden md:flex">|</span>
             <span class="hidden md:flex"><i class="fas fa-envelope mt-1 mr-2"></i>
-                {{ $profil->email != null ? $profil->email : 'Email belum tersedia.' }}</span>
+                {{ @$profil->email != null ? @$profil->email : 'Email belum tersedia.' }}</span>
             <span class="hidden md:flex">|</span>
             <span><i class="fa-solid fa-phone-volume"></i>
-                {{ $profil->teleponwa != null ? $profil->teleponwa : 'Telepon belum tersedia.' }}</span>
+                {{ @$profil->teleponwa != null ? @$profil->teleponwa : 'Telepon belum tersedia.' }}</span>
         </div>
         <div class="bg-gray-200 text-green-700 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
             <i class="fa-solid fa-phone-volume"></i> Emergency Call <span class="text-black">
-                {{ $profil->telepondarurat != null ? $profil->telepondarurat : 'Telepon belum tersedia.' }} </span>
+                {{ @$profil->telepondarurat != null ? @$profil->telepondarurat : 'Telepon belum tersedia.' }} </span>
         </div>
     </div>
 
@@ -57,7 +57,7 @@
     <nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center relative">
         <!-- Logo -->
         <div class="flex items-center gap-4">
-            <img src="{{ $profil->logo != null ? asset('images/' . $profil->logo) : asset('images/preview.png') }}"
+            <img src="{{ @$profil->logo != null ? asset('images/' . @$profil->logo) : asset('images/preview.png') }}"
                 alt="Logo RSIA" class="h-20 w-auto max-w-full object-contain" />
 
         </div>
@@ -102,8 +102,8 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('landingpage') }}"
-                    class="px-3 py-2 {{ request()->routeIs('landingpage') ? 'text-green-700 underline' : 'hover:text-green-700' }}">
+                <a href="{{ route('promotion.selengkapnya') }}"
+                    class="px-3 py-2 {{ request()->routeIs('promotion.selengkapnya') ? 'text-green-700 underline' : 'hover:text-green-700' }}">
                     Promo Spesial
                 </a>
             </li>

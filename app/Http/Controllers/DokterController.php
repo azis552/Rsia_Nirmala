@@ -49,7 +49,7 @@ class DokterController extends Controller
 
         Dokter::create([
             'name'=> $request->name,
-            'poliklinik' => $request->poliklinik,
+            'poliklinik_id' => $request->poliklinik,
             'foto'=> $filename,
         ]);
 

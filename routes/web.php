@@ -9,6 +9,7 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PelayananController;
 use App\Http\Controllers\PoliklinikController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\UnggulanController;
 
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
 
 
-
+Route::get('promotionlengkap', [PromotionController::class, 'promotionLengkap'])->name('promotion.selengkapnya');
 Route::get('berita/{slug}', [BeritaController::class, 'show'])->name('berita.show');
 Route::get('pelayanan/{slug}', [PelayananController::class, 'show'])->name('pelayanan.show');
 Route::get('poliklinik/{slug}', [PoliklinikController::class, 'show'])->name('poliklinik.show');
@@ -32,12 +33,13 @@ Route::post('jadwalDokter', [DokterController::class,'jadwalDokter'])->name('jad
 
 
 route::middleware('auth')->group(function () {
+    Route::put('akunUpdate/{id}', [AuthController::class, 'update'])->name('akun.update');
+    Route::delete('akunDelete/{id}', [AuthController::class, 'destroy'])->name('akun.destroy');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('akun', [AuthController::class, 'akun'])->name('akun');
     Route::post('akun', [AuthController::class, 'store'])->name('akun.store');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-    Route::put('akun/{id}', [AuthController::class, 'update'])->name('akun.update');
-    Route::delete('akun/{id}', [AuthController::class, 'destroy'])->name('akun.destroy');
+    
 
     // Slider Routes
     Route::resource('slider', SliderController::class)->except(['show', 'edit']);
@@ -63,4 +65,8 @@ route::middleware('auth')->group(function () {
 
     // jadwal Routes
     Route::resource('jadwal', JadwalDokterController::class)->except(['show', 'edit']);
+
+    // Promotion Routes
+
+    Route::resource('promotion', PromotionController::class)->except(['show', 'edit']);
 });

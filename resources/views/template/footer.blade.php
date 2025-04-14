@@ -4,21 +4,21 @@
         <!-- Logo dan Alamat -->
         <div class="space-y-2 text-center md:text-left">
             <div class="flex justify-center md:justify-start items-center gap-4">
-                <img src="{{ $profil->logo != null ? asset('images/' . $profil->logo) : asset('images/preview.png') }}" alt="Logo RSIA"
+                <img src="{{ @$profil->logo != null ? asset('images/' . @$profil->logo) : asset('images/preview.png') }}" alt="Logo RSIA"
                     class="h-16">
             </div>
             <p class="text-gray-700">
-                {{ $profil->alamat != null ? $profil->alamat : 'Alamat belum tersedia.' }}
+                {{ @$profil->alamat != null ? @$profil->alamat : 'Alamat belum tersedia.' }}
             </p>
         </div>
 
         <!-- Kontak -->
         <div class="space-y-2">
             <h3 class="text-green-700 font-semibold border-l-4 border-green-700 pl-2">Hubungi Kami</h3>
-            <p><i class="fa fa-envelope mr-1"></i> {{ $profil->email != null ? $profil->email : 'Email belum tersedia.' }}</p>
-            <p><i class="fa fa-phone mr-1"></i> {{ $profil->teleponwa != null ? $profil->teleponwa : 'Telepon belum tersedia.' }}</p>
-            <p><i class="fa fa-ambulance mr-1"></i> {{ $profil->telepondarurat != null ? $profil->telepondarurat : 'Telepon belum tersedia.' }}</p>
-            <p><i class="fa fa-stethoscope mr-1"></i> {{ $profil->teleponpendaftaran != null ? $profil->teleponpendaftaran : 'Telepon belum tersedia.'  }}</p>
+            <p><i class="fa fa-envelope mr-1"></i> {{ @$profil->email != null ? @$profil->email : 'Email belum tersedia.' }}</p>
+            <p><i class="fa fa-phone mr-1"></i> {{ @$profil->teleponwa != null ? @$profil->teleponwa : 'Telepon belum tersedia.' }}</p>
+            <p><i class="fa fa-ambulance mr-1"></i> {{ @$profil->telepondarurat != null ? @$profil->telepondarurat : 'Telepon belum tersedia.' }}</p>
+            <p><i class="fa fa-stethoscope mr-1"></i> {{ @$profil->teleponpendaftaran != null ? @$profil->teleponpendaftaran : 'Telepon belum tersedia.'  }}</p>
             <div class="flex gap-2 mt-2">
                 <a href="#"><i class="fab fa-facebook-square text-xl text-green-700"></i></a>
                 <a href="#"><i class="fab fa-instagram text-xl text-green-700"></i></a>

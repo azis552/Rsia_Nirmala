@@ -85,8 +85,10 @@
                             </div>
                         </div>
                         <div class="mt-6 flex justify-between">
-                            <button type="reset" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">Reset</button>
-                            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">Cari
+                            <button type="reset"
+                                class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">Reset</button>
+                            <button type="submit"
+                                class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">Cari
                                 Dokter</button>
                         </div>
                     </form>
@@ -181,7 +183,7 @@
                 <!-- Video -->
                 <div class="aspect-video w-full rounded-md overflow-hidden">
                     <iframe class="w-full h-full "
-                        src="{{ $profil->youtube != null ? $profil->youtube : 'https://www.youtube.com/embed/9RZ0H4xY0Bw' }}"
+                        src="{{ @$profil->youtube != null ? @$profil->youtube : 'https://www.youtube.com/embed/9RZ0H4xY0Bw' }}"
                         frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
@@ -189,7 +191,7 @@
             <!-- Kolom Kanan -->
             <div class="md:w-1/2 bg-gray-100 text-black p-6 rounded-lg shadow-md text-justify  md:min-h-[500px]">
                 <p class="text-md md:text-lg ">
-                    {{ $profil->tentang != null ? $profil->tentang : 'Sambutan Direktur belum tersedia.' }}
+                    {{ @$profil->tentang != null ? @$profil->tentang : 'Sambutan Direktur belum tersedia.' }}
                 </p>
             </div>
         </div>
@@ -342,7 +344,7 @@
                     </h2>
                     <div class="w-24 h-1 bg-green-700 mt-2"></div>
                 </div>
-                <a href="#" class="inline-block bg-green-700 text-white px-4 py-2 text-sm mt-4 rounded-md w-fit">
+                <a href="{{ route('promotion.selengkapnya') }}" class="inline-block bg-green-700 text-white px-4 py-2 text-sm mt-4 rounded-md w-fit">
                     Lihat Semua
                 </a>
             </div>
@@ -351,133 +353,46 @@
             <!-- Carousel Kartu Pelayanan -->
             <div class="md:w-3/4 mx-auto w-full">
                 <div class="swiper mySwiper h-[420px] w-full">
+
                     <div class="swiper-wrapper">
-
-                        <!-- Card 1 -->
-                        <div class="swiper-slide w-full flex justify-center">
-                            <div
-                                class="group h-[400px] bg-cover bg-[url('https://www.rsi.co.id/media/k2/items/cache/4723ef876aca4c7cd452b3e97715d01b_XL.webp')]  bg-gray-100 hover:bg-green-700 transition-all duration-300 rounded-lg p-4 h-72 shadow-md relative flex flex-col items-center justify-center space-y-3 w-full max-w-xs overflow-visible">
-
-                                <!-- Judul -->
-                                <h3
-                                    class="text-green-700 group-hover:text-green-800 font-bold text-lg text-center opacity-0 group-hover:opacity-100 transform group-hover:-translate-y-2 transition duration-500 delay-100">
-                                    24 Jam Unit Gawat Darurat
-                                </h3>
-
-                                <!-- Garis bawah -->
+                        @foreach ($promotions as $promotion)
+                            <!-- Swiper Slide -->
+                            <div class="swiper-slide w-full flex justify-center">
                                 <div
-                                    class="w-16 h-1 bg-green-700 opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 translate-y-2 transition duration-500 delay-200">
+                                    class="group relative h-[400px] bg-cover bg-center bg-[url('{{ asset('storage/promotion/' . $promotion->image) }}')] rounded-lg shadow-md p-4 w-full max-w-xs flex flex-col justify-center items-center space-y-3 overflow-visible transition-all duration-500">
+
+                                    <!-- Overlay gelap saat hover -->
+                                    <div
+                                        class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-500 rounded-lg z-0">
+                                    </div>
+
+                                    <!-- Judul -->
+                                    <h3
+                                        class="text-green-700 group-hover:text-white font-bold text-lg text-center opacity-0 group-hover:opacity-100 transform group-hover:-translate-y-2 transition duration-500 delay-100 z-10">
+                                        {{ $promotion->title }}
+                                    </h3>
+
+                                    <!-- Garis bawah -->
+                                    <div
+                                        class="w-16 h-1 bg-green-700 group-hover:bg-white opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 translate-y-2 transition duration-500 delay-200 z-10">
+                                    </div>
+
+                                    <!-- Tombol -->
+                                    <button onclick="showModal('modalImage')" data-image="{{ asset('storage/promotion/' . $promotion->image) }}"
+                                        class="text-white bg-green-700 px-4 py-2 text-sm rounded-md opacity-0 group-hover:opacity-100 transform group-hover:-translate-y-1 scale-95 group-hover:scale-100 transition duration-500 delay-300 z-10">
+                                        Selengkapnya
+                                    </button>
+
+                                    <!-- Angka pojok kanan bawah -->
+                                    <div
+                                        class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800 z-10">
+                                        {{ $loop->iteration }}
+                                    </div>
                                 </div>
-
-                                <!-- Tombol -->
-                                <a href="#"
-                                    class="text-white bg-green-700 px-4 py-2 text-sm rounded-md opacity-0 group-hover:opacity-100 transform group-hover:-translate-y-1 scale-95 group-hover:scale-100 transition duration-500 delay-300">
-                                    Selengkapnya
-                                </a>
-
-                                <!-- Angka pojok kanan bawah -->
-                                <div
-                                    class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
-                                    1
-                                </div>
-
                             </div>
-                        </div>
-
-
-                        <!-- Card 1 -->
-                        <div class="swiper-slide w-full flex justify-center">
-                            <div
-                                class="group h-[400px] bg-cover bg-[url('https://www.rsi.co.id/media/k2/items/cache/4723ef876aca4c7cd452b3e97715d01b_XL.webp')]  bg-gray-100 hover:bg-green-700 transition-all duration-300 rounded-lg p-4 h-72 shadow-md relative flex flex-col items-center justify-center space-y-3 w-full max-w-xs overflow-visible">
-
-                                <!-- Judul -->
-                                <h3
-                                    class="text-green-700 group-hover:text-green-800 font-bold text-lg text-center opacity-0 group-hover:opacity-100 transform group-hover:-translate-y-2 transition duration-500 delay-100">
-                                    24 Jam Unit Gawat Darurat
-                                </h3>
-
-                                <!-- Garis bawah -->
-                                <div
-                                    class="w-16 h-1 bg-green-700 opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 translate-y-2 transition duration-500 delay-200">
-                                </div>
-
-                                <!-- Tombol -->
-                                <a href="#"
-                                    class="text-white bg-green-700 px-4 py-2 text-sm rounded-md opacity-0 group-hover:opacity-100 transform group-hover:-translate-y-1 scale-95 group-hover:scale-100 transition duration-500 delay-300">
-                                    Selengkapnya
-                                </a>
-
-                                <!-- Angka pojok kanan bawah -->
-                                <div
-                                    class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
-                                    1
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- Card 1 -->
-                        <div class="swiper-slide w-full flex justify-center">
-                            <div
-                                class="group h-[400px] bg-cover bg-[url('https://www.rsi.co.id/media/k2/items/cache/4723ef876aca4c7cd452b3e97715d01b_XL.webp')]  bg-gray-100 hover:bg-green-700 transition-all duration-300 rounded-lg p-4 h-72 shadow-md relative flex flex-col items-center justify-center space-y-3 w-full max-w-xs overflow-visible">
-
-                                <!-- Judul -->
-                                <h3
-                                    class="text-green-700 group-hover:text-green-800 font-bold text-lg text-center opacity-0 group-hover:opacity-100 transform group-hover:-translate-y-2 transition duration-500 delay-100">
-                                    24 Jam Unit Gawat Darurat
-                                </h3>
-
-                                <!-- Garis bawah -->
-                                <div
-                                    class="w-16 h-1 bg-green-700 opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 translate-y-2 transition duration-500 delay-200">
-                                </div>
-
-                                <!-- Tombol -->
-                                <a href="#"
-                                    class="text-white bg-green-700 px-4 py-2 text-sm rounded-md opacity-0 group-hover:opacity-100 transform group-hover:-translate-y-1 scale-95 group-hover:scale-100 transition duration-500 delay-300">
-                                    Selengkapnya
-                                </a>
-
-                                <!-- Angka pojok kanan bawah -->
-                                <div
-                                    class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
-                                    1
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!-- Card 1 -->
-                        <div class="swiper-slide w-full flex justify-center">
-                            <div
-                                class="group h-[400px] bg-cover bg-[url('https://www.rsi.co.id/media/k2/items/cache/4723ef876aca4c7cd452b3e97715d01b_XL.webp')]  bg-gray-100 hover:bg-green-700 transition-all duration-300 rounded-lg p-4 h-72 shadow-md relative flex flex-col items-center justify-center space-y-3 w-full max-w-xs overflow-visible">
-
-                                <!-- Judul -->
-                                <h3
-                                    class="text-green-700 group-hover:text-green-800 font-bold text-lg text-center opacity-0 group-hover:opacity-100 transform group-hover:-translate-y-2 transition duration-500 delay-100">
-                                    24 Jam Unit Gawat Darurat
-                                </h3>
-
-                                <!-- Garis bawah -->
-                                <div
-                                    class="w-16 h-1 bg-green-700 opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 translate-y-2 transition duration-500 delay-200">
-                                </div>
-
-                                <!-- Tombol -->
-                                <a href="#"
-                                    class="text-white bg-green-700 px-4 py-2 text-sm rounded-md opacity-0 group-hover:opacity-100 transform group-hover:-translate-y-1 scale-95 group-hover:scale-100 transition duration-500 delay-300">
-                                    Selengkapnya
-                                </a>
-
-                                <!-- Angka pojok kanan bawah -->
-                                <div
-                                    class="absolute -bottom-6 right-4 w-12 h-12 bg-white border-4 border-green-300 rounded-full flex items-center justify-center text-xl font-bold text-gray-800">
-                                    1
-                                </div>
-
-                            </div>
-                        </div>
-
+                        @endforeach
                     </div>
+
 
                     <!-- Optional: Navigasi & Pagination -->
                     <div class="swiper-pagination mt-6"></div>
@@ -729,4 +644,32 @@
             </div>
         </div>
     </section>
+    <!-- Modal Fullscreen -->
+    <div id="modalImage" class="fixed inset-0 z-50 bg-black bg-opacity-80 hidden items-center justify-center">
+        <div class="relative max-w-4xl w-full mx-auto p-4">
+            <!-- Tombol Close -->
+            <button onclick="hideModal('modalImage')"
+                class="absolute top-4 right-4 text-white text-3xl font-bold z-50">&times;</button>
+
+            <!-- Gambar Besar -->
+            <img src="https://www.rsi.co.id/media/k2/items/cache/4723ef876aca4c7cd452b3e97715d01b_XL.webp"
+                alt="Gambar Besar" id="modalImageContent"
+                class="w-[500px] rounded-lg shadow-lg transition-transform duration-500 transform scale-100 hover:scale-105">
+        </div>
+    </div>
+
+    <!-- Script Modal -->
+    <script>
+        function showModal(id) {
+            const imageSrc = event.target.getAttribute('data-image');
+            document.getElementById('modalImageContent').src = imageSrc;
+            document.getElementById(id).classList.remove('hidden');
+            document.getElementById(id).classList.add('flex');
+        }
+
+        function hideModal(id) {
+            document.getElementById(id).classList.remove('flex');
+            document.getElementById(id).classList.add('hidden');
+        }
+    </script>
 @endsection
