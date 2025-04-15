@@ -149,7 +149,7 @@
                 </li><!--//nav-item-->
                 <li class="nav-item">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                    <a class="nav-link" href="charts.html">
+                    <a class="nav-link {{ Route::is('partner.index') ? 'active' : '' }} " href="{{ route('partner.index') }}">
                         <span class="nav-icon ml-2">
                             <i class="fa-solid fa-handshake-angle fa-xl"></i>
                         </span>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Berita;
 use App\Models\Dokter;
 use App\Models\Kamar;
+use App\Models\Partner;
 use App\Models\Pelayanan;
 use App\Models\Poliklinik;
 use App\Models\PromosiUnggulan;
@@ -35,9 +36,11 @@ class LandingPageController extends Controller
         $promosiUnggulans = PromosiUnggulan::orderBy('created_at','desc')->get();
 
         $kamars = Kamar::orderBy('created_at','desc')->get();
+
+        $partners = Partner::orderBy('created_at','desc')->get();
         // Kirim data ke view
         return view("welcome", 
         compact('sliders', 
-        'unggulans', 'beritas','pelayanans','polikliniks','dokters','promotions', 'promosiUnggulans','kamars'));
+        'unggulans', 'beritas','pelayanans','polikliniks','dokters','promotions', 'promosiUnggulans','kamars','partners'));
     }
 }

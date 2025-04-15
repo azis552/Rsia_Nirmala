@@ -20,10 +20,10 @@
             <p><i class="fa fa-ambulance mr-1"></i> {{ @$profil->telepondarurat != null ? @$profil->telepondarurat : 'Telepon belum tersedia.' }}</p>
             <p><i class="fa fa-stethoscope mr-1"></i> {{ @$profil->teleponpendaftaran != null ? @$profil->teleponpendaftaran : 'Telepon belum tersedia.'  }}</p>
             <div class="flex gap-2 mt-2">
-                <a href="#"><i class="fab fa-facebook-square text-xl text-green-700"></i></a>
-                <a href="#"><i class="fab fa-instagram text-xl text-green-700"></i></a>
-                <a href="#"><i class="fab fa-youtube text-xl text-green-700"></i></a>
-                <a href="#"><i class="fab fa-tiktok text-xl text-green-700"></i></a>
+                <a href="{{ @$profil->facebook != null ? @$profil->facebook : '#' }}"><i class="fab fa-facebook-square text-xl text-green-700"></i></a>
+                <a href="{{ @$profil->instagram != null ? @$profil->instagram : '#' }}"><i class="fab fa-instagram text-xl text-green-700"></i></a>
+                <a href="{{ @$profil->youtube != null ? @$profil->youtube : '#' }}"><i class="fab fa-youtube text-xl text-green-700"></i></a>
+                <a href="{{ @$profil->tiktok != null ? @$profil->tiktok : '#' }}"><i class="fab fa-tiktok text-xl text-green-700"></i></a>
             </div>
         </div>
 
@@ -31,11 +31,14 @@
         <div class="space-y-2">
             <h3 class="text-green-700 font-semibold border-l-4 border-green-700 pl-2">Informasi</h3>
             <ul class="space-y-1 text-green-800">
-                <li class="flex items-center gap-2"><span class="h-2 w-2 bg-green-600 rounded-full"></span> Jadwal
-                    Dokter</li>
+                <li class="flex items-center gap-2"><span class="h-2 w-2 bg-green-600 rounded-full"></span> 
+                <a href="{{ route('dokterlengkap') }}">Jadwal Dokter</a>
+                </li>
                 <li class="flex items-center gap-2"><span class="h-2 w-2 bg-green-600 rounded-full"></span>
-                    Ketersediaan Kamar Tidur</li>
-                <li class="flex items-center gap-2"><span class="h-2 w-2 bg-green-600 rounded-full"></span> Berita
+                    <a href="{{ route('poliklinik.lengkap') }}">Poliklinik</a>
+                </li>
+                <li class="flex items-center gap-2"><span class="h-2 w-2 bg-green-600 rounded-full"></span> 
+                    <a href="{{ route('pelayanan.lengkap') }}">Pelayanan</a>
                 </li>
             </ul>
         </div>

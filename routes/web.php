@@ -7,6 +7,7 @@ use App\Http\Controllers\DokterController;
 use App\Http\Controllers\JadwalDokterController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PelayananController;
 use App\Http\Controllers\PoliklinikController;
 use App\Http\Controllers\ProfilController;
@@ -76,4 +77,7 @@ route::middleware('auth')->group(function () {
 
     // Kamar Routes
     Route::resource('kamar', KamarController::class)->except(['show', 'edit']);
+
+    // Partner Routes
+    Route::resource('partner', PartnerController::class)->except(['show', 'edit']);
 });

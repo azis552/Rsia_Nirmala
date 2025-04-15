@@ -429,7 +429,8 @@
                             <p class="text-sm">
                                 {{ Str::limit($promosiUnggulan->description, 100) }}
                             </p>
-                            <a href="{{ route('promosiUnggulan.show', $promosiUnggulan->id) }}" class="text-white underline">Selengkapnya</a>
+                            <a href="{{ route('promosiUnggulan.show', $promosiUnggulan->id) }}"
+                                class="text-white underline">Selengkapnya</a>
                         </div>
 
                         <!-- Gambar -->
@@ -441,13 +442,14 @@
                                             $image = 'image' . $i;
                                         @endphp
                                         @if (!empty($promosiUnggulan->$image))
-                                         <div class="swiper-slide">
-                                            <div
-                                                class="border border-gray-300 rounded-xl p-3 shadow-md hover:shadow-lg transition duration-300 bg-white">
-                                                <img src="{{ asset('storage/fasilitasUnggulan/' . $promosiUnggulan->$image) }}"
-                                                    alt="Gambar Artikel" class="w-full h-auto rounded-lg object-cover" />
+                                            <div class="swiper-slide">
+                                                <div
+                                                    class="border border-gray-300 rounded-xl p-3 shadow-md hover:shadow-lg transition duration-300 bg-white">
+                                                    <img src="{{ asset('storage/fasilitasUnggulan/' . $promosiUnggulan->$image) }}"
+                                                        alt="Gambar Artikel"
+                                                        class="w-full h-auto rounded-lg object-cover" />
+                                                </div>
                                             </div>
-                                        </div>
                                         @endif
                                     @endfor
 
@@ -549,11 +551,12 @@
                 <div class="md:w-2/3">
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 bg-green-800/40 p-6 rounded-xl">
                         @foreach ($kamars as $kamar)
-                                                    <!-- Contoh Kartu Kamar -->
-                        <a href="{{ Route("kamar.show", $kamar->id) }}" class="bg-white/10 hover:bg-white/20 p-4 rounded-lg transition text-white">
-                            <h3 class="font-semibold">{{ $kamar->name }}</h3>
-                            <p class="text-sm opacity-80">{{ $kamar->kelas }}</p>
-                        </a>
+                            <!-- Contoh Kartu Kamar -->
+                            <a href="{{ Route('kamar.show', $kamar->id) }}"
+                                class="bg-white/10 hover:bg-white/20 p-4 rounded-lg transition text-white">
+                                <h3 class="font-semibold">{{ $kamar->name }}</h3>
+                                <p class="text-sm opacity-80">{{ $kamar->kelas }}</p>
+                            </a>
                         @endforeach
 
                     </div>
@@ -574,25 +577,22 @@
         <div class="md:w-3/4 mx-auto w-full">
             <div class="swiper mySwiperDokter h-full w-full">
                 <div class="swiper-wrapper ml-10 md:ml-0">
-                    @foreach ($dokters as $dokter)
+                    @foreach ($partners as $partner)
                         <!-- Card 1 -->
                         <div class="swiper-slide w-full ">
                             <div class="max-w-xs h-full rounded-xl overflow-hidden shadow-lg bg-white relative">
-                                <!-- Background hijau hanya di bagian atas -->
-                                <div class="absolute top-0 left-0 w-full h-[70%] z-0 overflow-hidden">
-                                    <div class="w-full h-full bg-green-700 rounded-br-[160px] rounded-tl-[160px]"></div>
-                                </div>
+
 
                                 <!-- Foto dokter (gunakan img jika ada gambar, di sini pakai placeholder) -->
                                 <div class="relative z-10 p-4 flex flex-col items-center">
-                                    <img src="{{ asset('storage/dokter/' . $dokter->foto) }}" alt="Foto Dokter"
-                                        class="w-55 h-55 object-cover  border-2 border-white shadow-md mb-4">
+                                    <div class="w-[220px] h-[220px] overflow-hidden rounded-md border-2 border-white shadow-md mb-4">
+                                        <img src="{{ asset('storage/partner/' . $partner->image) }}" alt="Foto Partner"
+                                             class="w-full h-full object-cover">
+                                    </div>
                                     <div class="text-center mt-2">
                                         <p class="text-sm font-semibold text-white bg-green-700 px-3 py-1 rounded-t-md">
-                                            {{ $dokter->poliklinik->name }}</p>
-                                        <p
-                                            class="text-green-700 bg-green-200 text-base font-medium px-3 py-2 rounded-b-md">
-                                            {{ $dokter->name }}</p>
+                                            {{ $partner->name }}</p>
+                                       
                                     </div>
                                 </div>
                             </div>
