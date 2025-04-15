@@ -13,6 +13,7 @@ use App\Http\Controllers\PoliklinikController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\PromosiUnggulan as ControllersPromosiUnggulan;
 use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\RujukanController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\UnggulanController;
 use App\Models\PromosiUnggulan;
@@ -80,4 +81,7 @@ route::middleware('auth')->group(function () {
 
     // Partner Routes
     Route::resource('partner', PartnerController::class)->except(['show', 'edit']);
+
+    // Rujukan Routes
+    Route::resource('rujukan', RujukanController::class)->except(['show', 'edit']);
 });

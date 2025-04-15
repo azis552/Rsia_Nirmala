@@ -156,6 +156,15 @@
                         <span class="nav-link-text">Partner</span>
                     </a><!--//nav-link-->
                 </li><!--//nav-item-->
+                <li class="nav-item">
+                    <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                    <a class="nav-link {{ Route::is('rujukan.index') ? 'active' : '' }} " href="{{ route('rujukan.index') }}">
+                        <span class="nav-icon ml-2">
+                            <i class="fa-solid fa-hospital-user fa-xl"></i>
+                        </span>
+                        <span class="nav-link-text">Rujukan</span>
+                    </a><!--//nav-link-->
+                </li><!--//nav-item-->
             </ul><!--//app-menu-->
         </nav><!--//app-nav-->
         <div class="app-sidepanel-footer">
