@@ -131,7 +131,7 @@ class PelayananController extends Controller
             $file = $request->file('gambar1');
             $filenameGambar1 = time() . rand(1, 1000) . '_' . $file->getClientOriginalName();
             $file->move(public_path('/storage/pelayanan'), $filenameGambar1);
-            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image1))) {
+            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image1)) && $pelayanan->image1 != null) {
                 unlink(public_path('/storage/pelayanan/' . $pelayanan->image1));
             }
             $pelayanan->image1 = $filenameGambar1;
@@ -140,7 +140,7 @@ class PelayananController extends Controller
             $file = $request->file('gambar2');
             $filenameGambar2 = time() . rand(1, 1000) . '_' . $file->getClientOriginalName();
             $file->move(public_path('/storage/pelayanan'), $filenameGambar2);
-            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image2))) {
+            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image2)) && $pelayanan->image2 != null) {
                 unlink(public_path('/storage/pelayanan/' . $pelayanan->image2));
             }
             $pelayanan->image2 = $filenameGambar2;
@@ -149,7 +149,7 @@ class PelayananController extends Controller
             $file = $request->file('gambar3');
             $filenameGambar3 = time() . rand(1, 1000) . '_' . $file->getClientOriginalName();
             $file->move(public_path('/storage/pelayanan'), $filenameGambar3);
-            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image3))) {
+            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image3)) && $pelayanan->image3 != null) {
                 unlink(public_path('/storage/pelayanan/' . $pelayanan->image3));
             }
             $pelayanan->image3 = $filenameGambar3;
@@ -158,7 +158,7 @@ class PelayananController extends Controller
             $file = $request->file('gambar4');
             $filenameGambar4 = time() . rand(1, 1000) . '_' . $file->getClientOriginalName();
             $file->move(public_path('/storage/pelayanan'), $filenameGambar4);
-            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image4))) {
+            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image4)) && $pelayanan->image4 != null) {
                 unlink(public_path('/storage/pelayanan/' . $pelayanan->image4));
             }
             $pelayanan->image4 = $filenameGambar4;
@@ -167,7 +167,7 @@ class PelayananController extends Controller
             $file = $request->file('gambar5');
             $filenameGambar5 = time() . rand(1, 1000) . '_' . $file->getClientOriginalName();
             $file->move(public_path('/storage/pelayanan'), $filenameGambar5);
-            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image5))) {
+            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image5)) && $pelayanan->image5 != null) {
                 unlink(public_path('/storage/pelayanan/' . $pelayanan->image5));
             }
             $pelayanan->image5 = $filenameGambar5;
@@ -188,19 +188,19 @@ class PelayananController extends Controller
     {
         $pelayanan = pelayanan::find($id);
         if ($pelayanan->delete()) {
-            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image1))) {
+            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image1)) && $pelayanan->image1 != null) {
                 unlink(public_path('/storage/pelayanan/' . $pelayanan->image1));
             }
-            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image2))) {
+            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image2)) && $pelayanan->image2 != null) {
                 unlink(public_path('/storage/pelayanan/' . $pelayanan->image2));
             }
-            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image3))) {
+            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image3)) && $pelayanan->image3 != null) {
                 unlink(public_path('/storage/pelayanan/' . $pelayanan->image3));
             }
-            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image4))) {
+            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image4)) && $pelayanan->image4 != null) {
                 unlink(public_path('/storage/pelayanan/' . $pelayanan->image4));
             }
-            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image5))) {
+            if (file_exists(public_path('/storage/pelayanan/' . $pelayanan->image5)) && $pelayanan->image5 != null) {
                 unlink(public_path('/storage/pelayanan/' . $pelayanan->image5));
             }
         }

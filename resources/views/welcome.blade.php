@@ -344,7 +344,8 @@
                     </h2>
                     <div class="w-24 h-1 bg-green-700 mt-2"></div>
                 </div>
-                <a href="{{ route('promotion.selengkapnya') }}" class="inline-block bg-green-700 text-white px-4 py-2 text-sm mt-4 rounded-md w-fit">
+                <a href="{{ route('promotion.selengkapnya') }}"
+                    class="inline-block bg-green-700 text-white px-4 py-2 text-sm mt-4 rounded-md w-fit">
                     Lihat Semua
                 </a>
             </div>
@@ -378,7 +379,8 @@
                                     </div>
 
                                     <!-- Tombol -->
-                                    <button onclick="showModal('modalImage')" data-image="{{ asset('storage/promotion/' . $promotion->image) }}"
+                                    <button onclick="showModal('modalImage')"
+                                        data-image="{{ asset('storage/promotion/' . $promotion->image) }}"
                                         class="text-white bg-green-700 px-4 py-2 text-sm rounded-md opacity-0 group-hover:opacity-100 transform group-hover:-translate-y-1 scale-95 group-hover:scale-100 transition duration-500 delay-300 z-10">
                                         Selengkapnya
                                     </button>
@@ -410,80 +412,52 @@
 
         <div class="swiper myMainSwiper w-full">
             <div class="swiper-wrapper">
+                @foreach ($promosiUnggulans as $promosiUnggulan)
+                    <!-- Slide 1 -->
+                    <div
+                        class="swiper-slide flex flex-col md:flex-row items-center bg-green-700 bg-opacity-20 text-white rounded-lg overflow-hidden p-6">
 
-                <!-- Slide 1 -->
-                <div
-                    class="swiper-slide flex flex-col md:flex-row items-center bg-green-700 bg-opacity-20 text-white rounded-lg overflow-hidden p-6">
-
-                    <!-- Teks -->
-                    <div class="w-full md:w-1/2 space-y-4">
-                        <div class="border-l-8 border-white pl-4 mb-4">
-                            <h2 class="text-3xl md:text-4xl font-bold leading-tight">
-                                Rumah Sakit Ibu & Anak<br>Nirmala Kediri
-                            </h2>
-                        </div>
-                        <h2 class="text-xl font-bold">FASILITAS UNGGULAN</h2>
-                        <h4 class="text-xl mt-4 font-semibold text-white">Paviliun Muzdalifah 1 & 2</h4>
-                        <p class="text-sm">
-                            Fasilitas Tempat Tidur Elektrik, TV 43 Inch, Paket Beverage, Sofa Bed & Sofa Tamu, Kulkas
-                            Portable, Lemari Pakaian, Meja Nakas,...
-                        </p>
-                        <a href="#" class="text-white underline">Selengkapnya</a>
-                    </div>
-
-                    <!-- Gambar -->
-                    <div class="w-full md:w-1/2 mt-6 md:mt-0 md:pl-6">
-                        <div class="swiper imageSwiper rounded-lg overflow-hidden">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img src="https://www.rsi.co.id/media/k2/items/cache/4723ef876aca4c7cd452b3e97715d01b_XL.webp"
-                                        alt="Kamar 1" class="rounded-lg w-full h-auto object-cover">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="https://via.placeholder.com/600x400?text=Kamar+2" alt="Kamar 2"
-                                        class="rounded-lg w-full h-auto object-cover">
-                                </div>
+                        <!-- Teks -->
+                        <div class="w-full md:w-1/2 space-y-4">
+                            <div class="border-l-8 border-white pl-4 mb-4">
+                                <h2 class="text-3xl md:text-4xl font-bold leading-tight">
+                                    Rumah Sakit Ibu & Anak<br>Nirmala Kediri
+                                </h2>
                             </div>
-                            <div class="swiper-button-next text-white"></div>
-                            <div class="swiper-button-prev text-white"></div>
+                            <h2 class="text-xl font-bold">FASILITAS UNGGULAN</h2>
+                            <h4 class="text-xl mt-4 font-semibold text-white">{{ $promosiUnggulan->name }}</h4>
+                            <p class="text-sm">
+                                {{ Str::limit($promosiUnggulan->description, 100) }}
+                            </p>
+                            <a href="{{ route('promosiUnggulan.show', $promosiUnggulan->id) }}" class="text-white underline">Selengkapnya</a>
                         </div>
-                    </div>
-                </div>
 
-                <!-- Slide 2 -->
-                <div
-                    class="swiper-slide flex flex-col md:flex-row items-center bg-green-700 bg-opacity-20 text-white rounded-lg overflow-hidden p-6">
+                        <!-- Gambar -->
+                        <div class="w-full md:w-1/2 mt-6 md:mt-0 md:pl-6">
+                            <div class="swiper imageSwiper rounded-lg overflow-hidden">
+                                <div class="swiper-wrapper">
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @php
+                                            $image = 'image' . $i;
+                                        @endphp
+                                        @if (!empty($promosiUnggulan->$image))
+                                         <div class="swiper-slide">
+                                            <div
+                                                class="border border-gray-300 rounded-xl p-3 shadow-md hover:shadow-lg transition duration-300 bg-white">
+                                                <img src="{{ asset('storage/fasilitasUnggulan/' . $promosiUnggulan->$image) }}"
+                                                    alt="Gambar Artikel" class="w-full h-auto rounded-lg object-cover" />
+                                            </div>
+                                        </div>
+                                        @endif
+                                    @endfor
 
-                    <!-- Teks -->
-                    <div class="w-full md:w-1/2 space-y-4">
-                        <h2 class="text-xl font-bold">FASILITAS UNGGULAN</h2>
-                        <h3 class="text-2xl font-bold">RSIA Nirmala Kediri</h3>
-                        <h4 class="text-xl mt-4 font-semibold text-white">Paviliun Muzdalifah 1 & 2</h4>
-                        <p class="text-sm">
-                            Fasilitas Tempat Tidur Elektrik, TV 43 Inch, Paket Beverage, Sofa Bed & Sofa Tamu, Kulkas
-                            Portable, Lemari Pakaian, Meja Nakas,...
-                        </p>
-                        <a href="#" class="text-white underline">Selengkapnya</a>
-                    </div>
-
-                    <!-- Gambar -->
-                    <div class="w-full md:w-1/2 mt-6 md:mt-0 md:pl-6">
-                        <div class="swiper imageSwiper rounded-lg overflow-hidden">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img src="https://www.rsi.co.id/media/k2/items/cache/4723ef876aca4c7cd452b3e97715d01b_XL.webp"
-                                        alt="Kamar 1" class="rounded-lg w-full h-auto object-cover">
                                 </div>
-                                <div class="swiper-slide">
-                                    <img src="https://www.rsi.co.id/media/k2/items/cache/48b2caa4acdcf286e67d646faa59fcbf_L.webp"
-                                        alt="Kamar 2" class="rounded-lg w-full h-auto object-cover">
-                                </div>
+                                <div class="swiper-button-next text-white"></div>
+                                <div class="swiper-button-prev text-white"></div>
                             </div>
-                            <div class="swiper-button-next text-white"></div>
-                            <div class="swiper-button-prev text-white"></div>
                         </div>
                     </div>
-                </div>
+                @endforeach
 
             </div>
             <div class="swiper-pagination mt-4"></div>
@@ -574,25 +548,14 @@
                 <!-- Kolom Kanan: List Kamar -->
                 <div class="md:w-2/3">
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 bg-green-800/40 p-6 rounded-xl">
-
-                        <!-- Contoh Kartu Kamar -->
-                        <a href="#" class="bg-white/10 hover:bg-white/20 p-4 rounded-lg transition text-white">
-                            <h3 class="font-semibold">Paviliun Annisa</h3>
-                            <p class="text-sm opacity-80">VIP</p>
+                        @foreach ($kamars as $kamar)
+                                                    <!-- Contoh Kartu Kamar -->
+                        <a href="{{ Route("kamar.show", $kamar->id) }}" class="bg-white/10 hover:bg-white/20 p-4 rounded-lg transition text-white">
+                            <h3 class="font-semibold">{{ $kamar->name }}</h3>
+                            <p class="text-sm opacity-80">{{ $kamar->kelas }}</p>
                         </a>
+                        @endforeach
 
-                        <a href="#" class="bg-white/10 hover:bg-white/20 p-4 rounded-lg transition text-white">
-                            <h3 class="font-semibold">Paviliun Annisa</h3>
-                            <p class="text-sm opacity-80">Kelas 3</p>
-                        </a>
-
-                        <a href="#" class="bg-white/10 hover:bg-white/20 p-4 rounded-lg transition text-white">
-                            <h3 class="font-semibold">Paviliun Annisa</h3>
-                            <p class="text-sm opacity-80">Kelas 2</p>
-                        </a>
-
-                        <!-- Duplikat sesuai jumlah kamar -->
-                        <!-- ... -->
                     </div>
                 </div>
 

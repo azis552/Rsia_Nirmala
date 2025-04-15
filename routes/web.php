@@ -5,20 +5,23 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\JadwalDokterController;
+use App\Http\Controllers\KamarController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PelayananController;
 use App\Http\Controllers\PoliklinikController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\PromosiUnggulan as ControllersPromosiUnggulan;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\UnggulanController;
-
+use App\Models\PromosiUnggulan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
 
-
+Route::get('kamar/{id}', [KamarController::class, 'show'])->name('kamar.show');
 Route::get('promotionlengkap', [PromotionController::class, 'promotionLengkap'])->name('promotion.selengkapnya');
+Route::get('promosiUnggulan/{id}', [ControllersPromosiUnggulan::class, 'show'])->name('promosiUnggulan.show');
 Route::get('berita/{slug}', [BeritaController::class, 'show'])->name('berita.show');
 Route::get('pelayanan/{slug}', [PelayananController::class, 'show'])->name('pelayanan.show');
 Route::get('poliklinik/{slug}', [PoliklinikController::class, 'show'])->name('poliklinik.show');
@@ -39,8 +42,6 @@ route::middleware('auth')->group(function () {
     Route::get('akun', [AuthController::class, 'akun'])->name('akun');
     Route::post('akun', [AuthController::class, 'store'])->name('akun.store');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-    
-
     // Slider Routes
     Route::resource('slider', SliderController::class)->except(['show', 'edit']);
 
@@ -69,4 +70,10 @@ route::middleware('auth')->group(function () {
     // Promotion Routes
 
     Route::resource('promotion', PromotionController::class)->except(['show', 'edit']);
+
+    // Fasilitas Unggulan Routes = promosi unggulan
+    Route::resource('fasilitasUnggulan',ControllersPromosiUnggulan::class)->except(['show', 'edit']);
+
+    // Kamar Routes
+    Route::resource('kamar', KamarController::class)->except(['show', 'edit']);
 });

@@ -129,16 +129,29 @@
                         <span class="nav-link-text">Fasilitas</span>
                     </a><!--//nav-link-->
                 </li><!--//nav-item-->
-                
+                <li class="nav-item">
+                    <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                    <a class="nav-link {{ Route::is('kamar.index') ? 'active' : '' }}" href="{{ route('kamar.index') }}">
+                        <span class="nav-icon ml-2">
+                            <i class="fa-solid fa-bed fa-xl"></i>
+                        </span>
+                        <span class="nav-link-text">Kamar</span>
+                    </a><!--//nav-link-->
+                </li><!--//nav-item-->
+                <li class="nav-item">
+                    <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                    <a class="nav-link {{ Route::is('fasilitasUnggulan.index') ? 'active' : '' }}" href="{{ route('fasilitasUnggulan.index') }}">
+                        <span class="nav-icon ml-2">
+                            <i class="fa-solid fa-toolbox fa-xl"></i> 
+                        </span>
+                        <span class="nav-link-text">Fasilitas Unggulan</span>
+                    </a><!--//nav-link-->
+                </li><!--//nav-item-->
                 <li class="nav-item">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                     <a class="nav-link" href="charts.html">
-                        <span class="nav-icon">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bar-chart-line"
-                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z" />
-                            </svg>
+                        <span class="nav-icon ml-2">
+                            <i class="fa-solid fa-handshake-angle fa-xl"></i>
                         </span>
                         <span class="nav-link-text">Partner</span>
                     </a><!--//nav-link-->
