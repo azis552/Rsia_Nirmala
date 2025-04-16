@@ -38,13 +38,14 @@
                             <thead>
                                 <tr>
                                     <th>ID Rujukan</th>
+                                    <th>Faskes</th>
+                                    <th>Status</th>
                                     <th>Nik</th>
                                     <th>Nama</th>
                                     <th>No Rujukan</th>
                                     <th>Kategori Rujukan</th>
                                     <th>Dokter Perujuk</th>
                                     <th>Diagnosa</th>
-                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -52,13 +53,27 @@
                                 @foreach ($rujukans as $rujukan)
                                     <tr>
                                         <td>{{ $rujukan->rujukan_id }}</td>
+                                        <td>{{ @$rujukan->faskes->faskes }}</td>
+                                        <td> 
+                                            @if ($rujukan->status == 'menunggu')
+                                                <span class="badge" style="background-color: rgb(10, 64, 82) ;" >{{ $rujukan->status }}</span>
+                                            @elseif ($rujukan->status == 'diterima')
+                                                <span class="badge" style="background-color: lightgreen " >{{ $rujukan->status }}</span>
+                                            @elseif ($rujukan->status == 'ditolak')
+                                                <span class="badge" style="background-color: lightcoral " >{{ $rujukan->status }}</span>
+                                            @elseif ($rujukan->status == 'Dibatalkan')
+                                                <span class="badge" style="background-color: lightgray " >{{ $rujukan->status }}</span>
+                                            @else
+                                                <span class="badge" style="background-color: lightyellow " >{{ $rujukan->status }}</span>
+                                            @endif
+                                        </td>
                                         <td>{{ $rujukan->nik }}</td>
                                         <td>{{ $rujukan->nama }}</td>
-                                        <td>{{ $rujukan->no_rujukan }}</td>
-                                        <td>{{ $rujukan->kategori_rujukan }}</td>
-                                        <td>{{ $rujukan->dokter_perujuk }}</td>
-                                        <td>{{ $rujukan->diagnosa }}</td>
-                                        <td>{{ $rujukan->status }}</td>
+                                        <td>{{ $rujukan->No_Rujukan }}</td>
+                                        <td>{{ $rujukan->Kategori_Rujukan }}</td>
+                                        <td>{{ $rujukan->Dokter_Perujuk }}</td>
+                                        <td>{{ $rujukan->Diagnosa }}</td>
+                                        
                                         <td>
                                             <form action="{{ Route('rujukan.destroy', $rujukan->id) }}" method="post">
                                                 @csrf
@@ -66,16 +81,30 @@
                                                 <button type="button" class="btn btn-warning text-white btn-edit"
                                                     data-bs-toggle="modal" data-bs-target="#modalShow"
                                                     data-id="{{ $rujukan->id }}"
-                                                    data-keterangan= "{{ $rujukan->keterangan }}">
+                                                    data-keterangan= "{{ $rujukan->Keterangan }}">
 
-                                                    <i class="fa-solid fa-circle-info"></i>
+                                                    <i class="fa-solid fa-circle-info"></i> Detail
                                                 </button>
                                                 <button type="button" class="btn btn-warning text-white btn-edit"
                                                     data-bs-toggle="modal" data-bs-target="#modalEdit"
                                                     data-id="{{ $rujukan->id }}"
                                                     data-keterangan= "{{ $rujukan->keterangan }}">
 
-                                                    <i class="fa-solid fa-pen-ruler"></i>
+                                                    <i class="fa-solid fa-pen-ruler"></i> Batal
+                                                </button>
+                                                <button type="button" class="btn btn-warning text-white btn-edit"
+                                                    data-bs-toggle="modal" data-bs-target="#modalEdit"
+                                                    data-id="{{ $rujukan->id }}"
+                                                    data-keterangan= "{{ $rujukan->keterangan }}">
+
+                                                    <i class="fa-solid fa-pen-ruler"></i> Terima
+                                                </button>
+                                                <button type="button" class="btn btn-warning text-white btn-edit"
+                                                    data-bs-toggle="modal" data-bs-target="#modalEdit"
+                                                    data-id="{{ $rujukan->id }}"
+                                                    data-keterangan= "{{ $rujukan->keterangan }}">
+
+                                                    <i class="fa-solid fa-pen-ruler"></i> Edit
                                                 </button>
                                                 <button type="submit"
                                                     onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"
@@ -107,40 +136,61 @@
                                 <form id="formTambah" action="{{ Route('rujukan.store') }}" method="post"
                                     enctype="multipart/form-data">
                                     @csrf
-                                    <div class="mb-3">
-                                        <label for="nama" class="form-label">Nama</label>
-                                        <input type="text" class="form-control" id="nama" name="nama" required>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label for="nama" class="form-label">Nama</label>
+                                                <input type="text" class="form-control" id="nama" name="nama"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label for="nik" class="form-label">NIK</label>
+                                                <input type="text" class="form-control" id="nik" name="nik"
+                                                    required>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="nik" class="form-label">NIK</label>
-                                        <input type="text" class="form-control" id="nik" name="nik" required>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label for="no_rujukan" class="form-label">No Rujukan</label>
+                                                <input type="text" class="form-control" id="no_rujukan" name="no_rujukan"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label for="dokter_perujuk" class="form-label">Dokter Perujuk</label>
+                                                <input type="text" class="form-control" id="dokter_perujuk"
+                                                    name="dokter_perujuk" required>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="no_rujukan" class="form-label">No Rujukan</label>
-                                        <input type="text" class="form-control" id="no_rujukan" name="no_rujukan"
-                                            required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="dokter_perujuk" class="form-label">Dokter Perujuk</label>
-                                        <input type="text" class="form-control" id="dokter_perujuk"
-                                            name="dokter_perujuk" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="diagnosa" class="form-label">Diagnosa</label>
-                                        <input type="text" class="form-control" id="diagnosa" name="diagnosa"
-                                            required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="kategori_rujukan" class="form-label">Kategori Rujukan</label>
-                                        <input type="text" class="form-control" id="kategori_rujukan"
-                                            name="kategori_rujukan" required>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label for="diagnosa" class="form-label">Diagnosa</label>
+                                                <input type="text" class="form-control" id="diagnosa" name="diagnosa"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label for="kategori_rujukan" class="form-label">Kategori Rujukan</label>
+                                                <input type="text" class="form-control" id="kategori_rujukan"
+                                                    name="kategori_rujukan" required>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="status" class="form-label">Keterangan</label>
                                         <input type="text" class="form-control" id="keterangan" name="keterangan"
                                             required>
                                     </div>
-                                    
+
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -156,7 +206,8 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="modalTambahLabel">Edit Data</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Tutup"></button>
                         </div>
                         <div class="modal-body">
                             <form id="formEdit" method="post" enctype="multipart/form-data">

@@ -7,6 +7,7 @@ use App\Http\Controllers\DokterController;
 use App\Http\Controllers\JadwalDokterController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PelayananController;
 use App\Http\Controllers\PoliklinikController;
@@ -83,5 +84,8 @@ route::middleware('auth')->group(function () {
     Route::resource('partner', PartnerController::class)->except(['show', 'edit']);
 
     // Rujukan Routes
-    Route::resource('rujukan', RujukanController::class)->except(['show', 'edit']);
+    Route::resource('rujukan', RujukanController::class)->except([ 'edit']);
+    Route::get('rujukan/{id}/updateStatus/{status}', [RujukanController::class, 'updateStatus'])->name('rujukan.updateStatus');
+
+    Route::resource('notifikasi', NotifikasiController::class)->except(['show', 'edit']);
 });

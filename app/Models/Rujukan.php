@@ -15,6 +15,14 @@ class Rujukan extends Model
         'Dokter_Perujuk',
         'Diagnosa',
         'Keterangan',
-        'status'
+        'status',
+        'faskes_id',
+        'admin_id',
     ];
+
+    public function faskes()
+    {
+        return $this->belongsTo(User::class, 'faskes_id');
+    }
+
 }

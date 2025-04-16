@@ -22,6 +22,10 @@ return new class extends Migration
             $table->string('Diagnosa');
             $table->text('Keterangan')->nullable();
             $table->enum('status', ['menunggu', 'diterima', 'ditolak'])->default('menunggu');
+            $table->unsignedBigInteger('faskes_id')->nullable();
+            $table->foreign('faskes_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('admin_id')->nullable();
+            $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

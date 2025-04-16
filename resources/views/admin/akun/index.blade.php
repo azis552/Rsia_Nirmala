@@ -68,6 +68,7 @@
                                                 <button type="button" class="btn btn-warning text-white btn-edit"
                                                     data-bs-toggle="modal" data-bs-target="#modalEdit"
                                                     data-id="{{ $user->id }}" data-name="{{ $user->name }}"
+                                                    data-faskes="{{ $user->faskes }}" 
                                                     data-email="{{ $user->email }}" data-role="{{ $user->role }}">
                                                     <i class="fa-solid fa-pen-ruler"></i>
                                                 </button>
@@ -200,12 +201,13 @@
             var name = $(this).data('name');
             var email = $(this).data('email');
             var role = $(this).data('role');
+            var faskes = $(this).data('faskes');
 
             $('#idEdit').val(id);
             $('#nameEdit').val(name);
             $('#emailEdit').val(email);
             $('#roleEdit').val(role);
-
+            $('#faskesEdit').val(faskes);
             $('#formEdit').attr('action', 'akunUpdate/' + id);
         });
     </script>
