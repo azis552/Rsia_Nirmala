@@ -30,21 +30,22 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <label for="" class="form-label">Faskes 1</label>
-                            <input type="text" name="faskes" class="form-control" id="faskes" readonly value="{{ @$rujukan->faskes->faskes }}">
+                            <input type="text" name="faskes" class="form-control" id="faskes" readonly
+                                value="{{ @$rujukan->faskes->faskes }}">
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="nama" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" value="{{ $rujukan->nama }}" readonly id="nama" name="nama"
-                                        required>
+                                    <input type="text" class="form-control" value="{{ $rujukan->nama }}" readonly
+                                        id="nama" name="nama" required>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="nik" class="form-label">NIK</label>
-                                    <input type="text" class="form-control" value="{{ $rujukan->nik }}" readonly id="nik" name="nik"
-                                        required>
+                                    <input type="text" class="form-control" value="{{ $rujukan->nik }}" readonly
+                                        id="nik" name="nik" required>
                                 </div>
                             </div>
                         </div>
@@ -52,15 +53,15 @@
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="no_rujukan" class="form-label">No Rujukan</label>
-                                    <input type="text" class="form-control" value="{{ $rujukan->No_Rujukan }}" readonly id="no_rujukan" name="no_rujukan"
-                                        required>
+                                    <input type="text" class="form-control" value="{{ $rujukan->No_Rujukan }}" readonly
+                                        id="no_rujukan" name="no_rujukan" required>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="dokter_perujuk" class="form-label">Dokter Perujuk</label>
-                                    <input type="text" class="form-control" value="{{ $rujukan->Dokter_Perujuk }}" readonly id="dokter_perujuk"
-                                        name="dokter_perujuk" required>
+                                    <input type="text" class="form-control" value="{{ $rujukan->Dokter_Perujuk }}"
+                                        readonly id="dokter_perujuk" name="dokter_perujuk" required>
                                 </div>
                             </div>
 
@@ -69,27 +70,33 @@
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="diagnosa" class="form-label">Diagnosa</label>
-                                    <input type="text" class="form-control" value="{{ $rujukan->Diagnosa }}" readonly id="diagnosa" name="diagnosa"
-                                        required>
+                                    <input type="text" class="form-control" value="{{ $rujukan->Diagnosa }}" readonly
+                                        id="diagnosa" name="diagnosa" required>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="kategori_rujukan" class="form-label">Kategori Rujukan</label>
-                                    <input type="text" class="form-control" value="{{ $rujukan->Kategori_Rujukan }}" readonly id="kategori_rujukan"
-                                        name="kategori_rujukan" required>
+                                    <input type="text" class="form-control" value="{{ $rujukan->Kategori_Rujukan }}"
+                                        readonly id="kategori_rujukan" name="kategori_rujukan" required>
                                 </div>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="status" class="form-label">Keterangan</label>
-                            <input type="text" class="form-control" id="keterangan" value="{{ $rujukan->Keterangan }}" readonly name="keterangan"
-                                required>
+                            <input type="text" class="form-control" id="keterangan" value="{{ $rujukan->Keterangan }}"
+                                readonly name="keterangan" required>
                         </div>
                     </div>
                     <div class="card-footer ">
-                        <a href="{{ route('rujukan.updateStatus',['id'=> $rujukan->id , 'status' => 'diterima'] ) }}" type="submit" class="btn btn-warning btn-sm">Terima</a>
-                        <a href="{{ route('rujukan.updateStatus',['id'=> $rujukan->id , 'status' => 'ditolak'] ) }}" type="submit" class="btn btn-danger btn-sm">Tolak</a>
+                        @if (Auth::user()->role == 'admin')
+                            <a href="{{ route('rujukan.updateStatus', ['id' => $rujukan->id, 'status' => 'diterima']) }}"
+                                type="submit" class="btn btn-warning btn-sm">Terima</a>
+                            <a href="{{ route('rujukan.updateStatus', ['id' => $rujukan->id, 'status' => 'ditolak']) }}"
+                                type="submit" class="btn btn-danger btn-sm">Tolak</a>
+                        @endif
+                        <a href="{{ route('rujukan.index') }}" class="btn btn-secondary btn-sm">Kembali</a>
+
                     </div>
                 </div><!--//container-fluid-->
             </div><!--//app-content-->

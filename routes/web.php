@@ -18,8 +18,9 @@ use App\Http\Controllers\RujukanController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\UnggulanController;
 use App\Models\PromosiUnggulan;
+use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\Facades\Route;
-
+Broadcast::routes(['middleware' => [ 'auth']]);
 Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
 
 Route::get('kamar/{id}', [KamarController::class, 'show'])->name('kamar.show');

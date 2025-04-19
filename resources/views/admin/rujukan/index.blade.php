@@ -37,6 +37,7 @@
                         <table id="myTable" class="display  nowrap" style="width:100%">
                             <thead>
                                 <tr>
+                                    <th>#</th>
                                     <th>ID Rujukan</th>
                                     <th>Faskes</th>
                                     <th>Status</th>
@@ -52,19 +53,25 @@
                             <tbody>
                                 @foreach ($rujukans as $rujukan)
                                     <tr>
-                                        <td>{{ $rujukan->rujukan_id }}</td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ Str::limit($rujukan->rujukan_id, 5) }}</td>
                                         <td>{{ @$rujukan->faskes->faskes }}</td>
-                                        <td> 
+                                        <td>
                                             @if ($rujukan->status == 'menunggu')
-                                                <span class="badge" style="background-color: rgb(10, 64, 82) ;" >{{ $rujukan->status }}</span>
+                                                <span class="badge"
+                                                    style="background-color: rgb(10, 64, 82) ;">{{ $rujukan->status }}</span>
                                             @elseif ($rujukan->status == 'diterima')
-                                                <span class="badge" style="background-color: lightgreen " >{{ $rujukan->status }}</span>
+                                                <span class="badge"
+                                                    style="background-color: lightgreen ">{{ $rujukan->status }}</span>
                                             @elseif ($rujukan->status == 'ditolak')
-                                                <span class="badge" style="background-color: lightcoral " >{{ $rujukan->status }}</span>
+                                                <span class="badge"
+                                                    style="background-color: lightcoral ">{{ $rujukan->status }}</span>
                                             @elseif ($rujukan->status == 'Dibatalkan')
-                                                <span class="badge" style="background-color: lightgray " >{{ $rujukan->status }}</span>
+                                                <span class="badge"
+                                                    style="background-color: lightgray ">{{ $rujukan->status }}</span>
                                             @else
-                                                <span class="badge" style="background-color: lightyellow " >{{ $rujukan->status }}</span>
+                                                <span class="badge"
+                                                    style="background-color: lightyellow ">{{ $rujukan->status }}</span>
                                             @endif
                                         </td>
                                         <td>{{ $rujukan->nik }}</td>
@@ -73,43 +80,48 @@
                                         <td>{{ $rujukan->Kategori_Rujukan }}</td>
                                         <td>{{ $rujukan->Dokter_Perujuk }}</td>
                                         <td>{{ $rujukan->Diagnosa }}</td>
-                                        
+
                                         <td>
                                             <form action="{{ Route('rujukan.destroy', $rujukan->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="button" class="btn btn-warning text-white btn-edit"
-                                                    data-bs-toggle="modal" data-bs-target="#modalShow"
-                                                    data-id="{{ $rujukan->id }}"
-                                                    data-keterangan= "{{ $rujukan->Keterangan }}">
 
+                                                <a href="{{ Route('rujukan.show', $rujukan->rujukan_id) }}"
+                                                    class="btn btn-info text-white">
                                                     <i class="fa-solid fa-circle-info"></i> Detail
-                                                </button>
-                                                <button type="button" class="btn btn-warning text-white btn-edit"
-                                                    data-bs-toggle="modal" data-bs-target="#modalEdit"
-                                                    data-id="{{ $rujukan->id }}"
-                                                    data-keterangan= "{{ $rujukan->keterangan }}">
+                                                </a>
+                                                @if (Auth::user()->role == 'admin')
+                                                    <a href="{{ route('rujukan.updateStatus', ['id' => $rujukan->id, 'status' => 'diterima']) }}"
+                                                        class="btn btn-warning text-white">
+                                                        <i class="fa-solid fa-check-to-slot"></i> Terima
+                                                    </a>
+                                                    <a href="{{ route('rujukan.updateStatus', ['id' => $rujukan->id, 'status' => 'ditolak']) }}"
+                                                        class="btn btn-danger text-white">
+                                                        <i class="fa-solid fa-square-xmark"></i> Tidak Diterima
+                                                    </a>
+                                                @endif
+                                                @if (Auth::user()->role == 'faskes1')
+                                                    @if ($rujukan->status == 'menunggu')
+                                                        <button type="button" class="btn btn-warning text-white btn-edit"
+                                                            data-bs-toggle="modal" data-bs-target="#modalEdit"
+                                                            data-id="{{ $rujukan->id }}"
+                                                            data-nama="{{ $rujukan->nama }}"
+                                                            data-nik = "{{ $rujukan->nik }}"
+                                                            data-no_rujukan="{{ $rujukan->No_Rujukan }}"
+                                                            data-dokter_perujuk="{{ $rujukan->Dokter_Perujuk }}"
+                                                            data-diagnosa="{{ $rujukan->Diagnosa }}"
+                                                            data-kategori_rujukan="{{ $rujukan->Kategori_Rujukan }}"
+                                                            data-keterangan="{{ $rujukan->Keterangan }}"
+                                                            >
+                                                            <i class="fa-solid fa-pen-ruler"></i> Edit
+                                                        </button>
+                                                        <button type="submit"
+                                                            onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"
+                                                            class="btn btn-danger text-white"><i
+                                                                class="fa-solid fa-trash"></i>Delete</button>
+                                                    @endif
+                                                @endif
 
-                                                    <i class="fa-solid fa-pen-ruler"></i> Batal
-                                                </button>
-                                                <button type="button" class="btn btn-warning text-white btn-edit"
-                                                    data-bs-toggle="modal" data-bs-target="#modalEdit"
-                                                    data-id="{{ $rujukan->id }}"
-                                                    data-keterangan= "{{ $rujukan->keterangan }}">
-
-                                                    <i class="fa-solid fa-pen-ruler"></i> Terima
-                                                </button>
-                                                <button type="button" class="btn btn-warning text-white btn-edit"
-                                                    data-bs-toggle="modal" data-bs-target="#modalEdit"
-                                                    data-id="{{ $rujukan->id }}"
-                                                    data-keterangan= "{{ $rujukan->keterangan }}">
-
-                                                    <i class="fa-solid fa-pen-ruler"></i> Edit
-                                                </button>
-                                                <button type="submit"
-                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"
-                                                    class="btn btn-danger text-white"><i
-                                                        class="fa-solid fa-trash"></i></button>
                                             </form>
 
 
@@ -173,8 +185,8 @@
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label for="diagnosa" class="form-label">Diagnosa</label>
-                                                <input type="text" class="form-control" id="diagnosa" name="diagnosa"
-                                                    required>
+                                                <input type="text" class="form-control" id="diagnosa"
+                                                    name="diagnosa" required>
                                             </div>
                                         </div>
                                         <div class="col">
@@ -213,17 +225,59 @@
                             <form id="formEdit" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-                                <div class="mb-3">
-                                    <label for="nama" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" id="nameEdit" name="name" required>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="nama" class="form-label">Nama</label>
+                                            <input type="text" class="form-control" id="namaEdit" name="nama"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="nik" class="form-label">NIK</label>
+                                            <input type="text" class="form-control" id="nikEdit" name="nik"
+                                                required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="no_rujukan" class="form-label">No Rujukan</label>
+                                            <input type="text" class="form-control" id="no_rujukanEdit" name="no_rujukan"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="dokter_perujuk" class="form-label">Dokter Perujuk</label>
+                                            <input type="text" class="form-control" id="dokter_perujukEdit"
+                                                name="dokter_perujuk" required>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="diagnosa" class="form-label">Diagnosa</label>
+                                            <input type="text" class="form-control" id="diagnosaEdit"
+                                                name="diagnosa" required>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="kategori_rujukan" class="form-label">Kategori Rujukan</label>
+                                            <input type="text" class="form-control" id="kategori_rujukanEdit"
+                                                name="kategori_rujukan" required>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="nama" class="form-label">Image</label>
-                                    <input type="file" class="form-control" name="gambar">
-                                </div>
-                                <div>
-                                    <img id="previewEdit" src="" alt="Preview"
-                                        style="max-width: 100%; height: auto;">
+                                    <label for="status" class="form-label">Keterangan</label>
+                                    <input type="text" class="form-control" id="keteranganEdit" name="keterangan"
+                                        required>
                                 </div>
                         </div>
                         <div class="modal-footer">
@@ -251,11 +305,22 @@
 
         // Mengisi data ke dalam modal edit
         $(document).on('click', '.btn-edit', function() {
+
             var id = $(this).data('id');
-            var name = $(this).data('name');
-            var gambar = $(this).data('gambar');
-            $('#nameEdit').val(name);
-            $('#previewEdit').attr('src', "{{ asset('storage/rujukan/') }}/" + gambar);
+            var nama = $(this).data('nama');
+            var nik = $(this).data('nik');
+            var no_rujukan = $(this).data('no_rujukan');
+            var dokter_perujuk = $(this).data('dokter_perujuk');
+            var diagnosa = $(this).data('diagnosa');
+            var kategori_rujukan = $(this).data('kategori_rujukan');
+            var keterangan = $(this).data('keterangan');
+            $('#namaEdit').val(nama);
+            $('#nikEdit').val(nik);
+            $('#no_rujukanEdit').val(no_rujukan);
+            $('#dokter_perujukEdit').val(dokter_perujuk);
+            $('#diagnosaEdit').val(diagnosa);
+            $('#kategori_rujukanEdit').val(kategori_rujukan);
+            $('#keteranganEdit').val(keterangan);
             $('#formEdit').attr('action', '{{ url('rujukan') }}/' + id);
         })
 
