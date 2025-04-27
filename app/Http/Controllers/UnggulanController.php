@@ -127,6 +127,14 @@ class UnggulanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $unggulan = Unggulan::findOrFail($id);
+        $unggulan->delete();
+        if ($unggulan->image) {
+            $oldImagePath = public_path('images/unggulan/' . $unggulan->image);
+            if (file_exists($oldImagePath)) {
+                unlink($oldImagePath);
+            }
+        }
+        return redirect()->route("unggulan.index")->with("success", "Unggulan berhasil dihapus.");
     }
 }

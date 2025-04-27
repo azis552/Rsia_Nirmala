@@ -141,15 +141,6 @@
                 </li><!--//nav-item-->
                 <li class="nav-item">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                    <a class="nav-link" href="charts.html">
-                        <span class="nav-icon ml-2">
-                            <i class="fa-solid fa-hospital fa-xl"></i>
-                        </span>
-                        <span class="nav-link-text">Fasilitas</span>
-                    </a><!--//nav-link-->
-                </li><!--//nav-item-->
-                <li class="nav-item">
-                    <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                     <a class="nav-link {{ Route::is('kamar.index') ? 'active' : '' }}" href="{{ route('kamar.index') }}">
                         <span class="nav-icon ml-2">
                             <i class="fa-solid fa-bed fa-xl"></i>
