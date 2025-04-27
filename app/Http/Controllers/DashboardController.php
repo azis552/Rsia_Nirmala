@@ -8,6 +8,13 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view("admin.dashboard");
+        $bookingCount = \App\Models\Booking::count();
+        $dokterCount = \App\Models\Dokter::count();
+        $rujukanCount = \App\Models\Rujukan::count();
+        $poliklinikCount = \App\Models\Poliklinik::count();
+        $userCount = \App\Models\User::count();
+        $beritaCount = \App\Models\Berita::count();
+
+        return view("admin.dashboard", compact("bookingCount","dokterCount","rujukanCount","poliklinikCount","userCount","beritaCount"));
     }
 }

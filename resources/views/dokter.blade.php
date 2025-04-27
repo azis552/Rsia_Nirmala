@@ -7,6 +7,9 @@
             <div class="md:col-span-2 bg-white rounded-2xl shadow-lg p-6">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">Dokter</h2>
                 <hr>
+
+
+                @endif
                 <!-- Grid poliklinik -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                     @foreach ($dokters as $dokter)
@@ -21,7 +24,8 @@
                                 <!-- Konten -->
                                 <div class="relative z-10 p-4 flex flex-col items-center">
                                     <!-- Foto -->
-                                    <img src="{{ asset('storage/dokter/' . ($dokter->foto ?? $dokter->dokter->foto)) }}" alt="Foto Dokter"
+                                    <img src="{{ asset('storage/dokter/' . ($dokter->foto ?? $dokter->dokter->foto)) }}"
+                                        alt="Foto Dokter"
                                         class="w-[220px] h-[320px] object-cover border-4 border-white shadow-lg mb-4">
 
                                     <!-- Nama dan Poliklinik -->

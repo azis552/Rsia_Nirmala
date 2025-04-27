@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="{{ @$profil->logo != null ? asset('images/' . @$profil->logo) : asset('images/preview.png') }}">
     <title>{{ @$profil->perusahaan != null ? @$profil->perusahaan : 'Perusahaan' }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
@@ -111,7 +112,7 @@
 
         <!-- Tombol Aksi (Desktop) -->
         <div class="hidden md:flex items-center gap-3">
-            <a href="#"
+            <a href="{{ route('booking.form') }}"
                 class="bg-green-700 text-white px-4 py-2 rounded-md font-semibold hover:bg-green-800 flex items-center gap-2">
                 <i class="fas fa-calendar-check"></i> Booking Online
             </a>
@@ -138,34 +139,35 @@
         <ul class="flex flex-col p-2 text-lg font-bold leading-tight">
             <li class="py-1">
                 <a href="{{ route('landingpage') }}"
-                    class="block py-2 px-4 rounded-md hover:text-green-700 hover:bg-green-100 active:bg-green-200 focus:outline-none transition-all duration-300">
+                    class="block py-2 px-4 rounded-md {{ request()->routeIs('landingpage') ? 'text-green-700 bg-green-100' : 'hover:text-green-700 hover:bg-green-100 active:bg-green-200' }} focus:outline-none transition-all duration-300">
                     Beranda
                 </a>
             </li>
             <li class="py-1">
-                <a href="#"
-                    class="block py-2 px-4 rounded-md hover:text-green-700 hover:bg-green-100 active:bg-green-200 focus:outline-none transition-all duration-300">
+                <a href="{{ route('profil.lengkap') }}"
+                    class="block py-2 px-4 rounded-md {{ request()->routeIs('profil.lengkap') ? 'text-green-700 bg-green-100' : 'hover:text-green-700 hover:bg-green-100 active:bg-green-200' }} focus:outline-none transition-all duration-300">
                     Profil
                 </a>
             </li>
             <li class="py-1">
-                <a href="#"
-                    class="block py-2 px-4 rounded-md hover:text-green-700 hover:bg-green-100 active:bg-green-200 focus:outline-none transition-all duration-300">
+                <a href="{{ route('pelayanan.lengkap') }}"
+                    class="block py-2 px-4 rounded-md {{ request()->routeIs('pelayanan.lengkap') ? 'text-green-700 bg-green-100' : 'hover:text-green-700 hover:bg-green-100 active:bg-green-200' }} focus:outline-none transition-all duration-300">
                     Pelayanan
                 </a>
             </li>
             <li class="py-1">
                 <a href="{{ route('berita.selengkapnya') }}"
-                    class="block py-2 px-4 rounded-md hover:text-green-700 hover:bg-green-100 active:bg-green-200 focus:outline-none transition-all duration-300">
+                    class="block py-2 px-4 rounded-md {{ request()->routeIs('berita.selengkapnya') ? 'text-green-700 bg-green-100' : 'hover:text-green-700 hover:bg-green-100 active:bg-green-200' }} focus:outline-none transition-all duration-300">
                     Informasi Publik
                 </a>
             </li>
             <li class="py-1">
-                <a href="#"
-                    class="block py-2 px-4 rounded-md hover:text-green-700 hover:bg-green-100 active:bg-green-200 focus:outline-none transition-all duration-300">
+                <a href="{{ route('promotion.selengkapnya') }}"
+                    class="block py-2 px-4 rounded-md {{ request()->routeIs('promotion.selengkapnya') ? 'text-green-700 bg-green-100' : 'hover:text-green-700 hover:bg-green-100 active:bg-green-200' }} focus:outline-none transition-all duration-300">
                     Promo Spesial
                 </a>
             </li>
+            
             <li class="py-1">
                 <button
                     class="w-full bg-green-700 text-white px-4 py-2 rounded-md font-semibold shadow-md hover:bg-green-800 hover:shadow-lg active:bg-green-900 focus:outline-none transition-all duration-300">

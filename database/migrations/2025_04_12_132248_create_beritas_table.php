@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('gambar')->nullable();
             $table->enum('status', ['draft', 'published'])->default('draft');
             $table->enum('kategori', ['artikel', 'pengumuman'])->default('artikel');
+            $table->string('linkInstagram')->nullable();
 
 
             $table->timestamps();

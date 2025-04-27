@@ -10,3 +10,10 @@ if (!function_exists('escapeMarkdown')) {
         return $text;
     }
 }
+
+if (!function_exists('getProfil')) {
+    function getProfil()
+    {
+        return \App\Models\Profil::first();
+    }
+}

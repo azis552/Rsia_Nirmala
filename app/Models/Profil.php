@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Profil extends Model
 {
+
+    use HasFactory;
     protected $table = 'profils';
 
     protected $fillable = [
@@ -28,6 +31,9 @@ class Profil extends Model
         'susunan_organisasi',
         'visi',
         'misi',
-        'motto'
+        'motto',
+        'chat_id_pendaftaran',
+        'chat_id_humas',
+        'token'
     ];
 }

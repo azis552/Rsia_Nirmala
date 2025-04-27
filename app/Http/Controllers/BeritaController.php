@@ -59,6 +59,7 @@ class BeritaController extends Controller
             'gambar' => $filename,
             'status' => $request->status,
             'kategori' => $request->kategori,
+            'linkInstagram' => $request->linkInstagram,
         ]);
 
         if ($berita) {
@@ -127,6 +128,7 @@ class BeritaController extends Controller
         $berita->gambar = $filename ? $filename : $berita->gambar;
         $berita->status = $request->status;
         $berita->kategori = $request->kategori;
+        $berita->linkInstagram = $request->linkInstagram;
         $berita->save();
 
         if ($berita) {

@@ -247,6 +247,31 @@
                                             placeholder="Youtube Rumah Sakit" value="{{ @$profil->youtube }}">
                                     </div>
                                 </div>
+                                <div class=" col-md-6 mb-3">
+                                    <label for="">Chat ID Pendaftaran</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-fingerprint"></i></span>
+                                        <input type="text" class="form-control" name="chat_id_pendaftaran" id="chat_id_pendaftaran"
+                                            placeholder="Chat ID Pendaftaran Rumah Sakit" value="{{ @$profil->chat_id_pendaftaran }}">
+                                    </div>
+                                </div>
+                                <div class=" col-md-6 mb-3">
+                                    <label for="">Chat ID Humas</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-fingerprint"></i></span>
+                                        <input type="text" class="form-control" name="chat_id_humas" id="chat_id_humas"
+                                            placeholder="Chat ID Humas Rumah Sakit" value="{{ @$profil->chat_id_humas }}">
+                                    </div>
+                                </div>
+                                <div class=" col-md-6 mb-3">
+                                    <label for="">Token Bot</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa-brands fa-files-pinwheel"></i></span>
+                                        <input type="text" class="form-control" name="token" id="token"
+                                            placeholder="Token Bot Rumah Sakit" value="{{ @$profil->token }}">
+                                    </div>
+                                </div>
+
 
                             </div>
 

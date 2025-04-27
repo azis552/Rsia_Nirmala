@@ -120,7 +120,7 @@ class DokterController extends Controller
         
     
         if ($dokters->isEmpty()) {
-            return response()->json(['message' => 'Tidak ada jadwal untuk dokter ini pada hari tersebut.']);
+            return redirect()->route('landingpage')->with('errorJadwal',' Jadwal Dokter Tidak Tersedia');
         } else {
             $poliklinik = Poliklinik::find($poliklinik_id);
 

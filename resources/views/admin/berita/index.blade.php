@@ -72,6 +72,7 @@
                                                     data-status="{{ $berita->status }}"
                                                     data-gambar="{{ $berita->gambar }}"
                                                     data-kategori="{{ $berita->kategori }}"
+                                                    data-link= "{{ $berita->linkInstagram }}"
                                                     data-deskripsi="{{ $berita->deskripsi }}">
 
                                                     <i class="fa-solid fa-pen-ruler"></i>
@@ -123,6 +124,10 @@
                                         <label for="email" class="form-label">Deskripsi</label>
                                         <textarea name="deskripsi" class="form-control " style="height: 500px;" id="deskripsi" rows="10"></textarea>
                                     </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Link Instagram</label>
+                                        <input type="text" class="form-control" name="linkInstagram">
+                                    </div>
 
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
@@ -144,6 +149,7 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        
                                     </div>
                             </div>
                             <div class="modal-footer">
@@ -187,6 +193,12 @@
                                         <label for="email" class="form-label">Deskripsi</label>
                                         <textarea name="deskripsi" class="form-control " id="deskripsiEdit" style="height: 500px;" id="deskripsi"
                                             rows="10"></textarea>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Link Instagram</label>
+                                        <input type="text" class="form-control" id="linkInstagramEdit"
+                                            name="linkInstagram">
                                     </div>
 
                                     <div class="row">
@@ -241,6 +253,8 @@
             var gambar = $(this).data('gambar');
             var kategori = $(this).data('kategori');
             var deskripsi = $(this).data('deskripsi');
+            var link = $(this).data('link');
+            alert(link);
 
             console.log(id, judul, status, gambar, kategori, deskripsi);
 
@@ -249,6 +263,7 @@
             $('#statusEdit').val(status);
             $('#kategoriEdit').val(kategori);
             $('#deskripsiEdit').val(deskripsi);
+            $('#linkInstagramEdit').val(link);
             $('#previewEdit').attr('src', "{{ asset('images/berita/') }}/" + gambar);
             $('#formEdit').attr('action', '{{ url('berita') }}/' + id);
         });

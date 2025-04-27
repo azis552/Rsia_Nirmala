@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\NotifikasiRujukanAdmin;
 use App\Events\NotifikasiRujukanUser;
 use App\Helpers\TelegramHelper;
+use App\Models\Profil;
 use App\Models\Rujukan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -68,11 +69,21 @@ class RujukanController extends Controller
             ]
         );
         event(new NotifikasiRujukanAdmin($rujukan, $link = route('rujukan.show', $rujukan->rujukan_id)));
+        $profil = getProfil();
+        TelegramHelper::sendRujukanMessage(
+            $rujukan,
+            $rujukan->faskes->faskes,
+            route('rujukan.show', $rujukan->rujukan_id),
+            $profil->token,
+            $profil->chat_id_pendaftaran,
+        );
 
         TelegramHelper::sendRujukanMessage(
             $rujukan,
-            Auth::user()->faskes,
-            route('rujukan.show', $rujukan->rujukan_id)
+            $rujukan->faskes->faskes,
+            route('rujukan.show', $rujukan->rujukan_id),
+            $profil->token,
+            $profil->chat_id_humas,
         );
         return redirect()->route('rujukan.index')->with('success', 'Rujukan created successfully.');
     }
@@ -155,12 +166,22 @@ class RujukanController extends Controller
             'rujukan' => $rujukan,
             'link' => route('rujukan.show', $rujukan->rujukan_id),
         ]);
-
+        $profil = getProfil();
         // Send a notification to the user via Telegram
         TelegramHelper::sendRujukanMessage(
             $rujukan,
             $rujukan->faskes->faskes,
-            route('rujukan.show', $rujukan->rujukan_id)
+            route('rujukan.show', $rujukan->rujukan_id),
+            $profil->token,
+            $profil->chat_id_pendaftaran,
+        );
+
+        TelegramHelper::sendRujukanMessage(
+            $rujukan,
+            $rujukan->faskes->faskes,
+            route('rujukan.show', $rujukan->rujukan_id),
+            $profil->token,
+            $profil->chat_id_humas,
         );
 
         return redirect()->route('rujukan.index')->with('success', 'Status updated successfully.');

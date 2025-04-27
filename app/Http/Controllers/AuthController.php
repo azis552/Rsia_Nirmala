@@ -83,23 +83,41 @@ class AuthController extends Controller
     {
         // dd( $request->all());
         $user = User::findOrFail($id);
-        $user = $user->update([
-            "name" => $request->nameEdit,
-            "email" => $request->emailEdit,
-            "password" => Hash::make($request->password),
-            "role" => $request->roleEdit,
-            "faskes" => $request->faskesEdit,
-        ]);
-        if ($user) {
-            return redirect()->route("akun")->with("success", "Akun berhasil diupdate.");
+        if($request->password == null){
+            $user = $user->update([
+                "name" => $request->nameEdit,
+                "email" => $request->emailEdit,
+                "role" => $request->roleEdit,
+                "faskes" => $request->faskesEdit,
+            ]);
+        }else{
+            $user = $user->update([
+                "name" => $request->nameEdit,
+                "email" => $request->emailEdit,
+                "password" => Hash::make($request->password),
+                "role" => $request->roleEdit,
+                "faskes" => $request->faskesEdit,
+            ]);
+        }
+        
+        if (Auth::user()->role == "admin") {
+            if ($user) {
+                return redirect()->route("akun")->with("success", "Akun berhasil diupdate.");
+            } else {
+                return redirect()->back()->with("error", "Gagal mengupdate akun.");
+            }
         } else {
-            return redirect()->back()->with("error", "Gagal mengupdate akun.");
+            if ($user) {
+                return redirect()->route("profil.show", Auth::user()->id)->with("success", "Akun berhasil diupdate.");
+            } else {
+                return redirect()->back()->with("error", "Gagal mengupdate akun.");
+            }
         }
     }
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        if(Auth::user()->id == $user->id){
+        if (Auth::user()->id == $user->id) {
             return redirect()->back()->with("error", "Tidak bisa menghapus akun sendiri.");
         }
         $destroy = $user->delete();

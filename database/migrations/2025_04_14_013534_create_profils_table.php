@@ -33,6 +33,9 @@ return new class extends Migration
             $table->string('visi')->nullable();
             $table->string('misi')->nullable();
             $table->string('motto')->nullable();
+            $table->string('chat_id_pendaftaran')->nullable();
+            $table->string('chat_id_humas')->nullable();
+            $table->string('token')->nullable();
             $table->timestamps();
         });
     }

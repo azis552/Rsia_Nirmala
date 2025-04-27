@@ -13,6 +13,7 @@ class Berita extends Model
         'gambar',
         'status',
         'kategori',
+        'linkInstagram',
     ];
 
 }

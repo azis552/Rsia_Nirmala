@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\Booking;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\JadwalDokterController;
 use App\Http\Controllers\KamarController;
+use App\Http\Controllers\KritikSaranController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\PartnerController;
@@ -37,6 +39,16 @@ Route::get('pelayananlengkap', [PelayananController::class,'pelayananLengkap'])-
 Route::get('polikliniklengkap', [PoliklinikController::class,'poliklinikLengkap'])->name('poliklinik.lengkap');
 Route::get('dokterlengkap', [DokterController::class,'dokterLengkap'])->name('dokterlengkap');
 Route::post('jadwalDokter', [DokterController::class,'jadwalDokter'])->name('jadwal.cari');
+Route::get('booking', [Booking::class,'booking'])->name('booking.form');
+Route::post('booking', [Booking::class,'store'])->name('booking.store');
+Route::get('/get-poliklinik-by-tanggal', [Booking::class, 'getPoliklinikByTanggal']);
+Route::get('/get-dokter-by-poliklinik/{id}', [Booking::class, 'getDokterByPoliklinik']);
+Route::get('/get-jadwal-by-dokter/{id}', [Booking::class, 'getJadwalByDokter']);
+
+Route::post('kritikSaran', [KritikSaranController::class, 'store'])->name('kritikSaran.store');
+
+
+
 
 
 route::middleware('auth')->group(function () {
@@ -58,7 +70,7 @@ route::middleware('auth')->group(function () {
 
     // Profil Routes
     
-    Route::resource('profil', ProfilController::class)->except(['show', 'edit']);
+    Route::resource('profil', ProfilController::class)->except([ 'edit']);
     // Pelayanan Routes
     Route::resource('pelayanan', PelayananController::class)->except(['show', 'edit']);
 
@@ -89,4 +101,9 @@ route::middleware('auth')->group(function () {
     Route::get('rujukan/{id}/updateStatus/{status}', [RujukanController::class, 'updateStatus'])->name('rujukan.updateStatus');
 
     Route::resource('notifikasi', NotifikasiController::class)->except(['show', 'edit']);
+
+    Route::get('booking-list', [Booking::class, 'index'])->name('booking.index');
+
+    // Kritik dan Saran Routes
+    Route::resource('kritikSaran', KritikSaranController::class)->except(['store','show', 'edit']);
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profil;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProfilController extends Controller
@@ -55,9 +56,9 @@ class ProfilController extends Controller
         ]);
         if ($request->hasFile('logo')) {
             $logo = $request->file('logo');
-            $filenameLogo = time().rand(1000,2999) .'.'. $logo->getClientOriginalExtension();
+            $filenameLogo = time() . rand(1000, 2999) . '.' . $logo->getClientOriginalExtension();
             $logo->move(public_path('images'), $filenameLogo);
-            if($profil->logo != null) {
+            if ($profil->logo != null) {
                 unlink(public_path('images/' . $profil->logo));
             }
         } else {
@@ -65,9 +66,9 @@ class ProfilController extends Controller
         }
         if ($request->hasFile('direktur')) {
             $direktur = $request->file('direktur');
-            $filenameDirektur = time().rand(3000,5999) .'.'. $direktur->getClientOriginalExtension();
+            $filenameDirektur = time() . rand(3000, 5999) . '.' . $direktur->getClientOriginalExtension();
             $direktur->move(public_path('images'), $filenameDirektur);
-            if($profil->direktur) {
+            if ($profil->direktur) {
                 unlink(public_path('images/' . $profil->direktur));
             }
         } else {
@@ -75,9 +76,9 @@ class ProfilController extends Controller
         }
         if ($request->hasFile('susunan_organisasi')) {
             $susunan_organisasi = $request->file('susunan_organisasi');
-            $filenameSusunan_organisasi = time().rand(6000,9999) .'.'. $susunan_organisasi->getClientOriginalExtension();
+            $filenameSusunan_organisasi = time() . rand(6000, 9999) . '.' . $susunan_organisasi->getClientOriginalExtension();
             $susunan_organisasi->move(public_path('images'), $filenameSusunan_organisasi);
-            if($profil->susunan_organisasi) {
+            if ($profil->susunan_organisasi) {
                 unlink(public_path('images/' . $profil->susunan_organisasi));
             }
         } else {
@@ -105,12 +106,13 @@ class ProfilController extends Controller
                 'visi' => $request->visi,
                 'misi' => $request->misi,
                 'motto' => $request->motto,
+                'chat_id_pendaftaran' => $request->chat_id_pendaftaran,
+                'chat_id_humas'=> $request->chat_id_humas,
+                'token' => $request->token
             ]
         );
 
-        return redirect()->route('profil.index')->with('success','Profil berhasil diubah');
-
-        
+        return redirect()->route('profil.index')->with('success', 'Profil berhasil diubah');
     }
 
     /**
@@ -118,7 +120,12 @@ class ProfilController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $profil = User::find($id);
+        if (!$profil) {
+            abort(404, 'User tidak ditemukan');
+        }
+
+        return view('admin.profil.show', compact('profil'));
     }
 
     /**

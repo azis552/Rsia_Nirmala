@@ -113,6 +113,42 @@
 
         </div>
     </section>
+    @if (session('errorJadwal'))
+    <div id="alert" class="fixed top-5 right-5 bg-red-200 border border-red-500 text-red-800 px-8 py-5 rounded-xl shadow-2xl flex items-center space-x-4 scale-0 opacity-0 transition-all duration-500 origin-top-right z-50 text-lg">
+        <i class="fa-solid fa-square-xmark fa-xl"></i>
+        <div>
+            <strong class="font-bold">Oops!</strong>
+            <span class="block">{{ session('errorJadwal') }}</span>
+        </div>
+        <button onclick="hideAlert()" class="text-red-600 hover:text-red-800 ml-4">
+            ✖
+        </button>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const alert = document.getElementById('alert');
+            alert.classList.remove('scale-0', 'opacity-0');
+            alert.classList.add('scale-100', 'opacity-100');
+
+            setTimeout(() => {
+                hideAlert();
+            }, 5000);
+        });
+
+        function hideAlert() {
+            const alert = document.getElementById('alert');
+            if (alert) {
+                alert.classList.remove('scale-100', 'opacity-100');
+                alert.classList.add('scale-0', 'opacity-0');
+                setTimeout(() => alert.remove(), 500); // 0.5 detik setelah animasi
+            }
+        }
+    </script>
+@endif
+
+
+
     {{-- berita dan artikel --}}
     <section class="relative bg-center bg-no-repeat pt-10 pb-5 bg-green-300 bg-blend-multiply overflow-hidden">
 
@@ -129,14 +165,23 @@
             </div>
         </div>
 
+        @if ($beritas->isEmpty())
+            <div class="text-center mb-6 relative z-10">
+                <div class="bg-white px-6 py-3 inline-block rounded-lg shadow">
+                    <h2 class="text-2xl md:text-2xl font-bold text-green-700">Berita & Artikel Tidak Tersedia</h2>
+                    <hr>
+                </div>
+            </div>
+        @endif
+
         <!-- Filter Buttons -->
         <div class="flex justify-start ml-20 gap-3 mb-4 relative z-10">
-            <button
+            {{-- <button
                 class="bg-green-200 text-green-900 px-4 py-2 rounded-full font-semibold hover:bg-green-300 transition">All</button>
             <button
                 class="bg-white border border-green-400 text-green-900 px-4 py-2 rounded-full font-semibold hover:bg-green-100 transition">Artikel</button>
             <button
-                class="bg-white border border-green-400 text-green-900 px-4 py-2 rounded-full font-semibold hover:bg-green-100 transition">Pengumuman</button>
+                class="bg-white border border-green-400 text-green-900 px-4 py-2 rounded-full font-semibold hover:bg-green-100 transition">Pengumuman</button> --}}
         </div>
         <!-- Grid Berita -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto relative z-10">
@@ -541,10 +586,10 @@
                     </div>
                     <p class="mb-4 text-sm text-white/90">Perawatan komprehensif dengan lingkungan yang nyaman dan
                         aman.</p>
-                    <a href="#"
+                    {{-- <a href="#"
                         class="inline-block bg-green-700 text-white px-4 py-2 text-sm mt-4 rounded-md w-fit">
                         Lihat Semua
-                    </a>
+                    </a> --}}
                 </div>
 
                 <!-- Kolom Kanan: List Kamar -->
@@ -585,14 +630,15 @@
 
                                 <!-- Foto dokter (gunakan img jika ada gambar, di sini pakai placeholder) -->
                                 <div class="relative z-10 p-4 flex flex-col items-center">
-                                    <div class="w-[220px] h-[220px] overflow-hidden rounded-md border-2 border-white shadow-md mb-4">
+                                    <div
+                                        class="w-[220px] h-[220px] overflow-hidden rounded-md border-2 border-white shadow-md mb-4">
                                         <img src="{{ asset('storage/partner/' . $partner->image) }}" alt="Foto Partner"
-                                             class="w-full h-full object-cover">
+                                            class="w-full h-full object-cover">
                                     </div>
                                     <div class="text-center mt-2">
                                         <p class="text-sm font-semibold text-white bg-green-700 px-3 py-1 rounded-t-md">
                                             {{ $partner->name }}</p>
-                                       
+
                                     </div>
                                 </div>
                             </div>
@@ -607,6 +653,68 @@
             </div>
         </div>
     </section>
+
+    <section
+        class="relative bg-cover bg-center bg-no-repeat bg-[url('https://rsianirmalakdr.com/wp-content/uploads/2023/09/RSIA-14-of-90-scaled.jpg')] bg-green-900 bg-blend-multiply py-12 overflow-hidden">
+        <div class="backdrop-brightness-75 w-full py-16 px-4 md:px-20 text-white">
+
+            <div class="flex flex-col items-center gap-10">
+
+                <!-- Judul Form -->
+                <div class="text-center">
+                    <div class="border-l-4 border-white pl-4 mb-4 inline-block">
+                        <h2 class="text-2xl font-bold leading-tight">KRITIK & SARAN</h2>
+                    </div>
+                    <p class="mb-4 text-sm text-white/90">Kami menghargai setiap masukan Anda untuk meningkatkan layanan
+                        kami.</p>
+
+                    @if (session('successKritik'))
+                        <div class="bg-green-500 text-white p-4 rounded-md mb-4">
+                            {{ session('successKritik') }}
+                        </div>
+                    @endif
+
+                </div>
+
+                <!-- Formulir Kritik dan Saran -->
+                <form action="{{ route('kritikSaran.store') }}" method="POST"
+                    class="w-full max-w-2xl bg-green-400/40 p-6 rounded-xl space-y-4">
+                    @csrf
+
+                    <div>
+                        <label for="nama" class="block text-sm font-medium mb-1">Nama</label>
+                        <input type="text" name="name" id="nama" class="w-full rounded-md p-2 text-black"
+                            placeholder="Nama Anda" required>
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium mb-1">Email</label>
+                        <input type="email" name="email" id="email" class="w-full rounded-md p-2 text-black"
+                            placeholder="Email Anda" required>
+                    </div>
+                    <div>
+                        <label for="no_hp" class="block text-sm font-medium mb-1">No. HP</label>
+                        <input type="text" name="no_hp" id="no_hp" class="w-full rounded-md p-2 text-black"
+                            placeholder="No. HP Anda" required>
+
+                        <div>
+                            <label for="pesan" class="block text-sm font-medium mb-1 mt-1">Kritik / Saran</label>
+                            <textarea name="message" id="pesan" rows="5" class="w-full rounded-md p-2 text-black"
+                                placeholder="Tulis kritik atau saran Anda di sini..." required></textarea>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit"
+                                class="bg-green-700 hover:bg-green-800 text-white px-6 py-2 rounded-md transition">
+                                Kirim
+                            </button>
+                        </div>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Modal Fullscreen -->
     <div id="modalImage" class="fixed inset-0 z-50 bg-black bg-opacity-80 hidden items-center justify-center">
         <div class="relative max-w-4xl w-full mx-auto p-4">
