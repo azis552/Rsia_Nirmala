@@ -46,7 +46,7 @@
         <!-- Maps -->
         <div class="w-full">
             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.735626256398!2d112.002619!3d-7.818737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78574d646e5d75%3A0x8e3b05e36477dbf0!2sRSIA%20Nirmala!5e0!3m2!1sid!2sid!4v1618982720372!5m2!1sid!2sid"
+                src="{{ $profil->maps }}"
                 width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
 

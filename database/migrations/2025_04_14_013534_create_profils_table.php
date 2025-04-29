@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('X')->nullable();
             $table->string('tiktok')->nullable();
             $table->string('youtube')->nullable();
-            $table->string('maps')->nullable();
+            $table->text('maps')->nullable();
             $table->string('logo')->nullable();
             $table->string('direktur')->nullable();
             $table->string('nama_direktur')->nullable();
