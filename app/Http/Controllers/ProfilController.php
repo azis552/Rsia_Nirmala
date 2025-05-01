@@ -46,30 +46,41 @@ class ProfilController extends Controller
             'tiktok' => 'nullable',
             'youtube' => 'nullable',
             'maps' => 'nullable',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'direktur' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'direktur' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'nama_direktur' => 'nullable',
-            'susunan_organisasi' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'susunan_organisasi' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'visi' => 'nullable',
             'misi' => 'nullable',
             'motto' => 'nullable',
+            'tumbnail' => 'nullable',
         ]);
         if ($request->hasFile('logo')) {
             $logo = $request->file('logo');
             $filenameLogo = time() . rand(1000, 2999) . '.' . $logo->getClientOriginalExtension();
-            $logo->move(public_path('images'), $filenameLogo);
+            $logo->move(public_path('storage/images'), $filenameLogo);
             if ($profil->logo != null) {
-                unlink(public_path('images/' . $profil->logo));
+                unlink(public_path('storage/images/' . $profil->logo));
             }
         } else {
             $filenameLogo = $profil->logo;
         }
+        if ($request->hasFile('tumbnail')) {
+            $tumbnail = $request->file('tumbnail');
+            $filenametumbnail = time() . rand(1000, 2999) . '.' . $tumbnail->getClientOriginalExtension();
+            $tumbnail->move(public_path('storage/images'), $filenametumbnail);
+            if ($profil->tumbnail != null) {
+                unlink(public_path('storage/images/' . $profil->tumbnail));
+            }
+        } else {
+            $filenametumbnail = $profil->tumbnail;
+        }
         if ($request->hasFile('direktur')) {
             $direktur = $request->file('direktur');
             $filenameDirektur = time() . rand(3000, 5999) . '.' . $direktur->getClientOriginalExtension();
-            $direktur->move(public_path('images'), $filenameDirektur);
+            $direktur->move(public_path('storage/images'), $filenameDirektur);
             if ($profil->direktur) {
-                unlink(public_path('images/' . $profil->direktur));
+                unlink(public_path('storage/images/' . $profil->direktur));
             }
         } else {
             $filenameDirektur = $profil->direktur;
@@ -77,9 +88,9 @@ class ProfilController extends Controller
         if ($request->hasFile('susunan_organisasi')) {
             $susunan_organisasi = $request->file('susunan_organisasi');
             $filenameSusunan_organisasi = time() . rand(6000, 9999) . '.' . $susunan_organisasi->getClientOriginalExtension();
-            $susunan_organisasi->move(public_path('images'), $filenameSusunan_organisasi);
+            $susunan_organisasi->move(public_path('storage/images'), $filenameSusunan_organisasi);
             if ($profil->susunan_organisasi) {
-                unlink(public_path('images/' . $profil->susunan_organisasi));
+                unlink(public_path('storage/images/' . $profil->susunan_organisasi));
             }
         } else {
             $filenameSusunan_organisasi = $profil->susunan_organisasi;
@@ -108,7 +119,8 @@ class ProfilController extends Controller
                 'motto' => $request->motto,
                 'chat_id_pendaftaran' => $request->chat_id_pendaftaran,
                 'chat_id_humas'=> $request->chat_id_humas,
-                'token' => $request->token
+                'token' => $request->token,
+                'tumbnail' => $filenametumbnail,
             ]
         );
 

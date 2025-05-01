@@ -77,7 +77,35 @@ class DokterController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'poliklinik'=> 'required',
+            ]);
+
+        $dokter = Dokter::find($id);
+        if ($dokter) {
+  
+            if ($request->hasFile('gambar')) {
+                $file = $request->file('gambar');
+                $filename = time() . rand(1, 1000) . '_' . $file->getClientOriginalName();
+                $file->move(public_path('/storage/dokter'), $filename);
+                if ($dokter->foto) {
+                    $filePath = public_path('/storage/dokter/' . $dokter->foto);
+                    if (file_exists($filePath)) {
+                        unlink($filePath);
+                    }
+                }
+            } else {
+                $filename = $dokter->foto;
+            }
+    
+            $dokter->update([
+                'name'=> $request->name,
+                'poliklinik_id' => $request->poliklinik,
+                'foto'=> $filename,
+            ]);
+        }
+        return redirect()->route('dokter.index')->with('success', 'Dokter berhasil diubah');
     }
 
     /**

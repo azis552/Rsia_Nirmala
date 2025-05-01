@@ -25,6 +25,7 @@ class Profil extends Model
         'tiktok',
         'youtube',
         'maps',
+        'tumbnail',
         'logo',
         'direktur',
         'nama_direktur',

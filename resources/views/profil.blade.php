@@ -9,7 +9,7 @@
             class="flex flex-col md:flex-row items-center md:items-start md:space-x-8 bg-white p-6 rounded-xl shadow-lg mb-10 border-t-4 border-green-700">
 
             <div class="w-full md:w-1/3 mb-6 md:mb-0 border-2 border-green-600 rounded-xl overflow-hidden">
-                <img src="{{ $profil->direktur != null ? asset('images/' . $profil->direktur) : asset('images/preview.png') }}"
+                <img src="{{ $profil->direktur != null ? asset('storage/images/' . $profil->direktur) : asset('images/preview.png') }}"
                     alt="Direktur" class="rounded-xl shadow-md w-full h-[300px] object-cover">
             </div>
 

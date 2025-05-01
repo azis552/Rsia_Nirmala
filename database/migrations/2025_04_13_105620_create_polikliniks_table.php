@@ -16,10 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('image1')->nullable();
-            $table->string('image2')->nullable();
-            $table->string('image3')->nullable();
-            $table->string('image4')->nullable();
-            $table->string('image5')->nullable();
+            $table->text('nama_dokter')->nullable();
+            $table->text('gambar_dokter')->nullable();
             $table->text('deskripsi')->nullable();
             $table->timestamps();
         });

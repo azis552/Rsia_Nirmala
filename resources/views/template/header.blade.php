@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="{{ @$profil->logo != null ? asset('images/' . @$profil->logo) : asset('images/preview.png') }}">
+    <link rel="icon" type="image/png" href="{{ @$profil->tumbnail != null ? asset('storage/images/' . @$profil->tumbnail) : asset('images/preview.png') }}">
     <title>{{ @$profil->perusahaan != null ? @$profil->perusahaan : 'Perusahaan' }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
@@ -58,7 +58,7 @@
     <nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center relative">
         <!-- Logo -->
         <div class="flex items-center gap-4">
-            <img src="{{ @$profil->logo != null ? asset('images/' . @$profil->logo) : asset('images/preview.png') }}"
+            <img src="{{ @$profil->logo != null ? asset('storage/images/' . @$profil->logo) : asset('images/preview.png') }}"
                 alt="Logo RSIA" class="h-20 w-auto max-w-full object-contain" />
 
         </div>
@@ -106,6 +106,12 @@
                 <a href="{{ route('promotion.selengkapnya') }}"
                     class="px-3 py-2 {{ request()->routeIs('promotion.selengkapnya') ? 'text-green-700 underline' : 'hover:text-green-700' }}">
                     Promo Spesial
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('promotion.selengkapnya') }}"
+                    class="px-3 py-2 {{ request()->routeIs('promotion.selengkapnya') ? 'text-green-700 underline' : 'hover:text-green-700' }}">
+                    Info Kamar
                 </a>
             </li>
         </ul>
@@ -165,6 +171,12 @@
                 <a href="{{ route('promotion.selengkapnya') }}"
                     class="block py-2 px-4 rounded-md {{ request()->routeIs('promotion.selengkapnya') ? 'text-green-700 bg-green-100' : 'hover:text-green-700 hover:bg-green-100 active:bg-green-200' }} focus:outline-none transition-all duration-300">
                     Promo Spesial
+                </a>
+            </li>
+            <li class="py-1">
+                <a href="{{ route('promotion.selengkapnya') }}"
+                    class="block py-2 px-4 rounded-md {{ request()->routeIs('promotion.selengkapnya') ? 'text-green-700 bg-green-100' : 'hover:text-green-700 hover:bg-green-100 active:bg-green-200' }} focus:outline-none transition-all duration-300">
+                    Info Kamar
                 </a>
             </li>
             

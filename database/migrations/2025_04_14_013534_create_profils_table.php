@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('tiktok')->nullable();
             $table->string('youtube')->nullable();
             $table->text('maps')->nullable();
+            $table->string('tumbnail')->nullable();
             $table->string('logo')->nullable();
             $table->string('direktur')->nullable();
             $table->string('nama_direktur')->nullable();

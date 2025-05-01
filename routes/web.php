@@ -46,6 +46,7 @@ Route::get('/get-dokter-by-poliklinik/{id}', [Booking::class, 'getDokterByPolikl
 Route::get('/get-jadwal-by-dokter/{id}', [Booking::class, 'getJadwalByDokter']);
 
 Route::post('kritikSaran', [KritikSaranController::class, 'store'])->name('kritikSaran.store');
+Route::get('infoTT', [LandingPageController::class,'infoTT'])->name('infoTT');
 
 
 

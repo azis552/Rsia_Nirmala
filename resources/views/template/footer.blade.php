@@ -4,7 +4,7 @@
         <!-- Logo dan Alamat -->
         <div class="space-y-2 text-center md:text-left">
             <div class="flex justify-center md:justify-start items-center gap-4">
-                <img src="{{ @$profil->logo != null ? asset('images/' . @$profil->logo) : asset('images/preview.png') }}" alt="Logo RSIA"
+                <img src="{{ @$profil->logo != null ? asset('storage/images/' . @$profil->logo) : asset('images/preview.png') }}" alt="Logo RSIA"
                     class="h-16">
             </div>
             <p class="text-gray-700">

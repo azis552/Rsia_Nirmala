@@ -61,8 +61,38 @@
                                             placeholder="Logo Rumah Sakit" value="{{ @$profil->logo }}">
                                     </div>
                                     <div>
-                                        <img id="previewlogo" src="{{ @$profil->logo != null ? asset('images/' . $profil->logo) : asset('images/preview.png') }}" alt="Preview"
+                                        <img id="previewlogo" src="{{ @$profil->logo != null ? asset('storage/images/' . $profil->logo) : asset('storage/images/preview.png') }}" alt="Preview"
                                             style="max-width: 350px; height: auto; object-fit: cover; border-radius: 8px;">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="">Tumbnail Rumah Sakit</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1"><i
+                                                class="fa-solid fa-inbox"></i></span>
+                                        <input type="file" class="form-control" name="tumbnail" id="tumbnail"
+                                            placeholder="Tumbnail Rumah Sakit" value="{{ @$profil->tumbnail }}">
+                                    </div>
+                                    <div>
+                                        <img id="previewtumbnail" src="{{ @$profil->tumbnail != null ? asset('storage/images/' . $profil->tumbnail) : asset('storage/images/preview.png') }}" alt="Preview"
+                                            style="max-width: 350px; height: auto; object-fit: cover; border-radius: 8px;">
+                                    </div>
+                                </div>
+                               
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="">Susunan Organisasi Rumah Sakit</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1"><i
+                                                class="fa-solid fa-inbox"></i></span>
+                                        <input type="file" class="form-control" name="susunan_organisasi"
+                                            id="susunan_organisasi" placeholder="Susunan Organisasi Rumah Sakit"
+                                            value="{{ @$profil->susunan_organisasi }}">
+                                    </div>
+                                    <div>
+                                        <img id="previewSusunan" src="{{ @$profil->susunan_organisasi != null ? asset('storage/images/' . $profil->susunan_organisasi) : asset('storage/images/preview.png') }}" alt="Preview"
+                                            style="max-width: 150px; height: auto; object-fit: cover; border-radius: 8px;">
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
@@ -80,26 +110,10 @@
                                             placeholder="Foto Direktur Rumah Sakit" value="{{ @$profil->direktur }}">
                                     </div>
                                     <img id="previewDirektur" 
-                                    src="{{ @$profil->direktur != null ? asset('images/' . $profil->direktur) : asset('images/preview.png') }}" 
+                                    src="{{ @$profil->direktur != null ? asset('storage/images/' . $profil->direktur) : asset('storage/images/preview.png') }}" 
                                     alt="Preview"
                                     style="max-width: 150px; height: auto; object-fit: cover; border-radius: 8px;">
 
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 mb-3">
-                                    <label for="">Susunan Organisasi Rumah Sakit</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text" id="basic-addon1"><i
-                                                class="fa-solid fa-inbox"></i></span>
-                                        <input type="file" class="form-control" name="susunan_organisasi"
-                                            id="susunan_organisasi" placeholder="Susunan Organisasi Rumah Sakit"
-                                            value="{{ @$profil->susunan_organisasi }}">
-                                    </div>
-                                    <div>
-                                        <img id="previewSusunan" src="{{ @$profil->susunan_organisasi != null ? asset('images/' . $profil->susunan_organisasi) : asset('images/preview.png') }}" alt="Preview"
-                                            style="max-width: 150px; height: auto; object-fit: cover; border-radius: 8px;">
-                                    </div>
                                 </div>
                             </div>
                             <h4>Visi, Misi, Motto</h4>
@@ -311,7 +325,7 @@
                 $('#statusEdit').val(status);
                 $('#kategoriEdit').val(kategori);
                 $('#deskripsiEdit').val(deskripsi);
-                $('#previewEdit').attr('src', "{{ asset('images/berita/') }}/" + gambar);
+                $('#previewEdit').attr('src', "{{ asset('storage/images/berita/') }}/" + gambar);
                 $('#formEdit').attr('action', '{{ url('berita') }}/' + id);
             });
 
@@ -319,6 +333,22 @@
                 $('input[name="logo"]').on('change', function(event) {
                     const file = event.target.files[0];
                     const preview = $('#previewlogo');
+
+                    if (file) {
+                        const reader = new FileReader();
+
+                        reader.onload = function(e) {
+                            preview.attr('src', e.target.result); // Set src dari <img> dengan data file
+                        };
+
+                        reader.readAsDataURL(file); // Membaca file sebagai URL data
+                    } else {
+                        preview.attr('src', ''); // Kosongkan preview jika tidak ada file
+                    }
+                });
+                $('input[name="tumbnail"]').on('change', function(event) {
+                    const file = event.target.files[0];
+                    const preview = $('#previewtumbnail');
 
                     if (file) {
                         const reader = new FileReader();

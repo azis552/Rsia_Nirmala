@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Berita;
 use App\Models\Poliklinik;
 use Illuminate\Http\Request;
+use Str;
 
 class PoliklinikController extends Controller
 {
@@ -32,56 +33,51 @@ class PoliklinikController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:polikliniks',
+            'gambar1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gambar.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'namadokter.*' => 'nullable|string|max:255',
             'deskripsi' => 'required',
-            'gambar1' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'gambar2' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'gambar3' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'gambar4' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'gambar5' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        $filenameGambar1 =null;
-        $filenameGambar2 =null;
-        $filenameGambar3 =null;
-        $filenameGambar4 =null;
-        $filenameGambar5 =null;
 
+        // Upload gambar utama
+        $gambar1Name = null;
         if ($request->hasFile('gambar1')) {
             $file = $request->file('gambar1');
-            $filenameGambar1 = time() . rand(1, 1000) . '_' . $file->getClientOriginalName();
-            $file->move(public_path('/storage/poliklinik'), $filenameGambar1);
+            $gambar1Name = time() . rand(1, 999) . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/poliklinik'), $gambar1Name);
         }
 
-        if ($request->hasFile('gambar2')) {
-            $file = $request->file('gambar2');
-            $filenameGambar2 = time() . rand(1, 1000) . '_' . $file->getClientOriginalName();
-            $file->move(public_path('/storage/poliklinik'), $filenameGambar2);
+        // Inisialisasi array dokter
+        $namaDokters = [];
+        $gambarDokters = [];
+
+        // Loop semua dokter yang diinput
+        if ($request->has('namadokter')) {
+            foreach ($request->namadokter as $index => $nama) {
+                $namaDokters[] = $nama;
+
+                if ($request->hasFile("gambar.$index")) {
+                    $file = $request->file("gambar")[$index];
+                    $fileName = time() . rand(1000, 9999) . '_' . $file->getClientOriginalName();
+                    $file->move(public_path('storage/foto_dokter'), $fileName);
+                    $gambarDokters[] = $fileName;
+                } else {
+                    $gambarDokters[] = null; // Kalau tidak upload gambar
+                }
+            }
         }
-        if ($request->hasFile('gambar3')) {
-            $file = $request->file('gambar3');
-            $filenameGambar3 = time() . rand(1, 1000) . '_' . $file->getClientOriginalName();
-            $file->move(public_path('/storage/poliklinik'), $filenameGambar3);
-        }
-        if ($request->hasFile('gambar4')) {
-            $file = $request->file('gambar4');
-            $filenameGambar4 = time() . rand(1, 1000) . '_' . $file->getClientOriginalName();
-            $file->move(public_path('/storage/poliklinik'), $filenameGambar4);
-        }
-        if ($request->hasFile('gambar5')) {
-            $file = $request->file('gambar5');
-            $filenameGambar5 = time() . rand(1, 1000) . '_' . $file->getClientOriginalName();
-            $file->move(public_path('/storage/poliklinik'), $filenameGambar5);
-        }
-        $poliklinik = poliklinik::create([
+
+        // Simpan ke database
+        Poliklinik::create([
             'name' => $request->name,
             'slug' => $request->name,
+            'image1' => $gambar1Name,
+            'nama_dokter' => json_encode($namaDokters),
+            'gambar_dokter' => json_encode($gambarDokters),
             'deskripsi' => $request->deskripsi,
-            'image1' => $filenameGambar1,
-            'image2' => $filenameGambar2,
-            'image3' => $filenameGambar3,
-            'image4' => $filenameGambar4,
-            'image5' => $filenameGambar5,
         ]);
-        return redirect()->route('poliklinik.index')->with('success', 'poliklinik created successfully.');
+
+        return redirect()->route('poliklinik.index')->with('success', 'Poliklinik berhasil ditambahkan.');
     }
 
     /**
@@ -108,102 +104,100 @@ class PoliklinikController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        // validasi
+        // Validasi input
         $request->validate([
             'name' => 'required',
+            'gambar1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gambar.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'namadokter.*' => 'nullable|string|max:255',
             'deskripsi' => 'required',
-            'gambar1' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'gambar2' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'gambar3' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'gambar4' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'gambar5' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        $filenameGambar1 =null;
-        $filenameGambar2 =null;
-        $filenameGambar3 =null;
-        $filenameGambar4 =null;
-        $filenameGambar5 =null;
+
+
+        // Cari poliklinik yang akan diupdate
         $poliklinik = Poliklinik::findOrFail($id);
+
+        // Upload gambar utama jika ada perubahan
+        $gambar1Name = $poliklinik->image1; // Default ke gambar lama
         if ($request->hasFile('gambar1')) {
+            // Hapus gambar lama jika ada
+            if ($gambar1Name) {
+                unlink(public_path('storage/poliklinik/' . $gambar1Name));
+            }
+
+            // Upload gambar baru
             $file = $request->file('gambar1');
-            $filenameGambar1 = time() . rand(1, 1000) . '_' . $file->getClientOriginalName();
-            $file->move(public_path('/storage/poliklinik'), $filenameGambar1);
-            if (file_exists(public_path('/storage/poliklinik/' . $poliklinik->image1))) {
-                unlink(public_path('/storage/poliklinik/' . $poliklinik->image1));
-            }
-            $poliklinik->image1 = $filenameGambar1;
-        }
-        if ($request->hasFile('gambar2')) {
-            $file = $request->file('gambar2');
-            $filenameGambar2 = time() . rand(1, 1000) . '_' . $file->getClientOriginalName();
-            $file->move(public_path('/storage/poliklinik'), $filenameGambar2);
-            if (file_exists(public_path('/storage/poliklinik/' . $poliklinik->image2))) {
-                unlink(public_path('/storage/poliklinik/' . $poliklinik->image2));
-            }
-            $poliklinik->image2 = $filenameGambar2;
-        }
-        if ($request->hasFile('gambar3')) {
-            $file = $request->file('gambar3');
-            $filenameGambar3 = time() . rand(1, 1000) . '_' . $file->getClientOriginalName();
-            $file->move(public_path('/storage/poliklinik'), $filenameGambar3);
-            if (file_exists(public_path('/storage/poliklinik/' . $poliklinik->image3))) {
-                unlink(public_path('/storage/poliklinik/' . $poliklinik->image3));
-            }
-            $poliklinik->image3 = $filenameGambar3;
-        }
-        if ($request->hasFile('gambar4')) {
-            $file = $request->file('gambar4');
-            $filenameGambar4 = time() . rand(1, 1000) . '_' . $file->getClientOriginalName();
-            $file->move(public_path('/storage/poliklinik'), $filenameGambar4);
-            if (file_exists(public_path('/storage/poliklinik/' . $poliklinik->image4))) {
-                unlink(public_path('/storage/poliklinik/' . $poliklinik->image4));
-            }
-            $poliklinik->image4 = $filenameGambar4;
-        }
-        if ($request->hasFile('gambar5')) {
-            $file = $request->file('gambar5');
-            $filenameGambar5 = time() . rand(1, 1000) . '_' . $file->getClientOriginalName();
-            $file->move(public_path('/storage/poliklinik'), $filenameGambar5);
-            if (file_exists(public_path('/storage/poliklinik/' . $poliklinik->image5))) {
-                unlink(public_path('/storage/poliklinik/' . $poliklinik->image5));
-            }
-            $poliklinik->image5 = $filenameGambar5;
+            $gambar1Name = time() . rand(1, 999) . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/poliklinik'), $gambar1Name);
         }
 
+        // Ambil data gambar lama dokter (jika ada)
+        $gambarDokters = json_decode($poliklinik->gambar_dokter, true);
+        $namaDokters = $request->namadokter;
 
-        $poliklinik->name = $request->name;
-        $poliklinik->slug = $request->name;
-        $poliklinik->deskripsi = $request->deskripsi;
-        $poliklinik->save();
-        return redirect()->route('poliklinik.index')->with('success', 'Data poliklinik Berhasil Diubah');
+        // Update gambar dokter jika ada gambar yang di-upload
+        if ($request->has('namadokter')) {
+            foreach ($request->namadokter as $index => $nama) {
+                // Cek apakah ada gambar baru untuk dokter ini
+                if ($request->hasFile("gambar.$index")) {
+                    // Hapus gambar lama jika ada
+                    if (!empty($gambarDokters[$index]) && file_exists(public_path('storage/foto_dokter/' . $gambarDokters[$index]))) {
+                        unlink(public_path('storage/foto_dokter/' . $gambarDokters[$index]));
+                    }
+                    // Upload gambar baru untuk dokter
+                    $file = $request->file("gambar.$index");
+                    $fileName = time() . rand(1000, 9999) . '_' . $file->getClientOriginalName();
+                    $file->move(public_path('storage/foto_dokter'), $fileName);
+                    $gambarDokters[$index] = $fileName; // Ganti dengan gambar baru
+                } elseif (!isset($gambarDokters[$index])) {
+                    // Jika dokter tidak memiliki gambar, biarkan null
+                    $gambarDokters[$index] = null;
+                }
+            }
+        }
+
+        // Update data poliklinik
+        $poliklinik->update([
+            'name' => $request->name,
+            'slug' => $request->name, // Bisa menggunakan slug generator jika diperlukan
+            'image1' => $gambar1Name,
+            'nama_dokter' => json_encode($namaDokters),
+            'gambar_dokter' => json_encode($gambarDokters),
+            'deskripsi' => $request->deskripsi,
+        ]);
+
+        return redirect()->route('poliklinik.index')->with('success', 'Poliklinik berhasil diperbarui.');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $poliklinik = Poliklinik::find($id);
-        if ($poliklinik->delete()) {
-            if (file_exists(public_path('/storage/poliklinik/' . $poliklinik->image1))) {
-                unlink(public_path('/storage/poliklinik/' . $poliklinik->image1));
-            }
-            if (file_exists(public_path('/storage/poliklinik/' . $poliklinik->image2))) {
-                unlink(public_path('/storage/poliklinik/' . $poliklinik->image2));
-            }
-            if (file_exists(public_path('/storage/poliklinik/' . $poliklinik->image3))) {
-                unlink(public_path('/storage/poliklinik/' . $poliklinik->image3));
-            }
-            if (file_exists(public_path('/storage/poliklinik/' . $poliklinik->image4))) {
-                unlink(public_path('/storage/poliklinik/' . $poliklinik->image4));
-            }
-            if (file_exists(public_path('/storage/poliklinik/' . $poliklinik->image5))) {
-                unlink(public_path('/storage/poliklinik/' . $poliklinik->image5));
+        $poliklinik = Poliklinik::findOrFail($id);
+
+        // Hapus gambar utama jika ada
+        if ($poliklinik->image1 && file_exists(public_path('storage/poliklinik/' . $poliklinik->image1))) {
+            unlink(public_path('storage/poliklinik/' . $poliklinik->image1));
+        }
+
+        // Hapus gambar-gambar dokter
+        $gambarDokters = json_decode($poliklinik->gambar_dokter, true);
+        if (is_array($gambarDokters)) {
+            foreach ($gambarDokters as $gambar) {
+                if ($gambar && file_exists(public_path('storage/foto_dokter/' . $gambar))) {
+                    unlink(public_path('storage/foto_dokter/' . $gambar));
+                }
             }
         }
-        return redirect()->route('poliklinik.index')->with('success', 'Data poliklinik Berhasil Dihapus');
+
+        // Hapus data dari database
+        $poliklinik->delete();
+
+        return redirect()->route('poliklinik.index')->with('success', 'Data poliklinik berhasil dihapus.');;
     }
 
     public function polikliniklengkap()
