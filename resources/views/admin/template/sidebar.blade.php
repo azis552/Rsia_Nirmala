@@ -48,6 +48,15 @@
                             <span class="nav-link-text">Pegawai</span>
                         </a><!--//nav-link-->
                     </li><!--//nav-item-->
+                    <li class="nav-item">
+                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                        <a class="nav-link {{ Route::is('berkasPegawai') ? 'active' : '' }} " href="{{ route('berkasPegawai.index') }}">
+                            <span class="nav-icon ml-2">
+                                <i class="fa-regular fa-address-book fa-xl "></i>
+                            </span>
+                            <span class="nav-link-text">Berkas</span>
+                        </a><!--//nav-link-->
+                    </li><!--//nav-item-->
                 @endif
 
                 @if (Auth::user()->role == 'admin')
