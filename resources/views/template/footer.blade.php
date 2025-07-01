@@ -65,6 +65,14 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 <script>
+    document.getElementById('dropdownButton').addEventListener('click', function() {
+    var menu = document.getElementById('dropdownMenu');
+    // Toggle visibilitas menu dropdown
+    menu.classList.toggle('hidden');
+});
+
+</script>
+<script>
 document.addEventListener("DOMContentLoaded", function() {
     const menuButton = document.getElementById("menuButton");
     const navbarDropdown = document.getElementById("navbar-dropdown");
@@ -79,6 +87,10 @@ var swiper = new Swiper(".mySwiper", {
     slidesPerView: 1,
     spaceBetween: 20,
     loop: true,
+    autoplay: {
+        delay: 3000, // 3 detik
+        disableOnInteraction: false, // autoplay tetap jalan meski user interaksi
+    },
     pagination: {
         el: ".swiper-pagination",
         clickable: true,
@@ -88,19 +100,20 @@ var swiper = new Swiper(".mySwiper", {
         prevEl: ".swiper-button-prev",
     },
     breakpoints: {
-        640: {
-            slidesPerView: 2,
-        },
-        1024: {
-            slidesPerView: 3,
-        },
+        640: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
     },
 });
+
 
 var swiper = new Swiper(".mySwiperDokter", {
     slidesPerView: 1,
     spaceBetween: 20,
     loop: true,
+    autoplay: {
+        delay: 3000, // 3 detik
+        disableOnInteraction: false, // autoplay tetap jalan meski user interaksi
+    },
     pagination: {
         el: ".swiper-pagination",
         clickable: true,
@@ -119,9 +132,14 @@ var swiper = new Swiper(".mySwiperDokter", {
     },
 });
 const imageSwipers = document.querySelectorAll('.imageSwiper');
+
 imageSwipers.forEach((swiperEl, i) => {
     new Swiper(swiperEl, {
         loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
         navigation: {
             nextEl: swiperEl.querySelector('.swiper-button-next'),
             prevEl: swiperEl.querySelector('.swiper-button-prev'),
@@ -134,6 +152,10 @@ const mainSwiper = new Swiper('.myMainSwiper', {
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
+    },
+    autoplay: {
+        delay: 3000, // 3 detik
+        disableOnInteraction: false, // autoplay tetap jalan meski user interaksi
     },
 });
 </script>

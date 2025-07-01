@@ -56,6 +56,8 @@
                                         <td>
                                             @if ($user->role == 'admin')
                                                 <div class="badge bg-success">Admin</div>
+                                            @elseif ($user->role == 'pegawai')
+                                                <div class="badge bg-primary">Pegawai</div>
                                             @else
                                                 <div class="badge bg-warning">Faskes 1</div>
                                             @endif
@@ -117,6 +119,7 @@
                                         <select name="role" class="form-select" id="role" required>
                                             <option value="faskes1">Faskes 1</option>
                                             <option value="admin">Admin</option>
+                                            <option value="pegawai">Pegawai</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
@@ -166,6 +169,7 @@
                                         <select name="roleEdit" class="form-select" id="roleEdit" required>
                                             <option value="faskes1">Faskes 1</option>
                                             <option value="admin">Admin</option>
+                                            <option value="pegawai">Pegawai</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">

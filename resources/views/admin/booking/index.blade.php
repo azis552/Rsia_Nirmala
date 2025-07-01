@@ -46,6 +46,7 @@
                                     <th>Dokter</th>
                                     <th>Jadwal</th>
                                     <th>Jenis Pasien</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -60,24 +61,17 @@
                                         <td>{{ $booking->dokter->name }}</td>
                                         <td>{{ $booking->jadwal->hari }} , {{ $booking->jadwal->jam_mulai }} - {{ $booking->jadwal->jam_selesai }}</td>
                                         <td>{{ $booking->jenis_pasien }}</td>
-                                        {{-- <td> 
-                                            <form action="{{ Route('akun.destroy', $booking->id) }}" method="post">
+                                        <td> 
+                                            <form action="{{ Route('booking.destroy', $booking->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="button" class="btn btn-warning text-white btn-edit"
-                                                    data-bs-toggle="modal" data-bs-target="#modalEdit"
-                                                    data-id="{{ $booking->id }}" data-name="{{ $booking->name }}"
-                                                    data-faskes="{{ $booking->faskes }}" 
-                                                    data-email="{{ $booking->email }}" data-role="{{ $booking->role }}">
-                                                    <i class="fa-solid fa-pen-ruler"></i>
-                                                </button>
                                                 <button type="submit"
                                                     onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"
                                                     class="btn btn-danger text-white"><i class="fa-solid fa-trash"></i></button>
                                             </form>
 
                                             
-                                        </td> --}}
+                                        </td>
                                     </tr>
                                 @endforeach
                                 <!-- Tambahkan data lainnya di sini -->

@@ -15,7 +15,7 @@ class DokterController extends Controller
      */
     public function index()
     {
-        $polikliniks = Poliklinik::all(); 
+        $polikliniks = Poliklinik::all();
         $dokters = Dokter::all();
         return view("admin.dokter.index", compact("dokters", "polikliniks"));
     }
@@ -48,9 +48,9 @@ class DokterController extends Controller
         }
 
         Dokter::create([
-            'name'=> $request->name,
+            'name' => $request->name,
             'poliklinik_id' => $request->poliklinik,
-            'foto'=> $filename,
+            'foto' => $filename,
         ]);
 
         return redirect()->route('dokter.index')->with('success', 'Dokter berhasil ditambahkan');
@@ -79,12 +79,12 @@ class DokterController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'poliklinik'=> 'required',
-            ]);
+            'poliklinik' => 'required',
+        ]);
 
         $dokter = Dokter::find($id);
         if ($dokter) {
-  
+
             if ($request->hasFile('gambar')) {
                 $file = $request->file('gambar');
                 $filename = time() . rand(1, 1000) . '_' . $file->getClientOriginalName();
@@ -98,11 +98,11 @@ class DokterController extends Controller
             } else {
                 $filename = $dokter->foto;
             }
-    
+
             $dokter->update([
-                'name'=> $request->name,
+                'name' => $request->name,
                 'poliklinik_id' => $request->poliklinik,
-                'foto'=> $filename,
+                'foto' => $filename,
             ]);
         }
         return redirect()->route('dokter.index')->with('success', 'Dokter berhasil diubah');
@@ -136,23 +136,26 @@ class DokterController extends Controller
         $dokterId = $request->dokter_id;
         $poliklinik_id = $request->poliklinik_id;
         $tanggal = $request->tanggal;
-        $hari = Carbon::parse($tanggal)->locale('id')->dayName; // contoh: "senin"
-        $hari = ucfirst($hari); // jadi "Senin"
-        $dokters = JadwalDokter::with('dokter')->where('dokter_id', $dokterId)
-            ->where('hari', $hari)
-            ->whereHas('dokter', function ($query) use ($poliklinik_id) {
-                $query->where('poliklinik_id', $poliklinik_id);
+
+        $hari = ucfirst(Carbon::parse($tanggal)->locale('id')->dayName); // e.g. "Senin"
+
+        // Ambil dari model Dokter langsung
+        $dokters = Dokter::with(['jadwal' => function ($query) use ($hari) {
+            $query->where('hari', $hari);
+        }])
+            ->where('id', $dokterId)
+            ->where('poliklinik_id', $poliklinik_id)
+            ->whereHas('jadwal', function ($query) use ($hari) {
+                $query->where('hari', $hari);
             })
             ->paginate(10);
-        //dd($dokters);
-        
-    
+
+        // Jika tidak ditemukan jadwal untuk dokter tersebut di hari itu
         if ($dokters->isEmpty()) {
-            return redirect()->route('landingpage')->with('errorJadwal',' Jadwal Dokter Tidak Tersedia');
+            return redirect()->route('landingpage')->with('errorJadwal', ' Jadwal Dokter Tidak Tersedia');
         } else {
             $poliklinik = Poliklinik::find($poliklinik_id);
-
-            return view('dokter', compact('dokters','poliklinik'));
+            return view('dokter', compact('dokters', 'poliklinik'));
         }
     }
 }

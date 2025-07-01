@@ -48,12 +48,36 @@ class RujukanController extends Controller
             'nama' => 'required|string|max:255',
             'nik' => 'required|max:17',
             'no_rujukan' => 'required|max:255',
-            'dokter_perujuk' => 'required|max:255',
-            'diagnosa' => 'required|max:255',
-            'kategori_rujukan' => 'required|max:255',
+            'perujuk' => 'nullable|string|max:255',
+            'profesi' => 'nullable|string|max:255',
+            'subjek' => 'nullable|string|max:255',
+            'objek' => 'nullable|string|max:255',
+            'suhu' => 'nullable|string|max:255',
+            'tensi' => 'nullable|string|max:255',
+            'berat' => 'nullable|string|max:255',
+            'tinggi' => 'nullable|string|max:255',
+            'RR' => 'nullable|string|max:255',
+            'nadi' => 'nullable|string|max:255',
+            'SpO2' => 'nullable|string|max:255',
+            'GCS' => 'nullable|string|max:255',
+            'Kesadaran' => 'nullable|string|max:255',
+            'LP' => 'nullable|string|max:255',
+            'Alergi' => 'nullable|string|max:255',
+            'Asesmen' => 'nullable|string|max:255',
+            'Plan' => 'nullable|string|max:255',
+            'Instruksi' => 'nullable|string|max:255',
+            'Evaluasi' => 'nullable|string|max:255',
             'keterangan' => 'nullable|string|max:255',
         ]);
         // dd($request->all());
+
+        $berkas = $request->file('Berkas');
+        if ($berkas->isValid()) {
+            $berkasName = time() . $berkas->getClientOriginalName();
+            $berkas->move(public_path('storage/berkas'), $berkasName);
+        } else {
+            $berkasName = null;
+        }
 
         $rujukan = Rujukan::create(
             [
@@ -61,9 +85,26 @@ class RujukanController extends Controller
                 'nama' => $request->nama,
                 'nik' => $request->nik,
                 'No_Rujukan' => $request->no_rujukan,
-                'Dokter_Perujuk' => $request->dokter_perujuk,
-                'Diagnosa' => $request->diagnosa,
-                'Kategori_Rujukan' => $request->kategori_rujukan,
+                'perujuk' => $request->perujuk,
+                'profesi' => $request->profesi,
+                'subjek' => $request->subjek,
+                'objek' => $request->objek,
+                'suhu' => $request->suhu,
+                'tensi' => $request->tensi,
+                'berat' => $request->berat,
+                'tinggi' => $request->tinggi,
+                'RR' => $request->RR,
+                'nadi' => $request->nadi,
+                'SpO2' => $request->SpO2,
+                'GCS' => $request->GCS,
+                'Kesadaran' => $request->Kesadaran,
+                'LP' => $request->LP,
+                'Alergi' => $request->Alergi,
+                'Asesmen' => $request->Asesmen,
+                'Plan' => $request->Plan,
+                'Instruksi' => $request->Instruksi,
+                'Evaluasi' => $request->Evaluasi,
+                'Berkas' => $berkasName,
                 'Keterangan' => $request->keterangan,
                 'faskes_id' => Auth::user()->id,
             ]
@@ -113,33 +154,81 @@ class RujukanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
 
-        $validate = $request->validate([
+    public function update(Request $request, $id)
+    {
+        $request->validate([
             'nama' => 'required|string|max:255',
-            'nik' => 'required|max:17',
+            'nik' => 'required',
             'no_rujukan' => 'required|max:255',
-            'dokter_perujuk'=> 'required|max:255',
-            'diagnosa' => 'required|max:255',
-            'kategori_rujukan' => 'required|max:255',
-            'keterangan'=> 'required'
+            'perujuk' => 'nullable|string|max:255',
+            'profesi' => 'nullable|string|max:255',
+            'subjek' => 'nullable|string|max:255',
+            'objek' => 'nullable|string|max:255',
+            'suhu' => 'nullable|string|max:255',
+            'tensi' => 'nullable|string|max:255',
+            'berat' => 'nullable|string|max:255',
+            'tinggi' => 'nullable|string|max:255',
+            'RR' => 'nullable|string|max:255',
+            'nadi' => 'nullable|string|max:255',
+            'SpO2' => 'nullable|string|max:255',
+            'GCS' => 'nullable|string|max:255',
+            'Kesadaran' => 'nullable|string|max:255',
+            'LP' => 'nullable|string|max:255',
+            'Alergi' => 'nullable|string|max:255',
+            'Asesmen' => 'nullable|string|max:255',
+            'Plan' => 'nullable|string|max:255',
+            'Instruksi' => 'nullable|string|max:255',
+            'Evaluasi' => 'nullable|string|max:255',
+            'keterangan' => 'nullable|string|max:255',
         ]);
 
-        // Find the rujukan record by ID
-        $rujukan = Rujukan::where('id', $id)->firstOrFail();
-        // Update the rujukan record with the validated data
-        $rujukan->nama = $request->nama;
-        $rujukan->nik = $request->nik;
-        $rujukan->No_Rujukan = $request->no_rujukan;
-        $rujukan->Dokter_Perujuk = $request->dokter_perujuk;
-        $rujukan->Diagnosa = $request->diagnosa;
-        $rujukan->Kategori_Rujukan = $request->kategori_rujukan;
-        $rujukan->Keterangan = $request->keterangan;
+        $rujukan = Rujukan::findOrFail($id);
 
-        // Save the updated rujukan record
-        $rujukan->save();
-        // Redirect back to the rujukan index page with a success message
+        // Cek dan simpan berkas baru jika ada
+        if ($request->hasFile('Berkas')) {
+            $berkas = $request->file('Berkas');
+
+            if ($berkas->isValid()) {
+                // Hapus berkas lama jika ada
+                if ($rujukan->Berkas && file_exists(public_path('storage/berkas/' . $rujukan->Berkas))) {
+                    unlink(public_path('storage/berkas/' . $rujukan->Berkas));
+                }
+
+                $berkasName = time() . '_' . $berkas->getClientOriginalName();
+                $berkas->move(public_path('storage/berkas'), $berkasName);
+                $rujukan->Berkas = $berkasName;
+            }
+        }
+
+        // Update data lainnya
+        $rujukan->update([
+            'nama' => $request->nama,
+            'nik' => $request->nik,
+            'No_Rujukan' => $request->no_rujukan,
+            'perujuk' => $request->perujuk,
+            'profesi' => $request->profesi,
+            'subjek' => $request->subjek,
+            'objek' => $request->objek,
+            'suhu' => $request->suhu,
+            'tensi' => $request->tensi,
+            'berat' => $request->berat,
+            'tinggi' => $request->tinggi,
+            'RR' => $request->RR,
+            'nadi' => $request->nadi,
+            'SpO2' => $request->SpO2,
+            'GCS' => $request->GCS,
+            'Kesadaran' => $request->Kesadaran,
+            'LP' => $request->LP,
+            'Alergi' => $request->Alergi,
+            'Asesmen' => $request->Asesmen,
+            'Plan' => $request->Plan,
+            'Instruksi' => $request->Instruksi,
+            'Evaluasi' => $request->Evaluasi,
+            'Keterangan' => $request->keterangan,
+            'faskes_id' => Auth::user()->id,
+        ]);
+
         return redirect()->route('rujukan.index')->with('success', 'Rujukan updated successfully.');
     }
 

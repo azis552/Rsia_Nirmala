@@ -13,7 +13,7 @@
                         <!-- Card -->
                         <div class="bg-white rounded-xl shadow-md p-4">
                             <img src="{{ asset('storage/poliklinik/' . $poliklinik->image1) }}" alt="poliklinik"
-                                class="rounded-xl w-full h-48 object-cover mb-3" />
+                                class="rounded-xl w-full h-48 object-contain mb-3" />
                             <p class="text-sm text-gray-500">{{ date('d F Y', strtotime($poliklinik->created_at)) }}</p>
                             <h3 class="font-semibold text-md mt-1 text-gray-800">{{ $poliklinik->name }}</h3>
                             <p class="text-sm mt-2 text-gray-600">{{ Str::limit($poliklinik->deskripsi, 80) }}

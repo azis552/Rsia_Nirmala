@@ -13,28 +13,24 @@
 </head>
 <style>
     .pagination .page-link {
-        color: #16a34a;
-        /* Warna teks hijau */
-        border-color: #16a34a;
-        /* Warna border hijau */
+        color: #166534 !important;
+        border-color: #166534 !important;
+        background-color: white !important;
     }
 
     .pagination .page-link:hover {
-        background-color: #16a34a;
-        /* Warna latar hijau saat hover */
-        color: #ffffff;
-        /* Warna teks putih */
+        background-color: #166534 !important; /* Mengubah warna latar belakang saat hover */
+        color: #ffffff !important; /* Mengubah warna teks saat hover */
+        transition: background-color 0.3s ease, color 0.3s ease; /* Menambahkan transisi halus */
     }
 
     .pagination .page-item.active .page-link {
-        background-color: #16a34a;
-        /* Warna latar hijau untuk halaman aktif */
-        border-color: #16a34a;
-        /* Warna border hijau untuk halaman aktif */
-        color: #ffffff;
-        /* Warna teks putih */
+        background-color: #166534 !important;
+        border-color: #166534 !important;
+        color: #ffffff !important;
     }
 </style>
+
 
 <body>
     <!-- Bagian atas -->
@@ -55,7 +51,8 @@
     </div>
 
     <!-- Navbar -->
-    <nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center relative">
+    <nav class="sticky top-0 z-50 bg-white shadow-md px-4 py-2 flex justify-between items-center">
+
         <!-- Logo -->
         <div class="flex items-center gap-4">
             <img src="{{ @$profil->logo != null ? asset('storage/images/' . @$profil->logo) : asset('images/preview.png') }}"
@@ -63,58 +60,86 @@
 
         </div>
 
-        <!-- Menu Navigasi (Desktop) -->
-        <ul class="hidden md:flex space-x-3 font-bold text-lg">
-            <li>
-                <a href="{{ route('landingpage') }}"
-                    class="px-3 py-2 {{ request()->routeIs('landingpage') ? 'text-green-700 underline' : 'hover:text-green-700' }}">
-                    Beranda
-                </a>
-            </li>
+       <!-- Menu Navigasi (Desktop) -->
+<ul class="hidden md:flex items-center space-x-3 font-bold text-lg">
 
-            <li>
-                <a href="{{ route('dokterlengkap') }}"
-                    class="px-3 py-2 {{ request()->routeIs('dokterlengkap') ? 'text-green-700 underline' : 'hover:text-green-700' }}">
-                    Dokter
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('profil.lengkap') }}"
-                    class="px-3 py-2 {{ request()->routeIs('profil.lengkap') ? 'text-green-700 underline' : 'hover:text-green-700' }}">
-                    Profil
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('poliklinik.lengkap') }}"
-                    class="px-3 py-2 {{ request()->routeIs('poliklinik.lengkap') ? 'text-green-700 underline' : 'hover:text-green-700' }}">
-                    Poliklinik
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('pelayanan.lengkap') }}"
-                    class="px-3 py-2 {{ request()->routeIs('pelayanan.lengkap') ? 'text-green-700 underline' : 'hover:text-green-700' }}">
-                    Pelayanan
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('berita.selengkapnya') }}"
-                    class="px-3 py-2 {{ request()->routeIs('berita.selengkapnya') ? 'text-green-700 underline' : 'hover:text-green-700' }}">
-                    Informasi Publik
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('promotion.selengkapnya') }}"
-                    class="px-3 py-2 {{ request()->routeIs('promotion.selengkapnya') ? 'text-green-700 underline' : 'hover:text-green-700' }}">
-                    Promo Spesial
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('promotion.selengkapnya') }}"
-                    class="px-3 py-2 {{ request()->routeIs('promotion.selengkapnya') ? 'text-green-700 underline' : 'hover:text-green-700' }}">
-                    Info Kamar
-                </a>
-            </li>
-        </ul>
+    <!-- Menu Item: Beranda -->
+    <li>
+        <a href="{{ route('landingpage') }}"
+           class="px-3 py-2 rounded-md {{ request()->routeIs('landingpage') ? 'bg-green-100 text-green-700' : 'text-green-900 hover:bg-green-100 hover:text-green-700' }}"
+           style="text-decoration: none;">
+           Beranda
+        </a>
+    </li>
+
+    <!-- Menu Item: Dokter -->
+    <li>
+        <a href="{{ route('dokterlengkap') }}"
+           class="px-3 py-2 rounded-md {{ request()->routeIs('dokterlengkap') ? 'bg-green-100 text-green-700' : 'text-green-900 hover:bg-green-100 hover:text-green-700' }}"
+           style="text-decoration: none;">
+           Dokter
+        </a>
+    </li>
+
+    <!-- Menu Item: Profil -->
+    <li>
+        <a href="{{ route('profil.lengkap') }}"
+           class="px-3 py-2 rounded-md {{ request()->routeIs('profil.lengkap') ? 'bg-green-100 text-green-700' : 'text-green-900 hover:text-green-700 hover:bg-green-100' }}"
+           style="text-decoration: none;">
+           Profil
+        </a>
+    </li>
+
+    <!-- Menu Item: Poliklinik -->
+    <li>
+        <a href="{{ route('poliklinik.lengkap') }}"
+           class="px-3 py-2 rounded-md {{ request()->routeIs('poliklinik.lengkap') ? 'bg-green-100 text-green-700' : 'text-green-900 hover:text-green-700 hover:bg-green-100' }}"
+           style="text-decoration: none;">
+           Poliklinik
+        </a>
+    </li>
+
+    <!-- Menu Item: Pelayanan -->
+    <li>
+        <a href="{{ route('pelayanan.lengkap') }}"
+           class="px-3 py-2 rounded-md {{ request()->routeIs('pelayanan.lengkap') ? 'bg-green-100 text-green-700' : 'text-green-900 hover:text-green-700 hover:bg-green-100' }}"
+           style="text-decoration: none;">
+           Pelayanan
+        </a>
+    </li>
+
+    <!-- Dropdown: Informasi -->
+    <li class="relative">
+        <a href="javascript:void(0);" class="px-3 py-2 rounded-md text-green-900 hover:text-green-700 flex items-center gap-2" id="dropdownButton">
+            <span>Informasi</span>
+            <i class="fas fa-chevron-down"></i>
+        </a>
+
+        <!-- Dropdown Menu -->
+        <div id="dropdownMenu" class="absolute ml-2 mr-2 left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 hidden">
+            <ul class="space-y-1">
+                <li>
+                    <a href="{{ route('berita.selengkapnya') }}"
+                       class="block px-4 py-2 text-sm text-green-900 hover:bg-green-100 hover:text-green-700 rounded-md {{ request()->routeIs('berita.selengkapnya') ? 'bg-green-100 text-green-700' : '' }}">
+                        Berita
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('promotion.selengkapnya') }}"
+                       class="block px-4 py-2 text-sm text-green-900 hover:bg-green-100 hover:text-green-700 rounded-md {{ request()->routeIs('promotion.selengkapnya') ? 'bg-green-100 text-green-700' : '' }}">
+                        Promo Spesial
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('infoTT') }}"
+                       class="block px-4 py-2 text-sm text-green-900 hover:bg-green-100 hover:text-green-700 rounded-md {{ request()->routeIs('infoTT') ? 'bg-green-100 text-green-700' : '' }}">
+                        Info Kamar
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </li>
+</ul>
 
         <!-- Tombol Aksi (Desktop) -->
         <div class="hidden md:flex items-center gap-3">
@@ -174,8 +199,8 @@
                 </a>
             </li>
             <li class="py-1">
-                <a href="{{ route('promotion.selengkapnya') }}"
-                    class="block py-2 px-4 rounded-md {{ request()->routeIs('promotion.selengkapnya') ? 'text-green-700 bg-green-100' : 'hover:text-green-700 hover:bg-green-100 active:bg-green-200' }} focus:outline-none transition-all duration-300">
+                <a href="{{ route('infoTT') }}"
+                    class="block py-2 px-4 rounded-md {{ request()->routeIs('infoTT') ? 'text-green-700 bg-green-100' : 'hover:text-green-700 hover:bg-green-100 active:bg-green-200' }} focus:outline-none transition-all duration-300">
                     Info Kamar
                 </a>
             </li>

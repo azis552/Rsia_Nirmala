@@ -11,7 +11,7 @@
 
 
                 <!-- Grid poliklinik -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+                <div class="grid grid-cols-1 mt-2 md:grid-cols-2 lg:grid-cols-3 gap-2">
                     @foreach ($dokters as $dokter)
                         <!-- Card -->
                         <div class="swiper-slide w-full">
@@ -36,7 +36,9 @@
                                             {{ $dokter->name ?? $dokter->dokter->name }}</p>
                                     </div>
 
-                                    <!-- Jadwal -->
+
+
+
                                     @php
                                         $realDokter =
                                             $dokter instanceof \App\Models\JadwalDokter ? $dokter->dokter : $dokter;
@@ -49,15 +51,33 @@
                                     <div class="mt-2">
                                         @if ($jadwals && $jadwals->count())
                                             <ul class="text-sm text-gray-600 text-left">
-                                                @foreach ($jadwals as $jadwal)
-                                                    <li>{{ $jadwal->hari }} - {{ $jadwal->jam_mulai }} s/d
-                                                        {{ $jadwal->jam_selesai }}</li>
-                                                @endforeach
+                                                <table
+                                                    class="w-full text-left border border-green-900 rounded-lg overflow-hidden">
+                                                    <thead class="bg-green-800 text-white">
+                                                        <tr>
+                                                            <th class="px-4 py-2">Hari</th>
+                                                            <th class="px-4 py-2">Jam Mulai</th>
+                                                            <th class="px-4 py-2">Jam Selesai</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="bg-green-50 text-green-900">
+                                                        @foreach ($dokter->jadwal as $jadwal)
+                                                            <tr class="border-t border-green-200 hover:bg-green-100">
+                                                                <td class="px-4 py-2">{{ $jadwal->hari }}</td>
+                                                                <td class="px-4 py-2">{{ $jadwal->jam_mulai }}</td>
+                                                                <td class="px-4 py-2">{{ $jadwal->jam_selesai }}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
                                             </ul>
                                         @else
                                             <p class="text-sm text-red-500 italic">Belum diatur</p>
                                         @endif
                                     </div>
+
+
+
                                 </div>
                             </div>
                         </div>

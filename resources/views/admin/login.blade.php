@@ -63,6 +63,20 @@
                                         </div>
                                     </div><!--//col-6-->
                                 </div><!--//extra-->
+                                <div class="captcha mb-4 p-3 rounded shadow-sm border border-primary bg-light">
+                                    <label for="captcha" class="form-label fw-bold text-primary">
+                                        <i class="fas fa-question-circle me-2"></i> Berapakah <span
+                                            class="text-danger">{{ $angka1 }}</span> + <span
+                                            class="text-danger">{{ $angka2 }}</span>?
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-primary text-white"><i
+                                                class="fas fa-key"></i></span>
+                                        <input type="text" name="captcha" class="form-control" required
+                                            placeholder="Masukkan jawaban di sini...">
+                                    </div>
+                                </div>
+
                             </div><!--//form-group-->
                             <div class="text-center">
                                 <button type="submit" class="btn app-btn-primary w-100 theme-btn mx-auto">Log
@@ -76,7 +90,7 @@
 
                 </div><!--//auth-body-->
 
-                
+
             </div><!--//flex-column-->
         </div><!--//auth-main-col-->
         <div class="col-12 col-md-5 col-lg-6 h-100 auth-background-col">
@@ -86,7 +100,7 @@
             <div class="auth-background-overlay p-3 p-lg-5">
                 <div class="d-flex flex-column align-content-end h-100">
                     <div class="h-100"></div>
-                    
+
                 </div>
             </div><!--//auth-background-overlay-->
         </div><!--//auth-background-col-->

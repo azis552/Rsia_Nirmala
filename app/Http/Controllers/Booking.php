@@ -60,6 +60,8 @@ class Booking extends Controller
         $booking = ModelsBooking::create($data);
         // Send message to Telegram
         $telegramResponse = \App\Helpers\TelegramHelper::booking($booking, $profil->token, $profil->chat_id_pendaftaran);
+        
+        //dd($telegramResponse);
         if ($booking) {
             return redirect()->route("booking.form")->with("success", "Booking Berhasil");
         }
@@ -94,7 +96,9 @@ class Booking extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $booking = ModelsBooking::find($id);
+        $booking->delete();
+        return redirect()->route("booking.index")->with("success", "Booking Berhasil Dihapus");
     }
 
     public function booking()

@@ -1,7 +1,7 @@
 @extends('template.master')
 @section('content')
     {{-- jumbotron --}}
-    <div id="controls-carousel" class="relative w-full h-[400px] md:h-[600px]" data-carousel="static"
+    <div id="controls-carousel" class="relative w-full h-[400px] md:h-[600px]" data-carousel="slide" data-carousel-interval="7000"
         style="position: relative; z-index: 1;">
         <!-- Carousel wrapper -->
         <div class="relative h-[400px] md:h-[600px] overflow-hidden ">
@@ -189,7 +189,8 @@
                 <!-- Card -->
                 <div class="bg-white rounded-xl shadow p-4 m-2">
                     <img src="{{ asset('images/berita/' . $berita->gambar) }}" alt="berita"
-                        class="rounded-xl w-full h-48 object-cover mb-3" />
+     class="rounded-xl w-full h-48 object-contain mb-3" />
+
                     <p class="text-sm text-gray-500">{{ date('d F Y', strtotime($berita->created_at)) }}</p>
                     <h3 class="font-semibold text-md mt-1">{{ $berita->judul }}</h3>
                     <p class="text-sm mt-2 text-gray-600">{{ Str::limit($berita->deskripsi, 80) }}
@@ -281,7 +282,7 @@
                                 <div
                                     class="bg-gray-100 rounded-lg p-4 h-72 shadow-md relative flex flex-col items-center space-y-3">
                                     <img src="{{ asset('storage/pelayanan/' . $pelayanan->image1) }}" alt="berita"
-                                        class="rounded-xl w-[130px] h-[100px] object-fit mb-3" />
+                                        class="rounded-xl object-contain w-[130px] h-[100px]  mb-3" />
 
                                     <h3 class="text-green-700 font-bold text-lg text-center">{{ $pelayanan->name }}</h3>
                                     <div class="w-16 h-1 bg-green-700"></div>
@@ -333,7 +334,7 @@
                                 <!-- Foto dokter (gunakan img jika ada gambar, di sini pakai placeholder) -->
                                 <div class="relative z-10 p-4 flex flex-col items-center">
                                     <img src="{{ asset('storage/dokter/' . $dokter->foto) }}" alt="Foto Dokter"
-                                        class="w-[320px] h-[420px] object-cover  border-4 border-white shadow-lg mb-4">
+                                        class="w-[320px] h-[340px] object-fit  border-4 border-white shadow-lg mb-4">
 
                                     <div class="text-center mt-2 w-full">
                                         <p class="text-sm font-semibold text-white bg-green-700 px-3 py-1 rounded-t-md">
@@ -345,10 +346,28 @@
                                         <div class="mt-2">
                                             @if ($dokter->jadwal->isNotEmpty())
                                                 <ul class="text-sm text-gray-600">
-                                                    @foreach ($dokter->jadwal as $jadwal)
-                                                        <li>{{ $jadwal->hari }} - {{ $jadwal->jam_mulai }} s/d
-                                                            {{ $jadwal->jam_selesai }}</li>
-                                                    @endforeach
+                                                   <div class="overflow-x-auto">
+    <table class="min-w-full text-left border border-green-900 rounded-lg overflow-hidden">
+        <thead class="bg-green-800 text-white">
+            <tr>
+                <th class="px-4 py-2">Hari</th>
+                <th class="px-4 py-2">Jam Mulai</th>
+                <th class="px-4 py-2">Jam Selesai</th>
+            </tr>
+        </thead>
+        <tbody class="bg-green-50 text-green-900">
+            @foreach ($dokter->jadwal as $jadwal)
+                <tr class="border-t border-green-200 hover:bg-green-100">
+                    <td class="px-4 py-2">{{ $jadwal->hari }}</td>
+                   <td class="px-4 py-2">{{ \Carbon\Carbon::parse($jadwal->jam_mulai)->format('H:i') }}</td>
+<td class="px-4 py-2">{{ \Carbon\Carbon::parse($jadwal->jam_selesai)->format('H:i') }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
+
                                                 </ul>
                                             @else
                                                 <p class="text-sm text-red-500 italic">Belum diatur</p>
@@ -479,7 +498,7 @@
                         </div>
 
                         <!-- Gambar -->
-                        <div class="w-full md:w-1/2 mt-6 md:mt-0 md:pl-6">
+                        <div class="w-1/2 h-1/2 md:w-1/3 mt-6 md:mt-0 md:pl-6">
                             <div class="swiper imageSwiper rounded-lg overflow-hidden">
                                 <div class="swiper-wrapper">
                                     @for ($i = 1; $i <= 5; $i++)
@@ -492,7 +511,7 @@
                                                     class="border border-gray-300 rounded-xl p-3 shadow-md hover:shadow-lg transition duration-300 bg-white">
                                                     <img src="{{ asset('storage/fasilitasUnggulan/' . $promosiUnggulan->$image) }}"
                                                         alt="Gambar Artikel"
-                                                        class="w-full h-auto rounded-lg object-cover" />
+                                                        class="w-full h-auto rounded-lg object-contain" />
                                                 </div>
                                             </div>
                                         @endif
@@ -633,7 +652,7 @@
                                     <div
                                         class="w-[220px] h-[220px] overflow-hidden rounded-md border-2 border-white shadow-md mb-4">
                                         <img src="{{ asset('storage/partner/' . $partner->image) }}" alt="Foto Partner"
-                                            class="w-full h-full object-cover">
+                                            class="w-full h-full object-contain">
                                     </div>
                                     <div class="text-center mt-2">
                                         <p class="text-sm font-semibold text-white bg-green-700 px-3 py-1 rounded-t-md">

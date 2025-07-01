@@ -11,7 +11,7 @@
 
 	<meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
 	<meta name="author" content="Xiaoying Riley at 3rd Wave Media">
-	<link rel="icon" type="image/png" href="{{ @$profil->logo != null ? asset('images/' . @$profil->logo) : asset('images/preview.png') }}">
+	<link rel="icon" type="image/png" href="{{ @$profil->tumbnail != null ? asset('storage/images/' . @$profil->tumbnail) : asset('images/preview.png') }}">
 
 
 	<!-- FontAwesome JS-->

@@ -7,7 +7,7 @@
             <div class="md:col-span-2 bg-white rounded-2xl shadow-lg p-6 space-y-6">
                 <div class="w-full aspect-video overflow-hidden rounded-xl">
                     <img src="{{ asset('storage/poliklinik/' . $poliklinik->image1) }}" alt="Gambar Artikel"
-                        class="w-full h-full object-cover" />
+                        class="w-full h-full object-contain" />
                 </div>
                 <div class="space-y-2">
                     <span class="inline-block px-3 py-1 bg-green-600 text-white rounded-full text-sm font-medium">Kategori:
@@ -20,25 +20,24 @@
                     </p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    @php
-                        $namaDokters = json_decode($poliklinik->nama_dokter, true);
-                        $gambarDokters = json_decode($poliklinik->gambar_dokter, true);
-                    @endphp
-                
-                    @if (!empty($namaDokters) && !empty($gambarDokters))
-                        @foreach ($namaDokters as $index => $nama)
-                            <div class="border border-gray-300 rounded-xl p-4 shadow-md hover:shadow-lg transition duration-300 bg-white">
-                                <img src="{{ asset('storage/foto_dokter/' . ($gambarDokters[$index] ?? 'default.jpg')) }}" alt="{{ $nama }}"
-                                    class="w-full h-64 object-cover rounded-lg mb-3" />
-                                <h3 class="text-lg font-semibold text-gray-800 text-center">{{ $nama }}</h3>
-                            </div>
-                        @endforeach
-                    @else
-                        <p class="text-gray-500 italic">Tidak ada data dokter.</p>
-                    @endif
-                </div>
-                
-                
+    @php
+        $namaDokters = json_decode($poliklinik->nama_dokter, true);
+        $gambarDokters = json_decode($poliklinik->gambar_dokter, true);
+    @endphp
+
+    @if (!empty($namaDokters) && !empty($gambarDokters))
+        @foreach ($namaDokters as $index => $nama)
+            <div class="border border-gray-300 rounded-xl p-4 shadow-md hover:shadow-lg transition duration-300 bg-white">
+                <img src="{{ asset('storage/foto_dokter/' . ($gambarDokters[$index] ?? 'default.jpg')) }}" alt="{{ $nama }}"
+                    class="w-full h-64 object-cover rounded-lg mb-3" />
+                <h3 class="text-lg font-semibold text-gray-800 text-center">{{ $nama }}</h3>
+            </div>
+        @endforeach
+    @else
+        <p class="text-gray-500 italic">Tidak ada data dokter.</p>
+    @endif
+</div>
+
 
                 <div class="flex justify-end">
                     <a href="{{ route('landingpage') }}"

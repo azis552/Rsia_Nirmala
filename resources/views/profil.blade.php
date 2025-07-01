@@ -10,7 +10,7 @@
 
             <div class="w-full md:w-1/3 mb-6 md:mb-0 border-2 border-green-600 rounded-xl overflow-hidden">
                 <img src="{{ $profil->direktur != null ? asset('storage/images/' . $profil->direktur) : asset('images/preview.png') }}"
-                    alt="Direktur" class="rounded-xl shadow-md w-full h-[300px] object-cover">
+                    alt="Direktur"  class="w-full h-[500px] object-cover rounded-xl shadow-md" />
             </div>
 
             <div class="w-full md:w-2/3 text-justify">

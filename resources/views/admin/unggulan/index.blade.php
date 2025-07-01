@@ -202,6 +202,7 @@
             $('#descriptionEdit').val(description);
             $('#urutanEdit').val(urutan);
             $('#previewEdit').attr('src', '{{ asset('images/unggulan') }}/' + gambar); // Set src dari <img> dengan data file
+            $('#formEdit').attr('action', '{{ url('unggulan') }}/' + id);
         });
         $(document).ready(function() {
             // Preview untuk form tambah

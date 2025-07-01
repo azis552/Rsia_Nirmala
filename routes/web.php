@@ -22,6 +22,11 @@ use App\Http\Controllers\UnggulanController;
 use App\Models\PromosiUnggulan;
 use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/link', function () {
+    Artisan::call('storage:link');
+    return 'Symlink storage berhasil dibuat!';
+});
 Broadcast::routes(['middleware' => [ 'auth']]);
 Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
 
@@ -107,4 +112,10 @@ route::middleware('auth')->group(function () {
 
     // Kritik dan Saran Routes
     Route::resource('kritikSaran', KritikSaranController::class)->except(['store','show', 'edit']);
+
+    Route::delete('booking-delete/{id}', [Booking::class,'destroy'])->name('booking.destroy');
+
+    Route::get('pegawai', [AuthController::class, 'pegawai'])->name('pegawai');
+    Route::post('/pegawai/{id}', [AuthController::class, 'updatePegawai'])->name('pegawai.update');
+
 });
